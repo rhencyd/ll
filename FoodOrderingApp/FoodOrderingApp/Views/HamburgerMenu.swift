@@ -148,7 +148,7 @@ struct HamburgerMenu: View {
             .frame(maxHeight: .infinity, alignment: .top)
             .background(.regularMaterial)
             .onDisappear {
-                hamburguerMenu.showSideMenu.toggle()
+                hamburguerMenu.showSideMenu = false
             }
         }
 }
