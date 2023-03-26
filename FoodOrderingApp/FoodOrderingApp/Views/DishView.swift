@@ -14,6 +14,7 @@ struct DishView: View {
     @EnvironmentObject private var extraItemsViewModel : ExtraItemsViewModel
     @EnvironmentObject var itemAddedViewModel: ItemAddedViewModel
     @EnvironmentObject var navigationStateManager: NavigationStateManager
+    @EnvironmentObject var hamburguerMenu: HamburguerMenu
     
     @State var specialInstructions: String = ""
     @State var itemQty: Int = 1
@@ -31,17 +32,11 @@ struct DishView: View {
     var body: some View {
         
         VStack{
-            Header(navigationValue: ScreenNavigationValue.cartView, view: AnyView(TabItemCartImage()))
             
             ScrollView {
                 
                 ZStack {
                     
-//                    AsyncImage(url: URL(string: dish.image!)) { image in
-//                        image.resizable()
-//                    } placeholder: {
-//                        ProgressView()
-//                    }
                     ImageDownloaded(
                         url: dish.image ?? "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", key: "\(dish.id)")
                     .scaledToFill()
@@ -150,12 +145,12 @@ struct DishView: View {
                                     
                                     
                                     .onChange(of: extraItem.extrItemQty, perform: { newValue in
-                                    
-                                            getExtraItemTotal(
-                                                itemPrice: extraItem.extraItemPrice,
-                                                itemTitle: extraItem.extraItemTitle,
-                                                qty: extraItem.extrItemQty)
-
+                                        
+                                        getExtraItemTotal(
+                                            itemPrice: extraItem.extraItemPrice,
+                                            itemTitle: extraItem.extraItemTitle,
+                                            qty: extraItem.extrItemQty)
+                                        
                                         getCheckoutItem()
                                         calculteSubtotal()
                                     })
@@ -178,10 +173,14 @@ struct DishView: View {
                         
                         
                         TextField("Special requirements..." ,text: $specialInstructions)
-                            .focused($specialInstructionsInFocus)
+                            .font(Font.custom("Karla-Regular", size: 16))
+                            .foregroundColor(Color("HighlightColor2"))
+                            .padding(12)
                             .frame(height: 200, alignment: .topLeading)
                             .background((Color("HighlightColor1")))
                             .cornerRadius(8)
+                            
+                            .focused($specialInstructionsInFocus)
                             .onTapGesture {
                                 specialInstructionsInFocus.toggle()
                             }
@@ -202,12 +201,10 @@ struct DishView: View {
             Button {
                 
                 itemAddedViewModel.addItemToCart(extras: extraItems, dish: dish, qty: itemQty, request: specialInstructions, subTotal: subTotal)
-//                itemAddedViewModel.cartItemsNumber += 1
                 
                 print(itemAddedViewModel.cartItemsNumber)
                 print(itemAddedViewModel.itemAdded)
                 dismiss()
-//                navigationStateManager.goToHome()
                 
                 
             } label: {
@@ -215,6 +212,8 @@ struct DishView: View {
             }
             Spacer()
         }
+        .padding(.top, 5)
+        
         .onAppear(perform: {
             if navigationStateManager.cartErased {
                 dismiss()
@@ -223,6 +222,44 @@ struct DishView: View {
         })
         
         .navigationBarBackButtonHidden()
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
+        
+        .toolbar {
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink(value: ScreenNavigationValue.cartView) {
+                    TabItemCartImage()
+                }
+            }
+            
+            ToolbarItem(placement: .navigationBarLeading) {
+                
+                Button {
+                    withAnimation(Animation.spring()) {
+                        hamburguerMenu.showSideMenu.toggle()
+                    }
+                } label: {
+                    
+                    Image(systemName: "list.bullet")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 35)
+                        .foregroundColor(Color("PrimaryColor1"))
+                    
+                }
+            }
+            
+            ToolbarItem(placement: .principal) {
+                
+                Image("littleLemonLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 40)
+                
+            }
+            
+        }
         
     }
     
@@ -293,6 +330,7 @@ struct DishView_Previews: PreviewProvider {
             .environmentObject(ExtraItemsViewModel())
             .environmentObject(NavigationStateManager())
             .environmentObject(ItemAddedViewModel())
+            .environmentObject(HamburguerMenu())
     }
     static func oneDish() -> DishEntity {
         let dish = DishEntity(context: context)
