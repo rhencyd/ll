@@ -67,6 +67,7 @@ struct HamburgerMenuView: View {
             
             
             Rectangle()
+                .foregroundColor(Color("PrimaryColor1"))
                 .cornerRadius(1)
                 .padding(.horizontal, -15)
                 .frame(maxWidth: .infinity)
