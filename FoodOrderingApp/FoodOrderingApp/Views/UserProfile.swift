@@ -1264,7 +1264,7 @@ struct UserProfile: View {
             
             ToolbarItem(placement: .principal) {
                 Text(editEnable ?  "Edit Profile".uppercased() : "Profile".uppercased())
-                    .font(Font.custom("MarkaziText-SemiBold", size: 25))
+                    .font(Font.custom("Karla-ExtraBold", size: 20))
                     .foregroundColor(
                         editEnable ?
                         Color("PrimaryColor1"):
