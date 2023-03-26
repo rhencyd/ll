@@ -61,11 +61,11 @@ struct CartView: View {
                     ForEach($itemAddedViewModel.itemAdded) { $item in
                         ItemCartPreview(dish: item, stepperValue: $item.dishQty)
                     }
+                    .onDelete(perform: itemAddedViewModel.deleteItem)
                 }
                 .offset(y: -1)
                 .listStyle(.plain)
             }
-            
             
             Spacer()
             
@@ -82,11 +82,6 @@ struct CartView: View {
                     Text("Checkout").primaryButton()
                 }
             }
-            
-            
-            
-            
-
         }
         
         .navigationBarBackButtonHidden()

@@ -9,43 +9,29 @@ import SwiftUI
 
 struct ItemCartPreview: View {
     
+    
+    
     @State var isCustomized:Bool = false
     
-    var dish: ItemAdded
-    var stepperValue: Binding<Int>
+    @State var dish: ItemAdded
+    @Binding var stepperValue: Int
+    @State var subtotal: Double = 0
     
     var body: some View {
         
         HStack {
             HStack {
-                // Image
-//                AsyncImage(url: URL(string: dish.dish.image!)) { phase in
-//                    switch phase {
-//                    case .empty:
-//                        ProgressView()
-//                    case .success(let image):
-//                        image
-//                            .resizable()
                 ImageDownloaded(
                     url: dish.dish.image ?? "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", key: "\(dish.dish.id)")
                 
                             .scaledToFill()
                             .frame(width: 80, height: 80)
                             .cornerRadius(8)
-//                    case .failure:
-//                        Image(systemName: "questionmark")
-//                            .font(.headline)
-//                    default:
-//                        Image(systemName: "questionmark")
-//                            .font(.headline)
-//                    }
-//                }
                 
                 HStack {
-                    // Item Title and Extras
+
                     VStack(alignment: .leading) {
                         
-                        // Item title
                         Text(dish.dish.title ?? "Title")
                             .cardTitle()
                         
@@ -77,6 +63,9 @@ struct ItemCartPreview: View {
                     }
                     
                 }
+                .onAppear {
+                    subtotal = dish.subTotal
+                }
             }
             
             Spacer()
@@ -86,17 +75,24 @@ struct ItemCartPreview: View {
                 Spacer()
                 
                 // Item price with alignment topTrailing
-                Text("$\(String(format: "%.2f", dish.subTotal))")
+                Text("$\(String(format: "%.2f", subtotal))")
                     .leadText()
                     .foregroundColor(Color("PrimaryColor1"))
                 
                 
                 Spacer()
                 
-                // custom stepper
                 CustomStepper(
-                    stepperValue: stepperValue,
+                    stepperValue: $stepperValue,
                     needStroke: false, fillColor: Color("SecundaryColor3"))
+//                .onTapGesture {
+//                    dish.subTotal = dish.subTotal * Double((stepperValue / dish.dishQty))
+//                }
+                .onChange(of: stepperValue) { newValue in
+                    subtotal = dish.subTotal * Double(stepperValue)
+                    print(stepperValue)
+                    print(subtotal)
+                }
             }
         }
         .frame(height: 90)

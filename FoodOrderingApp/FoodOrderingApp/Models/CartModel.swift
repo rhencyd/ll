@@ -13,14 +13,15 @@ struct ItemAdded: Identifiable {
     let extraItem: [ExtraItemsModel]
     let dish: DishEntity
     var dishQty: Int
-    let specialRequest: String?
-    let subTotal: Double
+    var specialRequest: String?
+    var subTotal: Double
 }
 
 class ItemAddedViewModel: ObservableObject {
     
     @Published var itemAdded = [ItemAdded]()
     @Published var cartItemsNumber: Int = 0
+    
         
     
     
@@ -28,8 +29,22 @@ class ItemAddedViewModel: ObservableObject {
         
         let newItem = ItemAdded(extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
         self.itemAdded.append(newItem)
-        self.cartItemsNumber += 1
+        self.cartItemsNumber = itemAdded.count
+    }
+    
+    func update(extras: [ExtraItemsModel], dish: DishEntity, qty: Int, request: String?, subTotal: Double, index: IndexSet) {
         
+        let updatedItem = ItemAdded(extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
+        
+        deleteItem(index: index)
+        
+        self.itemAdded.append(updatedItem)
+        
+    }
+    
+    func deleteItem(index: IndexSet) {
+        itemAdded.remove(atOffsets: index)
+        self.cartItemsNumber = itemAdded.count
     }
 }
 

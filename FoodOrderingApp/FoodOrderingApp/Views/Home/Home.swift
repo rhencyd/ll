@@ -45,15 +45,15 @@ struct Home: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 
-                if itemAddedViewModel.cartItemsNumber > 0 || screenNavigator.guestModeOn {
-                    NavigationLink(value: ScreenNavigationValue.cartView) {
-                        TabItemCartImage()
-                            .environmentObject(itemAddedViewModel)
-                            .environmentObject(hamburguerMenu)
-                    }
-                } else {
+                if itemAddedViewModel.cartItemsNumber == 0 {
                     NavigationLink(value: ScreenNavigationValue.userProfile) {
                         TabItemProfilePicture(image: "profile-image-placeholder")
+                    }
+                } else if itemAddedViewModel.cartItemsNumber >= 1 || screenNavigator.guestModeOn  {
+                        NavigationLink(value: ScreenNavigationValue.cartView) {
+                            TabItemCartImage()
+                                .environmentObject(itemAddedViewModel)
+                                .environmentObject(hamburguerMenu)
                     }
                 }
             }
