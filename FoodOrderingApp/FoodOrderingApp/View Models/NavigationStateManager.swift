@@ -20,6 +20,7 @@ class NavigationStateManager: ObservableObject {
     
     @Published var selectionPath = [ScreenNavigationValue]()
     @Published var guestModeOn: Bool = false
+    @Published var cartErased: Bool = false
     
     
     
