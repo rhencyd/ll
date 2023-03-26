@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D411CF729C94C2D00D04EFE /* HamburgerMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411CF629C94C2D00D04EFE /* HamburgerMenu.swift */; };
+		3D411CF729C94C2D00D04EFE /* HamburgerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */; };
 		3D63A07929BBBC94008C1188 /* HeroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63A07829BBBC94008C1188 /* HeroSection.swift */; };
 		3D63A07D29BBDCA7008C1188 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63A07C29BBDCA7008C1188 /* Header.swift */; };
 		3D63A08029BBE0F7008C1188 /* MenuBreakDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63A07F29BBE0F7008C1188 /* MenuBreakDown.swift */; };
@@ -71,7 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3D411CF629C94C2D00D04EFE /* HamburgerMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenu.swift; sourceTree = "<group>"; };
+		3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuView.swift; sourceTree = "<group>"; };
 		3D63A07829BBBC94008C1188 /* HeroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSection.swift; sourceTree = "<group>"; };
 		3D63A07C29BBDCA7008C1188 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		3D63A07F29BBE0F7008C1188 /* MenuBreakDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBreakDown.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 				3DA3D41F29B9711400F7B9D9 /* Onboarding */,
 				3D63A07E29BBDFD8008C1188 /* Home */,
 				3D69813829C1091E00CF0FDD /* IntroView.swift */,
-				3D411CF629C94C2D00D04EFE /* HamburgerMenu.swift */,
+				3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */,
 				3DA3D40E29B922B800F7B9D9 /* Welcome.swift */,
 				3DBD7F5129C63E4900F207EB /* ImageDownloaded.swift */,
 				3DBD7F4B29C50B6800F207EB /* ItemCartPreview.swift */,
@@ -464,7 +464,7 @@
 				3DC9800B29C2731E00BBF578 /* TabItemProfilePicture.swift in Sources */,
 				3D63A08229BBEDB1008C1188 /* DishPreView.swift in Sources */,
 				3DBD7F4C29C50B6800F207EB /* ItemCartPreview.swift in Sources */,
-				3D411CF729C94C2D00D04EFE /* HamburgerMenu.swift in Sources */,
+				3D411CF729C94C2D00D04EFE /* HamburgerMenuView.swift in Sources */,
 				3DA3D44A29BAC36D00F7B9D9 /* Home.swift in Sources */,
 				3DBD7F5029C63B3500F207EB /* DownloadingDishesViewModel.swift in Sources */,
 				3DC9800929C2692700BBF578 /* DishView.swift in Sources */,

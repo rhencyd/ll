@@ -53,7 +53,7 @@ struct CartView: View {
                     
                     Spacer()
                     
-                }.offset(y: -1)
+                }
 
                 
             } else {
@@ -63,7 +63,7 @@ struct CartView: View {
                     }
                     .onDelete(perform: itemAddedViewModel.deleteItem)
                 }
-                .offset(y: -1)
+                
                 .listStyle(.plain)
             }
             
@@ -71,7 +71,8 @@ struct CartView: View {
             
             if itemAddedViewModel.cartItemsNumber < 1 {
                 Button {
-                    navigationStateManager.goToHome()
+                    dismiss()
+                    navigationStateManager.cartErased.toggle()
                 } label: {
                     Text("Add dishes to my cart!").primaryButton()
                 }
@@ -83,7 +84,8 @@ struct CartView: View {
                 }
             }
         }
-        
+        .padding(.top, 5)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .toolbar {
             

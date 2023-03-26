@@ -1109,10 +1109,11 @@ struct UserProfile: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal)
                     }
-                }.offset(y: -45)
-                    .edgesIgnoringSafeArea(.bottom)
+                }
                 
+                .edgesIgnoringSafeArea(.bottom)
                 .toolbarBackground(.white, for: .navigationBar)
+                .navigationBarTitleDisplayMode(.inline)
                 
                 
             }
@@ -1121,143 +1122,140 @@ struct UserProfile: View {
             else {
                 
                 VStack {
-                    
-                    HStack {
-                        Image("profile-image-placeholder")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 150)
-                            .clipShape(Circle())
+                    VStack {
                         
-                        VStack {
-                            Text("Hello!")
-                                .font(Font.custom("Karla-ExtraBoldItalic", size: 45))
-                                .foregroundColor(Color("SecundaryColor2"))
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                        HStack {
+                            Image("profile-image-placeholder")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 150)
+                                .clipShape(Circle())
                             
-                                Text(currentUserFirstName ?? "Name")
-                                    .font(Font.custom("Karla-ExtraBold", size: 30))
-                                    .foregroundColor(Color("HighlightColor1"))
-    //                                .padding(.trailing , 60)
+                            VStack {
+                                Text("Hello!")
+                                    .font(Font.custom("Karla-ExtraBoldItalic", size: 45))
+                                    .foregroundColor(Color("SecundaryColor2"))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 
+                                    Text(currentUserFirstName ?? "Name")
+                                        .font(Font.custom("Karla-ExtraBold", size: 30))
+                                        .foregroundColor(Color("HighlightColor1"))
+        //                                .padding(.trailing , 60)
+                                    
+                            }
+                            
+                            Spacer()
+                            
                         }
+                        .frame(height: 200)
+                        .background(Color("PrimaryColor1"))
+                        
+                        VStack(alignment: .leading) {
+                            
+                            Text("Personal Information").sectionTitle()
+                                .padding(.top)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.horizontal, .bottom])
+                            
+                            VStack(alignment: .leading) {
+                                Text("Account Holder")
+                                    .font(Font.custom("Karla-Bold", size: 16))
+                                    .padding(.bottom, 1)
+                                
+                                Text("\(currentUserFirstName ?? "Name") \(currentUserLastName ?? "LastName")").paragraphText()
+                                
+                                Text("\(currentUserEmail ?? "email@example.com") / \(currentUserPhoneNumber?.convertToInternationalFormat() ?? "(012) 345-5789")").paragraphText()
+                            }
+                            .padding(.bottom, 30)
+                            
+                            
+                            VStack(alignment: .leading) {
+                                Text("Preferred Delivery Address")
+                                    .font(Font.custom("Karla-Bold", size: 16))
+                                    .padding(.bottom, 1)
+                                
+                                Text("\(currentUserLine1 ?? "Line1"), \(currentUserLine2 ?? "")").paragraphText()
+                                
+                                Text("\(currentUserCity ?? "City"), \(currentUserState ?? "State"), \(currentUserZipCode ?? "ZipCode")").paragraphText()
+                            }
+                            .padding(.bottom, 30)
+                            
+                            
+                            VStack(alignment: .leading) {
+                                
+                                Text("Notifications Settings")
+                                    .font(Font.custom("Karla-Bold", size: 16))
+                                    .padding(.bottom, 1)
+                                
+                                HStack(spacing: 10){
+                                    Image(systemName: isOrderStatusActive ? "checkmark.circle.fill" : "circle" )
+                                        .resizable()
+                                        .foregroundColor(isOrderStatusActive ? Color("PrimaryColor1") : Color.black)
+                                        .frame(width:20, height: 20)
+                                    
+                                    Text("Order Statuses").paragraphText()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.vertical, 10)
+                                
+                                
+                                HStack(spacing: 10){
+                                    Image(systemName: isPasswordCahngedActive ? "checkmark.circle.fill" : "circle" )
+                                        .resizable()
+                                        .foregroundColor(isPasswordCahngedActive ? Color("PrimaryColor1") : Color.black)
+                                        .frame(width:20, height: 20)
+                                    
+                                    Text("Password Changes").paragraphText()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.bottom, 10)
+                                
+                                
+                                HStack(spacing: 10){
+                                    Image(systemName: isSpecialOfferActive ? "checkmark.circle.fill" : "circle" )
+                                        .resizable()
+                                        .foregroundColor(isSpecialOfferActive ? Color("PrimaryColor1") : Color.black)
+                                        .frame(width:20, height: 20)
+                                    
+                                    Text("Special Offers").paragraphText()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.bottom, 10)
+                                
+                                HStack(spacing: 10){
+                                    Image(systemName: isNewsletterActive ? "checkmark.circle.fill" : "circle" )
+                                        .resizable()
+                                        .foregroundColor(isNewsletterActive ? Color("PrimaryColor1") : Color.black)
+                                        .frame(width:20, height: 20)
+                                    
+                                    Text("Newsletter").paragraphText()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.bottom, 10)
+                            }
+                            .padding(.bottom, 30)
+                        } .padding(.horizontal)
+                        
                         
                         Spacer()
                         
                     }
-                    .frame(height: 200)
-                    .background(Color("PrimaryColor1"))
-                    
-                    VStack(alignment: .leading) {
+                   
+                    Button {
+                        isCurrentUserSignedIn = false
+                        PersistenceController.shared.clear()
+                        navigationStateManager.popToRoot()
                         
-                        Text("Personal Information").sectionTitle()
-                            .padding(.top)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding([.horizontal, .bottom])
-                        
-                        VStack(alignment: .leading) {
-                            Text("Account Holder")
-                                .font(Font.custom("Karla-Bold", size: 16))
-                                .padding(.bottom, 1)
-                            
-                            Text("\(currentUserFirstName ?? "Name") \(currentUserLastName ?? "LastName")").paragraphText()
-                            
-                            Text("\(currentUserEmail ?? "email@example.com") / \(currentUserPhoneNumber?.convertToInternationalFormat() ?? "(012) 345-5789")").paragraphText()
-                        }
-                        .padding(.bottom, 30)
-                        
-                        
-                        VStack(alignment: .leading) {
-                            Text("Preferred Delivery Address")
-                                .font(Font.custom("Karla-Bold", size: 16))
-                                .padding(.bottom, 1)
-                            
-                            Text("\(currentUserLine1 ?? "Line1"), \(currentUserLine2 ?? "")").paragraphText()
-                            
-                            Text("\(currentUserCity ?? "City"), \(currentUserState ?? "State"), \(currentUserZipCode ?? "ZipCode")").paragraphText()
-                        }
-                        .padding(.bottom, 30)
-                        
-                        
-                        VStack(alignment: .leading) {
-                            
-                            Text("Notifications Settings")
-                                .font(Font.custom("Karla-Bold", size: 16))
-                                .padding(.bottom, 1)
-                            
-                            HStack(spacing: 10){
-                                Image(systemName: isOrderStatusActive ? "checkmark.circle.fill" : "circle" )
-                                    .resizable()
-                                    .foregroundColor(isOrderStatusActive ? Color("PrimaryColor1") : Color.black)
-                                    .frame(width:20, height: 20)
-                                
-                                Text("Order Statuses").paragraphText()
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.vertical, 10)
-                            
-                            
-                            HStack(spacing: 10){
-                                Image(systemName: isPasswordCahngedActive ? "checkmark.circle.fill" : "circle" )
-                                    .resizable()
-                                    .foregroundColor(isPasswordCahngedActive ? Color("PrimaryColor1") : Color.black)
-                                    .frame(width:20, height: 20)
-                                
-                                Text("Password Changes").paragraphText()
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 10)
-                            
-                            
-                            HStack(spacing: 10){
-                                Image(systemName: isSpecialOfferActive ? "checkmark.circle.fill" : "circle" )
-                                    .resizable()
-                                    .foregroundColor(isSpecialOfferActive ? Color("PrimaryColor1") : Color.black)
-                                    .frame(width:20, height: 20)
-                                
-                                Text("Special Offers").paragraphText()
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 10)
-                            
-                            HStack(spacing: 10){
-                                Image(systemName: isNewsletterActive ? "checkmark.circle.fill" : "circle" )
-                                    .resizable()
-                                    .foregroundColor(isNewsletterActive ? Color("PrimaryColor1") : Color.black)
-                                    .frame(width:20, height: 20)
-                                
-                                Text("Newsletter").paragraphText()
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 10)
-                        }
-                        .padding(.bottom, 30)
-                        
-                        
-                    } .padding(.horizontal)
-                    
-                    
-                    Spacer()
-                    
-                    
-                    .toolbarBackground(.hidden, for: .navigationBar)
-                    
-                }.offset(y: -45)
-               
-                Button {
-                    isCurrentUserSignedIn = false
-                    PersistenceController.shared.clear()
-                    navigationStateManager.popToRoot()
-                    
-                } label: {
-                    Text("Logout").primaryButton()
+                    } label: {
+                        Text("Logout").primaryButton()
+                    }
                 }
+                .toolbarBackground(.hidden)
+                .navigationBarTitleDisplayMode(.inline)
                 
             }
             
         }
-        
-        
         .navigationBarBackButtonHidden(true)
         
         .toolbar {

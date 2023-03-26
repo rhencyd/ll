@@ -14,8 +14,9 @@ struct TabItemProfilePicture: View {
     var body: some View {
         Image(image) // need to make it changeble
             .resizable()
-            .scaledToFill()
-            .frame(width: 50)
+            .clipShape(Circle())
+            .scaledToFit()
+            .frame(height: 45)
     }
 }
 
@@ -46,6 +47,7 @@ struct TabItemCartImage: View {
                     }
                     .frame(maxHeight: .infinity, alignment: .bottom)
                     .frame(maxWidth: .infinity,alignment: .leading)
+                    .padding(.bottom, 0.5)
                 }
                 
             }

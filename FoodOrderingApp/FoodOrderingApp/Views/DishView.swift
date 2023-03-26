@@ -215,6 +215,13 @@ struct DishView: View {
             }
             Spacer()
         }
+        .onAppear(perform: {
+            if navigationStateManager.cartErased {
+                dismiss()
+                navigationStateManager.cartErased = false
+            }
+        })
+        
         .navigationBarBackButtonHidden()
         
     }
