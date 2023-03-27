@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ItemCartPreview: View {
     
-    
-    
-    @State var isCustomized:Bool = false
-    
+    @EnvironmentObject var itemAddedViewModel: ItemAddedViewModel
     @State var dish: ItemAdded
+    
     @Binding var stepperValue: Int
-    @State var subtotal: Double = 0
+    @Binding var subTotal: Double
+    
+
     
     var body: some View {
         
@@ -64,7 +64,9 @@ struct ItemCartPreview: View {
                     
                 }
                 .onAppear {
-                    subtotal = dish.subTotal
+//                    subtotal = dish.subTotal
+//                    dish.finalSubtotal = dish.subTotal
+                    itemAddedViewModel.getSubtotal()
                 }
             }
             
@@ -75,7 +77,7 @@ struct ItemCartPreview: View {
                 Spacer()
                 
                 // Item price with alignment topTrailing
-                Text("$\(String(format: "%.2f", subtotal))")
+                Text("$\(String(format: "%.2f", subTotal))")
                     .leadText()
                     .foregroundColor(Color("PrimaryColor1"))
                 
@@ -85,18 +87,30 @@ struct ItemCartPreview: View {
                 CustomStepper(
                     stepperValue: $stepperValue,
                     needStroke: false, fillColor: Color("SecundaryColor3"))
-//                .onTapGesture {
-//                    dish.subTotal = dish.subTotal * Double((stepperValue / dish.dishQty))
-//                }
                 .onChange(of: stepperValue) { newValue in
-                    subtotal = dish.subTotal * Double(stepperValue)
-                    print(stepperValue)
-                    print(subtotal)
+                    
+                    if stepperValue > 0 {
+                        
+                        let subtotal = dish.subTotal * (Double(stepperValue) / Double(dish.dishQty) )
+                        
+                        dish.dishQty = stepperValue
+                        
+                        subTotal = subtotal
+                        
+                        dish.subTotal = subTotal
+                        
+                        itemAddedViewModel.getSubtotal()
+                        
+                        print(itemAddedViewModel.itemAdded)
+                        
+                    }
+
                 }
             }
         }
         .frame(height: 90)
     }
+    
 }
     
 
@@ -109,7 +123,7 @@ struct ItemCartPreview_Previews: PreviewProvider {
     static var dish: ItemAdded = ItemAdded(extraItem: oneExtraItem(), dish: oneDish(), dishQty: 2, specialRequest: "", subTotal: 14.56)
     
     static var previews: some View {
-        ItemCartPreview(dish: dish, stepperValue: .constant(1))
+        ItemCartPreview(dish: dish, stepperValue: .constant(1), subTotal: .constant(30))
     }
     
     

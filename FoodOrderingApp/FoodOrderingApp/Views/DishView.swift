@@ -212,7 +212,7 @@ struct DishView: View {
             }
             Spacer()
         }
-        .padding(.top, 5)
+//        .padding(.top, 5)
         
         .onAppear(perform: {
             if navigationStateManager.cartErased {

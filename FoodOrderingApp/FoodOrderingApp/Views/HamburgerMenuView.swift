@@ -46,7 +46,7 @@ struct HamburgerMenuView: View {
                     
                     HStack {
                         Text(currentUserFirstName ?? "Paola")
-                        Text(currentUserLastName ?? "Navarrete")
+//                        Text(currentUserLastName ?? "Navarrete")
                     }
                     .font(Font.custom("Karla-Bold", size: 22))
                     .foregroundColor(Color("PrimaryColor1"))

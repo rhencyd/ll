@@ -21,6 +21,7 @@ class ItemAddedViewModel: ObservableObject {
     
     @Published var itemAdded = [ItemAdded]()
     @Published var cartItemsNumber: Int = 0
+    @Published var subTotal: Double = 0
     
         
     
@@ -30,6 +31,7 @@ class ItemAddedViewModel: ObservableObject {
         let newItem = ItemAdded(extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
         self.itemAdded.append(newItem)
         self.cartItemsNumber = itemAdded.count
+        
     }
     
     func update(extras: [ExtraItemsModel], dish: DishEntity, qty: Int, request: String?, subTotal: Double, index: IndexSet) {
@@ -45,6 +47,13 @@ class ItemAddedViewModel: ObservableObject {
     func deleteItem(index: IndexSet) {
         itemAdded.remove(atOffsets: index)
         self.cartItemsNumber = itemAdded.count
+    }
+    
+    func getSubtotal() {
+        subTotal = 0
+        for dish in itemAdded {
+            subTotal += dish.subTotal
+        }
     }
 }
 
