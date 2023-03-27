@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CartView: View {
     
-    @EnvironmentObject var itemAddedViewModel: ItemAddedViewModel
+    @EnvironmentObject var itemAddedViewModel: CartViewModel
     @EnvironmentObject var navigationStateManager: NavigationStateManager
     @Environment(\.dismiss) var dismiss
     
+    @State var isEditOn: Bool = false
     
     @State var cartSubTotal: Double = 0
     
@@ -56,76 +57,151 @@ struct CartView: View {
                     
                     Spacer()
                     
-                }
-
-                
-            } else {
-                List {
-                    ForEach($itemAddedViewModel.itemAdded) { $item in
-                        ItemCartPreview(dish: item, stepperValue: $item.dishQty, subTotal: $item.subTotal)
+                    Button {
+                        dismiss()
+                        navigationStateManager.cartErased.toggle()
+                    } label: {
+                        Text("Add dishes to my cart!").primaryButton()
                     }
-                    .onDelete(perform: itemAddedViewModel.deleteItem)
                 }
                 
-                .listStyle(.plain)
-            }
-            
-            Spacer()
-            
-            if itemAddedViewModel.cartItemsNumber < 1 {
-                Button {
-                    dismiss()
-                    navigationStateManager.cartErased.toggle()
-                } label: {
-                    Text("Add dishes to my cart!").primaryButton()
-                }
             } else {
                 
-                
-                
-                HStack {
+                if isEditOn {
                     
-                    Text("Subtotal")
-                        .leadText()
+                    VStack {
+                        
+                        Rectangle()
+                            .foregroundColor(Color("PrimaryColor1"))
+                            .frame(maxHeight: .infinity)
+                        
+                        
+                        VStack {
+                            List {
+                                
+                                ForEach($itemAddedViewModel.itemAdded) { $item in
+                                    NavigationLink(value: ScreenNavigationValue.editCart(item)) {
+                                        ItemCartPreview(dish: item, isEditOn: true, stepperValue: $item.dishQty, subTotal: $item.subTotal)
+
+                                    }
+                                }
+                            }
+                            .listStyle(.plain)
+                            
+                            
+                            HStack {
+                                
+                                Text("Subtotal")
+                                    .cardTitle()
+                                
+                                Spacer()
+                                
+                                Text("$ \(String(format: "%.2f", itemAddedViewModel.subTotal))")
+                                    .cardTitle()
+                                
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.bottom, 45)
+                            
+                        }
+                        .frame(height: UIScreen.main.bounds.height * 0.85)
+
+                    }
+                    .toolbarBackground(.hidden)
+                    .edgesIgnoringSafeArea(.top)
+                    .navigationBarTitleDisplayMode(.inline)
                     
-                    Spacer()
-                    
-                    Text("$ \(String(format: "%.2f", itemAddedViewModel.subTotal))")
-                        .leadText()
                     
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 10)
-                
-                Button {
-//                    needs code
-                } label: {
-                    Text("Checkout").primaryButton()
+                else {
+                    
+                    VStack {
+                        
+                        List {
+                            ForEach($itemAddedViewModel.itemAdded) { $item in
+                                
+                                ItemCartPreview(dish: item, isEditOn: false, stepperValue: $item.dishQty, subTotal: $item.subTotal)
+                            }
+                            .onDelete(perform: itemAddedViewModel.deleteItem)
+                            
+                            Button {
+                                dismiss()
+                                navigationStateManager.cartErased.toggle()
+                            } label: {
+                                Text("Add another dish!").secondaryButton()
+                            }
+                        }
+                        .listStyle(.plain)
+                        .padding(.top, 5)
+                        
+                        Spacer()
+                         
+                        HStack {
+                            
+                            Text("Subtotal")
+                                .cardTitle()
+                            
+                            Spacer()
+                            
+                            Text("$ \(String(format: "%.2f", itemAddedViewModel.subTotal))")
+                                .cardTitle()
+                            
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 10)
+                        
+                        Button {
+        //                    needs code
+                        } label: {
+                            Text("Checkout").primaryButton()
+                        }
+                    }
+                    .toolbarBackground(.white, for: .navigationBar)
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
         }
-        .padding(.top, 5)
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
+        
         .toolbar {
             
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
-                    dismiss()
+                    
+                    isEditOn ? isEditOn.toggle() : dismiss()
+                    
                 } label: {
                     Image(systemName: "arrow.backward.circle.fill")
                         .resizable()
                         .frame(width: 40, height: 40)
-                        .foregroundColor(Color("PrimaryColor1"))
+                        .foregroundColor(!isEditOn ? Color("PrimaryColor1") :  Color("HighlightColor1"))
                 }
             }
             
             ToolbarItem(placement: .principal) {
-                Text("My Cart".uppercased())
+                Text(!isEditOn ? "My Cart".uppercased() : "Edit my cart".uppercased())
                     .font(Font.custom("Karla-ExtraBold", size: 20))
-                    .foregroundColor(Color("HighlightColor2"))
+                    .foregroundColor(
+                        !isEditOn ?
+                        Color("HighlightColor2") :
+                        Color("HighlightColor1"))
             }
             
+            if !isEditOn && itemAddedViewModel.cartItemsNumber > 0 {
+             
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isEditOn.toggle()
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(Color("PrimaryColor1"))
+                    }
+
+                }
+                
+            }
         }
     }
 }
@@ -133,7 +209,7 @@ struct CartView: View {
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
-            .environmentObject(ItemAddedViewModel())
+            .environmentObject(CartViewModel())
             .environmentObject(NavigationStateManager())
     }
 }

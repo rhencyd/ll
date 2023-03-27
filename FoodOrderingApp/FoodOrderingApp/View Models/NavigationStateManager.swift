@@ -14,6 +14,7 @@ enum ScreenNavigationValue: Hashable {
     case welcome
     case dishView(DishEntity)
     case cartView
+    case editCart(ItemAdded)
 }
 
 class NavigationStateManager: ObservableObject {

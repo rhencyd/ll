@@ -48,6 +48,7 @@ struct Welcome: View {
                 case .welcome: Welcome()
                 case .cartView: Text("Cart View")
                 case .dishView: Text("Dish View")
+                case .editCart: Text("cart view")
                 }
             }
             .toolbar(.hidden, for: .automatic)

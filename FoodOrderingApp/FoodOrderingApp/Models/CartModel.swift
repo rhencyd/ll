@@ -6,27 +6,43 @@
 //
 
 import Foundation
+import Combine
 
-struct ItemAdded: Identifiable {
+struct ItemAdded: Identifiable, Hashable, Equatable {
     
-    var id = UUID()
-    let extraItem: [ExtraItemsModel]
+    let id = UUID()
+    var extraItem: [ExtraItemsModel]
     let dish: DishEntity
     var dishQty: Int
-    var specialRequest: String?
+    var specialRequest: String
     var subTotal: Double
+    
+    init(extraItem: [ExtraItemsModel], dish: DishEntity, dishQty: Int, specialRequest: String, subTotal: Double) {
+        self.extraItem = extraItem
+        self.dish = dish
+        self.dishQty = dishQty
+        self.specialRequest = specialRequest
+        self.subTotal = subTotal
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func ==(lhs: ItemAdded, rhs: ItemAdded) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
 }
 
-class ItemAddedViewModel: ObservableObject {
+class CartViewModel: ObservableObject {
     
     @Published var itemAdded = [ItemAdded]()
     @Published var cartItemsNumber: Int = 0
     @Published var subTotal: Double = 0
     
-        
     
-    
-    func addItemToCart(extras: [ExtraItemsModel], dish: DishEntity, qty: Int, request: String?, subTotal: Double) {
+    func addItemToCart(extras: [ExtraItemsModel], dish: DishEntity, qty: Int, request: String, subTotal: Double) {
         
         let newItem = ItemAdded(extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
         self.itemAdded.append(newItem)
@@ -34,19 +50,10 @@ class ItemAddedViewModel: ObservableObject {
         
     }
     
-    func update(extras: [ExtraItemsModel], dish: DishEntity, qty: Int, request: String?, subTotal: Double, index: IndexSet) {
-        
-        let updatedItem = ItemAdded(extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
-        
-        deleteItem(index: index)
-        
-        self.itemAdded.append(updatedItem)
-        
-    }
-    
     func deleteItem(index: IndexSet) {
         itemAdded.remove(atOffsets: index)
         self.cartItemsNumber = itemAdded.count
+        getSubtotal()
     }
     
     func getSubtotal() {

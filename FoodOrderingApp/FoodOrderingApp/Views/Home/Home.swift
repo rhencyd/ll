@@ -11,7 +11,7 @@ struct Home: View {
     
     @EnvironmentObject var screenNavigator: NavigationStateManager
     @StateObject private var extraItemsViewModel: ExtraItemsViewModel = ExtraItemsViewModel()
-    @StateObject var itemAddedViewModel: ItemAddedViewModel = ItemAddedViewModel()
+    @StateObject var itemAddedViewModel: CartViewModel = CartViewModel()
     @StateObject var vm: DishesFiltering = DishesFiltering()
     @EnvironmentObject var hamburguerMenu: HamburguerMenu
     
@@ -98,6 +98,10 @@ struct Home: View {
                 DishView(dish: dish)
                     .environmentObject(extraItemsViewModel)
                     .environmentObject(itemAddedViewModel)
+            case .editCart(let item):
+                EditDishView(dish: item.dish , extraItem: item.extraItem, itemQty: item.dishQty, subTotal: item.subTotal, specialRequest: item.specialRequest)
+                    .environmentObject(itemAddedViewModel)
+                    .environmentObject(extraItemsViewModel)
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -107,7 +111,7 @@ struct Home: View {
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
         Home()
-            .environmentObject(ItemAddedViewModel())
+            .environmentObject(CartViewModel())
             .environmentObject(NavigationStateManager())
     }
 }
