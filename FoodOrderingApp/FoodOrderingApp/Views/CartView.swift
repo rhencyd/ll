@@ -13,6 +13,9 @@ struct CartView: View {
     @EnvironmentObject var navigationStateManager: NavigationStateManager
     @Environment(\.dismiss) var dismiss
     
+    
+    @State var cartSubTotal: Double = 0
+    
     var body: some View {
         VStack {
             
@@ -59,7 +62,7 @@ struct CartView: View {
             } else {
                 List {
                     ForEach($itemAddedViewModel.itemAdded) { $item in
-                        ItemCartPreview(dish: item, stepperValue: $item.dishQty)
+                        ItemCartPreview(dish: item, stepperValue: $item.dishQty, subTotal: $item.subTotal)
                     }
                     .onDelete(perform: itemAddedViewModel.deleteItem)
                 }
@@ -77,6 +80,23 @@ struct CartView: View {
                     Text("Add dishes to my cart!").primaryButton()
                 }
             } else {
+                
+                
+                
+                HStack {
+                    
+                    Text("Subtotal")
+                        .leadText()
+                    
+                    Spacer()
+                    
+                    Text("$ \(String(format: "%.2f", itemAddedViewModel.subTotal))")
+                        .leadText()
+                    
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 10)
+                
                 Button {
 //                    needs code
                 } label: {
