@@ -27,11 +27,11 @@ struct HamburgerMenuView: View {
             } label: {
                 Image(systemName: "xmark")
                     .resizable()
-                    .frame(width: 30, height: 30)
+                    .frame(width: 25, height: 25)
                     .foregroundColor(Color("PrimaryColor1"))
             }
             .padding(.top, 20)
-            .padding(.bottom, 50)
+            .padding(.bottom, 40)
 
             
             if isCurrentUserSignedIn {

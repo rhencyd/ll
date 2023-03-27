@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D372BA429D1355800D1AD50 /* EditDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D372BA329D1355800D1AD50 /* EditDishView.swift */; };
 		3D411CF729C94C2D00D04EFE /* HamburgerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */; };
 		3D63A07929BBBC94008C1188 /* HeroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63A07829BBBC94008C1188 /* HeroSection.swift */; };
 		3D63A07D29BBDCA7008C1188 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63A07C29BBDCA7008C1188 /* Header.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D372BA329D1355800D1AD50 /* EditDishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDishView.swift; sourceTree = "<group>"; };
 		3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HamburgerMenuView.swift; sourceTree = "<group>"; };
 		3D63A07829BBBC94008C1188 /* HeroSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroSection.swift; sourceTree = "<group>"; };
 		3D63A07C29BBDCA7008C1188 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				3D63A08529BBFEF5008C1188 /* UserProfile.swift */,
 				3DBD7F4929C50A5300F207EB /* CartView.swift */,
 				3DC9800829C2692700BBF578 /* DishView.swift */,
+				3D372BA329D1355800D1AD50 /* EditDishView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				3DA3D40F29B922B800F7B9D9 /* Welcome.swift in Sources */,
 				3DBC01E729BFB173000851EE /* ServerDataViewModel.swift in Sources */,
 				3DBB6CB429B13BCD0034EAB3 /* FoodOrderingAppApp.swift in Sources */,
+				3D372BA429D1355800D1AD50 /* EditDishView.swift in Sources */,
 				3DBD7F5829C6478600F207EB /* ImagesModelFileManager.swift in Sources */,
 				3DA3D41A29B96F1500F7B9D9 /* Onboarding.swift in Sources */,
 				3D90597529BF7857007D9BC0 /* MenuList.swift in Sources */,

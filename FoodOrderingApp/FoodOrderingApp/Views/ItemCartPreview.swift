@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ItemCartPreview: View {
     
-    @EnvironmentObject var itemAddedViewModel: ItemAddedViewModel
+    @EnvironmentObject var itemAddedViewModel: CartViewModel
     @State var dish: ItemAdded
+    @State var showAlert: Bool = false
+    @State var isEditOn: Bool
+    
+    @State var originalSubTotal: Double = 0
     
     @Binding var stepperValue: Int
     @Binding var subTotal: Double
@@ -64,49 +68,98 @@ struct ItemCartPreview: View {
                     
                 }
                 .onAppear {
-//                    subtotal = dish.subTotal
-//                    dish.finalSubtotal = dish.subTotal
+                    originalSubTotal = dish.subTotal
                     itemAddedViewModel.getSubtotal()
                 }
             }
             
             Spacer()
             
-            // Item Price and custom stepper
-            VStack(alignment: .trailing) {
-                Spacer()
+            if isEditOn {
                 
-                // Item price with alignment topTrailing
-                Text("$\(String(format: "%.2f", subTotal))")
-                    .leadText()
-                    .foregroundColor(Color("PrimaryColor1"))
-                
-                
-                Spacer()
-                
-                CustomStepper(
-                    stepperValue: $stepperValue,
-                    needStroke: false, fillColor: Color("SecundaryColor3"))
-                .onChange(of: stepperValue) { newValue in
+                VStack(alignment: .leading, spacing: 5) {
                     
-                    if stepperValue > 0 {
-                        
-                        let subtotal = dish.subTotal * (Double(stepperValue) / Double(dish.dishQty) )
-                        
-                        dish.dishQty = stepperValue
-                        
-                        subTotal = subtotal
-                        
-                        dish.subTotal = subTotal
-                        
-                        itemAddedViewModel.getSubtotal()
-                        
-                        print(itemAddedViewModel.itemAdded)
-                        
-                    }
-
+                    Spacer()
+                    
+                    Text("$\(String(format: "%.2f", subTotal))")
+                        .leadText()
+                        .foregroundColor(Color("HighlightColor2"))
+                    
+                    
+                    Text("Qty: \(dish.dishQty)")
+                        .leadText()
+                        .foregroundColor(Color("HighlightColor2"))
+                    
+                    Spacer()
                 }
+                
             }
+            
+            else {
+                
+                // Item Price and custom stepper
+                VStack(alignment: .trailing) {
+                    Spacer()
+                    
+                    // Item price with alignment topTrailing
+                    Text("$\(String(format: "%.2f", subTotal))")
+                        .leadText()
+                        .foregroundColor(Color("PrimaryColor1"))
+                    
+                    
+                    Spacer()
+                    
+                    CustomStepper(
+                        stepperValue: $stepperValue,
+                        needStroke: false, fillColor: Color("SecundaryColor3"))
+                    .onChange(of: stepperValue) { newValue in
+                        
+                        if stepperValue > 0 {
+                            
+                            let subtotal = dish.subTotal * (Double(stepperValue) / Double(dish.dishQty) )
+                            
+                            dish.dishQty = stepperValue
+                            
+                            subTotal = subtotal
+                            
+                            dish.subTotal = subTotal
+                            
+                            itemAddedViewModel.getSubtotal()
+                            
+                            print(itemAddedViewModel.itemAdded)
+                            
+                        }
+                        else {
+                            showAlert.toggle()
+                        }
+
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(
+                            title: Text("Are you sure you want to delete this dish?"),
+                            primaryButton: .destructive(
+                                Text("DELETE"),
+                                action: {
+                                    
+                                    self.itemAddedViewModel.itemAdded.removeAll {
+                                        $0.id == dish.id
+                                    }
+                                    itemAddedViewModel.getSubtotal()
+                                    itemAddedViewModel.cartItemsNumber = itemAddedViewModel.itemAdded.count
+                                    
+                                }),
+                            secondaryButton: .cancel(Text("Cancel"), action: {
+                                stepperValue = 1
+                                dish.subTotal = originalSubTotal
+                                
+                                showAlert = false
+                            }))
+                    }
+                }
+                
+            }
+
+            
         }
         .frame(height: 90)
     }
@@ -123,7 +176,7 @@ struct ItemCartPreview_Previews: PreviewProvider {
     static var dish: ItemAdded = ItemAdded(extraItem: oneExtraItem(), dish: oneDish(), dishQty: 2, specialRequest: "", subTotal: 14.56)
     
     static var previews: some View {
-        ItemCartPreview(dish: dish, stepperValue: .constant(1), subTotal: .constant(30))
+        ItemCartPreview(dish: dish, isEditOn: false, stepperValue: .constant(1), subTotal: .constant(30))
     }
     
     

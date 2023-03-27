@@ -22,7 +22,7 @@ struct TabItemProfilePicture: View {
 
 struct TabItemCartImage: View {
     
-    @EnvironmentObject var itemAddedViewModel: ItemAddedViewModel
+    @EnvironmentObject var itemAddedViewModel: CartViewModel
     
     var body: some View {
                     
@@ -62,6 +62,6 @@ struct TabItemProfilePicture_Previews: PreviewProvider {
     static var previews: some View {
 //        TabItemProfilePicture(image: "profile-image-placeholder")
         TabItemCartImage()
-            .environmentObject(ItemAddedViewModel())
+            .environmentObject(CartViewModel())
     }
 }

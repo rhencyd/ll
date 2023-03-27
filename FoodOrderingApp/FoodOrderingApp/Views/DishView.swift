@@ -12,7 +12,7 @@ struct DishView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject private var extraItemsViewModel : ExtraItemsViewModel
-    @EnvironmentObject var itemAddedViewModel: ItemAddedViewModel
+    @EnvironmentObject var itemAddedViewModel: CartViewModel
     @EnvironmentObject var navigationStateManager: NavigationStateManager
     @EnvironmentObject var hamburguerMenu: HamburguerMenu
     
@@ -54,13 +54,13 @@ struct DishView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .frame(maxHeight: .infinity, alignment: .top)
                     .padding(.horizontal, 15)
-                    .padding(.top, -5)
+                    .padding(.top, 10)
                     
                     
                 }
                 .frame(height: 250)
                 .padding(.bottom, 25)
-                .padding(.top, 15)
+
                 
                 
                 VStack {
@@ -212,7 +212,7 @@ struct DishView: View {
             }
             Spacer()
         }
-//        .padding(.top, 5)
+        .padding(.top, 5)
         
         .onAppear(perform: {
             if navigationStateManager.cartErased {
@@ -329,7 +329,7 @@ struct DishView_Previews: PreviewProvider {
         DishPreView(dish: oneDish())
             .environmentObject(ExtraItemsViewModel())
             .environmentObject(NavigationStateManager())
-            .environmentObject(ItemAddedViewModel())
+            .environmentObject(CartViewModel())
             .environmentObject(HamburguerMenu())
     }
     static func oneDish() -> DishEntity {
