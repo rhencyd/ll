@@ -13,7 +13,6 @@ struct ItemCartPreview: View {
     @State var dish: ItemAdded
     @State var showAlert: Bool = false
     @State var isEditOn: Bool
-    
     @State var originalSubTotal: Double = 0
     
     @Binding var stepperValue: Int
@@ -44,23 +43,40 @@ struct ItemCartPreview: View {
                         // Extras
                         ScrollView {
                             
-                            if !dish.extraItem.isEmpty {
+                            VStack(spacing: 3) {
                                 
                                 ForEach(dish.extraItem) { item in
-                                    HStack {
-                                        Text("\(item.extraItemTitle)")
-                                            .paragraphText()
-                                            .frame(width: 90, alignment: .leading)
-                                        
-                                        Text("Qty: \(item.extrItemQty)")
-                                            .paragraphText()
-                                    }.frame(maxWidth: .infinity, alignment: .leading)
                                     
+                                    if item.extrItemQty > 0 {
+                                        
+                                        HStack {
+                                            Text("\(item.extraItemTitle)")
+                                                .paragraphText()
+                                                .frame(width: 90, alignment: .leading)
+                                            
+                                            Text("Qty: \(item.extrItemQty)")
+                                                .paragraphText()
+                                        }.frame(maxWidth: .infinity, alignment: .leading)
+                                    }
                                 }
-                                Spacer()
-                            } else {
-                                Text(dish.dish.itemDescription ?? "Item Description").paragraphText()
+                                
+                                Rectangle()
+                                    .frame(height: 0.5)
+                                    .frame(maxWidth: .infinity)
+                                
+                                
                             }
+                            .offset(y: -5)
+                                
+                                Spacer()
+
+                                Text(dish.dish.itemDescription ?? "Item Description")
+                                .paragraphText()
+                                .offset(y: -10)
+                                
+                            
+                            Spacer()
+
                         }
                         
                         Spacer()
@@ -115,18 +131,21 @@ struct ItemCartPreview: View {
                     .onChange(of: stepperValue) { newValue in
                         
                         if stepperValue > 0 {
-                            
-                            let subtotal = dish.subTotal * (Double(stepperValue) / Double(dish.dishQty) )
-                            
-                            dish.dishQty = stepperValue
+                        
+                            let unitPrice = dish.subTotal / Double(dish.dishQty)
+                            let subtotal = unitPrice * Double(newValue)
                             
                             subTotal = subtotal
                             
-                            dish.subTotal = subTotal
+                            dish.dishQty = newValue
+                            dish.subTotal = subtotal
                             
+                            print(dish.subTotal)
+//
+//
                             itemAddedViewModel.getSubtotal()
-                            
-                            print(itemAddedViewModel.itemAdded)
+//
+//                            print(itemAddedViewModel.itemAdded)
                             
                         }
                         else {
