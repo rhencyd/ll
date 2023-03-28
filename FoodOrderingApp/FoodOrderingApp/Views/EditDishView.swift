@@ -11,19 +11,24 @@ struct EditDishView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var itemAddedViewModel: CartViewModel
-    @EnvironmentObject private var extraItemsViewModel : ExtraItemsViewModel
+//    @EnvironmentObject var extraItemsViewModel : ExtraItemsViewModel
     
     
-    let dish: DishEntity
-    @State var extraItem: [ExtraItemsModel]
-    @State var itemQty: Int // dish qty
-    @State var subTotal: Double
-    @State var specialRequest: String?
+    @State var dish: ItemAdded
+//    @Binding var extraItem: [ExtraItemsModel]
+//    @Binding var itemQty: Int // dish qty
+//    @Binding var subTotal: Double
+//    @Binding var specialRequest: String
     
     
     @State var avocados: [ExtraItemsModel] = []
     @State var seeds: [ExtraItemsModel] = []
     @State var dressings: [ExtraItemsModel] = []
+    
+    @State var subTotal: Double = 0
+    
+    @State var stepperValue: Int = 0
+    @State var specialRequest: String = ""
     
     var body: some View {
         
@@ -33,7 +38,7 @@ struct EditDishView: View {
                 
                     
                     ImageDownloaded(
-                        url: dish.image ?? "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", key: "\(dish.id)")
+                        url: dish.dish.image ?? "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", key: "\(dish.dish.id)")
                     .scaledToFill()
                     .frame(height: 250)
                     .padding(.bottom, 25)
@@ -47,7 +52,7 @@ struct EditDishView: View {
                         HStack (spacing: 20) {
                             
                             // Dish name
-                            Text(dish.title ?? "Item").cardTitle()
+                            Text(dish.dish.title ?? "Item").cardTitle()
                             
                             // Rating
                             HStack (spacing: 5) {
@@ -66,14 +71,14 @@ struct EditDishView: View {
                             Spacer()
                             
                             // Dish price
-                            Text("$ \(dish.price ?? "10")")
+                            Text("$ \(dish.dish.price ?? "10")")
                                 .leadText()
                             
                         }
                         .padding(.horizontal, 20)
                         .padding(.vertical, 10)
                         
-                        Text(dish.itemDescription ?? "Dish Description")
+                        Text(dish.dish.itemDescription ?? "Dish Description")
                             .paragraphText()
                             .padding(.horizontal)
                     }
@@ -88,106 +93,123 @@ struct EditDishView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, 10)
                         
-                        if extraItem.isEmpty {
                             
-                            ForEach($extraItemsViewModel.extraItemsArray) { $extraItem in
-                                HStack {
+                        ForEach($dish.extraItem) { $extraItem in
+                                
+//                                ForEach($dish.extraItem) { $currentItem in
+                                    
                                     HStack {
-                                        Text(extraItem.extraItemTitle)
-                                            .leadText()
-                                            .frame(width:150, alignment: .leading)
-                                            .padding(.bottom, 5)
-                                        
-                                        
-                                        
                                         HStack {
-                                            Text("$").leadText()
-                                            Text(extraItem.extraItemPrice).leadText()
+                                            Text(extraItem.extraItemTitle)
+                                                .leadText()
+                                                .frame(width:150, alignment: .leading)
+                                                .padding(.bottom, 5)
                                             
-                                        }
-                                        
-                                        // custom stepper
-                                        
-                                        Spacer()
-                                        
-                                        CustomStepper(
-                                            stepperValue: $extraItem.extrItemQty,
-                                            needStroke: false,
-                                            fillColor: Color.white)
-      
-                                        .onChange(of: extraItem.extrItemQty, perform: { newValue in
                                             
-//                                            getExtraItemTotal(
-//                                                itemPrice: extraItem.extraItemPrice,
-//                                                itemTitle: extraItem.extraItemTitle,
-//                                                qty: extraItem.extrItemQty)
+                                            
+                                            HStack {
+                                                Text("$").leadText()
+                                                Text(extraItem.extraItemPrice).leadText()
+                                                
+                                            }
+                                            
+                                            // custom stepper
+                                            
+                                            Spacer()
+                                            
+                                            CustomStepper(
+                                                stepperValue: $extraItem.extrItemQty,
+                                                needStroke: false,
+                                                fillColor: Color.white)
+                                            
+                                            .onChange(of: extraItem.extrItemQty, perform: { newValue in
+                                                
+                                                
+                                                
+    //                                            calculteSubtotal()
+                                                
+    //                                            ForEach($dish.extraItem) { $item in
+    //                                                if extraItem.extraItemTitle == item.extraItemTitle {
+    //                                                    item.extrItemQty = newValue
+    //                                                }
+    //                                            }
+                                                
+//                                                for extra in dish.extraItem {
 //
-//                                            getCheckoutItem()
-//                                            calculteSubtotal()
-                                        })
-                                        
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                            
-                        } else {
-                            
-                            ForEach($extraItem) { $extraItem in
-                                HStack {
-                                    HStack {
-                                        Text(extraItem.extraItemTitle)
-                                            .leadText()
-                                            .frame(width:150, alignment: .leading)
-                                            .padding(.bottom, 5)
-                                        
-                                        
-                                        
-                                        HStack {
-                                            Text("$").leadText()
-                                            Text(extraItem.extraItemPrice).leadText()
+//                                                    if extraItem.extraItemTitle == extra.extraItemTitle {
+//
+//                                                        dish.extraItem.removeAll {
+//                                                            $0.id == extra.id
+//                                                        }
+//
+//                                                        dish.extraItem.append(ExtraItemsModel(extraItemPrice: extra.extraItemPrice, extraItemTitle: extra.extraItemTitle, extrItemQty: newValue))
+//
+//                                                    }
+//                                                    else {
+//                                                        dish.extraItem.append(ExtraItemsModel(extraItemPrice: extra.extraItemPrice, extraItemTitle: extra.extraItemTitle, extrItemQty: newValue))
+//                                                    }
+//
+//                                                    print(dish.extraItem)
+//                                                }
+                                                
+                                            })
                                             
                                         }
-                                        
-                                        // custom stepper
-                                        
-                                        Spacer()
-                                        
-                                        CustomStepper(
-                                            stepperValue: $extraItem.extrItemQty,
-                                            needStroke: false,
-                                            fillColor: Color.white)
-      
-                                        .onChange(of: extraItem.extrItemQty, perform: { newValue in
-                                            
-
-                                        })
-                                        
                                     }
-                                }
-                                .padding(.horizontal)
+                                    .padding(.horizontal)
+                                    
+//                                }
+                                
+                                
                             }
-                            
-                        }
+//                        }
+//                        } else {
+//
+//                            ForEach(dish.extraItem) { $extraItem in
+//                                HStack {
+//                                    HStack {
+//                                        Text(extraItem.extraItemTitle)
+//                                            .leadText()
+//                                            .frame(width:150, alignment: .leading)
+//                                            .padding(.bottom, 5)
+//
+//
+//
+//                                        HStack {
+//                                            Text("$").leadText()
+//                                            Text(extraItem.extraItemPrice).leadText()
+//
+//                                        }
+//
+//                                        // custom stepper
+//
+//                                        Spacer()
+//
+//                                        CustomStepper(
+//                                            stepperValue: extraItem.extrItemQty,
+//                                            needStroke: false,
+//                                            fillColor: Color.white)
+//
+//                                        .onChange(of: extraItem.extrItemQty, perform: { newValue in
+//
+//
+//                                        })
+//
+//                                    }
+//                                }
+//                                .padding(.horizontal)
+//                            }
+//
+//                        }
                         
                        
                         
-                        CustomStepper2(stepperValue: $itemQty, needStroke: true, fillColor: Color.white)
+                        CustomStepper2(stepperValue: $stepperValue, needStroke: true, fillColor: Color.white)
                             .padding(.vertical,10)
-                            .onChange(of: itemQty, perform: { newValue in
-//                                calculteSubtotal()
-                                let subtotal = subTotal * (Double(itemQty) / Double(itemQty) )
+                            .onChange(of: stepperValue, perform: { newValue in
                                 
-//                                dish.dishQty = itemQty
-                                
-                                subTotal = subtotal
-                                
-//                                dish.subTotal = subTotal
-                                
-                                itemAddedViewModel.getSubtotal()
-                                
-                                print(itemAddedViewModel.itemAdded)
-                                
+                                dish.dishQty = newValue
+                                calculteSubtotal()
                                 
                             })
                         
@@ -197,7 +219,7 @@ struct EditDishView: View {
                             .padding(.bottom, 10)
                         
                         
-                        TextField("Special requirements..." ,text: optionalBinding(val: $specialRequest, defaultVal: ""))
+                        TextField("Special requirements..." ,text: $specialRequest)
                             .font(Font.custom("Karla-Regular", size: 16))
                             .foregroundColor(Color("HighlightColor2"))
                             .padding(12)
@@ -206,9 +228,9 @@ struct EditDishView: View {
                             .cornerRadius(8)
                             
 //                            .focused($specialInstructionsInFocus)
-                            .onTapGesture {
-//                                specialInstructionsInFocus.toggle()
-                            }
+//                            .onTapGesture {
+////                                specialInstructionsInFocus.toggle()
+//                            }
                         
                     }
                     .padding(.horizontal)
@@ -216,7 +238,21 @@ struct EditDishView: View {
                     Spacer()
                     
                 }
+                .onAppear {
+                    stepperValue = dish.dishQty
+                    specialRequest = dish.specialRequest
+                    subTotal = dish.subTotal
+                }
             }
+            
+            Button {
+                
+                
+            } label: {
+//                Text("Add for $\(String(format: "%.2f", subTotal))").primaryButton()
+                Text("Update for $\(String(format: "%.2f", subTotal))").primaryButton()
+            }
+
             
         }
         .padding(.top, 5)
@@ -226,12 +262,6 @@ struct EditDishView: View {
         .toolbarBackground(.hidden, for: .navigationBar)
         
         .toolbar {
-            
-//            ToolbarItem(placement: .navigationBarTrailing) {
-//                NavigationLink(value: ScreenNavigationValue.cartView) {
-//                    TabItemCartImage()
-//                }
-//            }
             
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
@@ -265,6 +295,25 @@ struct EditDishView: View {
             }
         )
     }
+    
+    func calculteSubtotal() {
+
+        let subTotalDishPrice = Double(dish.dishQty) * ((dish.dish.price as NSString?)?.doubleValue ?? 33.05)
+        
+        var extraItemsSubtotal: Double = 0
+        
+        for item in dish.extraItem {
+            
+            let price = (item.extraItemPrice as NSString).doubleValue
+            let qty = Double(item.extrItemQty)
+            let itemSubtotal = price * qty
+            extraItemsSubtotal += itemSubtotal
+        }
+        
+        subTotal = subTotalDishPrice + (extraItemsSubtotal * Double(dish.dishQty))
+        
+    }
+    
 }
 
 struct EditDishView_Previews: PreviewProvider {
@@ -273,11 +322,28 @@ struct EditDishView_Previews: PreviewProvider {
     let dish = DishEntity(context: context)
     
     static var previews: some View {
-        EditDishView(dish: oneDish(),
-                     extraItem: [ExtraItemsModel(extraItemPrice: "12", extraItemTitle: "Arepa de Reina Pepiada", extrItemQty: 1)],
-                     itemQty: 1,
-                     subTotal: 13,
-                     specialRequest: "")
+        EditDishView(dish: ItemAdded(
+            extraItem: [ExtraItemsModel(
+                extraItemPrice: "1.54",
+                extraItemTitle: "seeds",
+                extrItemQty: 5)],
+            dish: oneDish(),
+            dishQty: 5,
+            specialRequest: "none",
+            subTotal: 145))
+        
+        /*
+         EditDishView(dish: .constant(ItemAdded(
+             extraItem: [ExtraItemsModel(
+                 extraItemPrice: "1.54",
+                 extraItemTitle: "seeds",
+                 extrItemQty: 5)],
+             dish: oneDish(),
+             dishQty: 5,
+             specialRequest: "none",
+             subTotal: 145)))
+         */
+        
         .environmentObject(CartViewModel())
         .environmentObject(ExtraItemsViewModel())
     }

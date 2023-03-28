@@ -137,9 +137,22 @@ struct DishView: View {
                                         needStroke: false,
                                         fillColor: Color.white)
                                     .onAppear {
+                                        
+                                        getExtraItemTotal(
+                                            itemPrice: extraItem.extraItemPrice,
+                                            itemTitle: extraItem.extraItemTitle,
+                                            qty: extraItem.extrItemQty)
+                                        
+                                        getCheckoutItem()
+                                    
+                                        print(avocados)
+                                        print(seeds)
+                                        print(dressings)
+                                        
                                         if extraItem.extrItemQty > 0 {
                                             extraItem.extrItemQty = 0
                                         }
+                                        
                                     }
                                     
                                     
@@ -193,7 +206,6 @@ struct DishView: View {
                 }
             }
             .task {
-                extraItems = []
                 calculteSubtotal()
             }
             

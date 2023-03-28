@@ -99,7 +99,7 @@ struct Home: View {
                     .environmentObject(extraItemsViewModel)
                     .environmentObject(itemAddedViewModel)
             case .editCart(let item):
-                EditDishView(dish: item.dish , extraItem: item.extraItem, itemQty: item.dishQty, subTotal: item.subTotal, specialRequest: item.specialRequest)
+                EditDishView(dish: item)
                     .environmentObject(itemAddedViewModel)
                     .environmentObject(extraItemsViewModel)
             }
