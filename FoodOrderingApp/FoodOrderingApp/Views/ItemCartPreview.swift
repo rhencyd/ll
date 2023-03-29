@@ -66,7 +66,7 @@ struct ItemCartPreview: View {
                                 
                                 
                             }
-                            .offset(y: -5)
+                            .offset(y: -4)
                                 
                                 Spacer()
 
@@ -180,7 +180,7 @@ struct ItemCartPreview: View {
 
             
         }
-        .frame(height: 90)
+        .frame(height: 95)
     }
     
 }

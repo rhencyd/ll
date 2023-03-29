@@ -14,6 +14,9 @@ struct CartView: View {
     @Environment(\.dismiss) var dismiss
     
     @State var isEditOn: Bool = false
+    @State var numberOfItems: Int = 0
+    
+//    @State var isAnimated: Bool = false
     
     @State var cartSubTotal: Double = 0
     
@@ -21,7 +24,7 @@ struct CartView: View {
         VStack {
             
             if itemAddedViewModel.cartItemsNumber < 1 {
-            
+                
                 VStack {
                     
                     Spacer()
@@ -31,7 +34,7 @@ struct CartView: View {
                             .resizable()
                             .frame(width: 150, height: 150)
                             .foregroundColor(Color("PrimaryColor1"))
-
+                        
                         Image(systemName: "questionmark.bubble.fill")
                             .resizable()
                             .frame(width: 80, height: 80)
@@ -40,7 +43,7 @@ struct CartView: View {
                             .foregroundColor(Color("HighlightColor2"))
                             .padding(.horizontal, -20)
                             .padding(.vertical, -20)
-                            
+                        
                     }
                     .frame(width: 200, height: 200)
                     
@@ -64,49 +67,85 @@ struct CartView: View {
                         Text("Add dishes to my cart!").primaryButton()
                     }
                 }
+                .toolbar(.hidden)
                 
             } else {
                 
                 if isEditOn {
                     
-                    VStack {
-                        
-                        Rectangle()
-                            .foregroundColor(Color("PrimaryColor1"))
-                            .frame(maxHeight: .infinity)
-                        
+                    ZStack {
                         
                         VStack {
-                            List {
-                                
-                                ForEach($itemAddedViewModel.itemAdded) { $item in
-                                    NavigationLink(value: ScreenNavigationValue.editCart(item)) {
-                                        ItemCartPreview(dish: item, isEditOn: true, stepperValue: $item.dishQty, subTotal: $item.subTotal)
-
+                            
+                            Rectangle()
+                                .foregroundColor(Color("PrimaryColor1"))
+                                .frame(maxHeight: .infinity)
+                            
+                            
+                            VStack {
+                                List {
+                                    
+                                    ForEach($itemAddedViewModel.itemAdded) { $item in
+                                        
+                                        NavigationLink(value: ScreenNavigationValue.editCart(item)) {
+                                            ItemCartPreview(dish: item, isEditOn: true, stepperValue: $item.dishQty, subTotal: $item.subTotal)
+                                        }
                                     }
+                                    
                                 }
+                                .listStyle(.plain)
+                                
+//
+//
+//
+//                                Button("Button") {
+//                                    isAnimated.toggle()
+//                                }
+//
+//
+//
+//
+                                
+                                HStack {
+                                    
+                                    Text("Subtotal")
+                                        .cardTitle()
+                                    
+                                    Spacer()
+                                    
+                                    Text("$ \(String(format: "%.2f", itemAddedViewModel.subTotal))")
+                                        .cardTitle()
+                                    
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.bottom, 45)
+                                
                             }
-                            .listStyle(.plain)
-                            
-                            
-                            HStack {
-                                
-                                Text("Subtotal")
-                                    .cardTitle()
-                                
-                                Spacer()
-                                
-                                Text("$ \(String(format: "%.2f", itemAddedViewModel.subTotal))")
-                                    .cardTitle()
-                                
+                            .frame(height: UIScreen.main.bounds.height * 0.85)
+                            .onAppear {
+                                numberOfItems = 0
                             }
-                            .padding(.horizontal, 20)
-                            .padding(.bottom, 45)
                             
                         }
-                        .frame(height: UIScreen.main.bounds.height * 0.85)
-
+                        
+                        Text("Item edited!")
+                            .font(Font.custom("Karla-Bold", size: 18))
+                            .foregroundColor(Color("HighlightColor2"))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 45)
+                            .background(Color("PrimaryColor2"))
+                            .opacity(itemAddedViewModel.isItemChanged ? 1 : 0)
+                            .offset(y: itemAddedViewModel.isItemChanged ? 0 : 400 )
+                            .animation(
+                                Animation.easeInOut(duration: 1),
+                                value: itemAddedViewModel.isItemChanged)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    itemAddedViewModel.isItemChanged = false
+                                }
+                            }
                     }
+                    
                     .toolbarBackground(.hidden)
                     .edgesIgnoringSafeArea(.top)
                     .navigationBarTitleDisplayMode(.inline)
@@ -121,7 +160,9 @@ struct CartView: View {
                             ForEach($itemAddedViewModel.itemAdded) { $item in
                                 
                                 ItemCartPreview(dish: item, isEditOn: false, stepperValue: $item.dishQty, subTotal: $item.subTotal)
+                                
                             }
+                            
                             .onDelete(perform: itemAddedViewModel.deleteItem)
                             
                             Button {
@@ -135,7 +176,7 @@ struct CartView: View {
                         .padding(.top, 5)
                         
                         Spacer()
-                         
+                        
                         HStack {
                             
                             Text("Subtotal")
@@ -151,7 +192,7 @@ struct CartView: View {
                         .padding(.bottom, 10)
                         
                         Button {
-        //                    needs code
+                            //                    needs code
                         } label: {
                             Text("Checkout").primaryButton()
                         }
@@ -184,11 +225,11 @@ struct CartView: View {
                     .foregroundColor(
                         !isEditOn ?
                         Color("HighlightColor2") :
-                        Color("HighlightColor1"))
+                            Color("HighlightColor1"))
             }
             
             if !isEditOn && itemAddedViewModel.cartItemsNumber > 0 {
-             
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         isEditOn.toggle()
@@ -198,7 +239,7 @@ struct CartView: View {
                             .frame(width: 30, height: 30)
                             .foregroundColor(Color("PrimaryColor1"))
                     }
-
+                    
                 }
                 
             }

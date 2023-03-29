@@ -145,9 +145,9 @@ struct DishView: View {
                                         
                                         getCheckoutItem()
                                     
-                                        print(avocados)
-                                        print(seeds)
-                                        print(dressings)
+//                                        print(avocados)
+//                                        print(seeds)
+//                                        print(dressings)
                                         
                                         if extraItem.extrItemQty > 0 {
                                             extraItem.extrItemQty = 0
@@ -214,8 +214,9 @@ struct DishView: View {
                 
                 itemAddedViewModel.addItemToCart(extras: extraItems, dish: dish, qty: itemQty, request: specialInstructions, subTotal: subTotal)
                 
-                print(itemAddedViewModel.cartItemsNumber)
+//                print(itemAddedViewModel.cartItemsNumber)
                 print(itemAddedViewModel.itemAdded)
+                
                 dismiss()
                 
                 
