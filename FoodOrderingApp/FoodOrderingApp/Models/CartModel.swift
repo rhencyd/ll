@@ -6,24 +6,20 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 
 struct ItemAdded: Identifiable, Hashable, Equatable {
     
-    let id = UUID()
+//    var id: Int
+    var id = UUID()
     var extraItem: [ExtraItemsModel]
     let dish: DishEntity
     var dishQty: Int
     var specialRequest: String
     var subTotal: Double
     
-    init(extraItem: [ExtraItemsModel], dish: DishEntity, dishQty: Int, specialRequest: String, subTotal: Double) {
-        self.extraItem = extraItem
-        self.dish = dish
-        self.dishQty = dishQty
-        self.specialRequest = specialRequest
-        self.subTotal = subTotal
-    }
+    
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
@@ -40,13 +36,21 @@ class CartViewModel: ObservableObject {
     @Published var itemAdded = [ItemAdded]()
     @Published var cartItemsNumber: Int = 0
     @Published var subTotal: Double = 0
+    @Published var isItemChanged: Bool = false
+//    @Published var id: Int = 0
     
     
     func addItemToCart(extras: [ExtraItemsModel], dish: DishEntity, qty: Int, request: String, subTotal: Double) {
         
+//        id = itemAdded.count
+        
         let newItem = ItemAdded(extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
+//        let newItem = ItemAdded(id: id, extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
         self.itemAdded.append(newItem)
         self.cartItemsNumber = itemAdded.count
+        
+//        self.id = self.cartItemsNumber
+        
         
     }
     
@@ -54,6 +58,7 @@ class CartViewModel: ObservableObject {
         itemAdded.remove(atOffsets: index)
         self.cartItemsNumber = itemAdded.count
         getSubtotal()
+//        id -= 1
     }
     
     func getSubtotal() {
@@ -62,5 +67,22 @@ class CartViewModel: ObservableObject {
             subTotal += dish.subTotal
         }
     }
+    
+    func updateDish() {
+        
+    }
+    
+//    public func item(id: ItemAdded.ID) -> ItemAdded {
+//        itemAdded[id]
+//    }
+    
+//    public func itemBinding(id: ItemAdded.ID) -> Binding<ItemAdded> {
+//        Binding<ItemAdded> {
+//            self.itemAdded[id]
+//        } set: { newValue in
+//            self.itemAdded[id] = newValue
+//        }
+//    }
+    
 }
 

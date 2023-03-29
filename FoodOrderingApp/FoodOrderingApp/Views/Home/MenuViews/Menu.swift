@@ -59,7 +59,7 @@ struct Menu: View {
                         request.predicate = predicate
                         
                         let numberOfRecords = try viewContext.count(for: request)
-                        print("Current Dishes in Core data for \(dish.title) : \(numberOfRecords)")
+//                        print("Current Dishes in Core data for \(dish.title) : \(numberOfRecords)")
                         
                         if numberOfRecords == 0 {
                             let newDish = DishEntity(context: viewContext)
@@ -70,7 +70,7 @@ struct Menu: View {
                             newDish.image = dish.image
                             newDish.id = Int32(dish.id)
                             try? viewContext.save()
-                            print("------------------Now saving \(dish.title) in core-------------------")
+//                            print("------------------Now saving \(dish.title) in core-------------------")
                         }
                     } catch {
                         print("Error saving context \(error)")

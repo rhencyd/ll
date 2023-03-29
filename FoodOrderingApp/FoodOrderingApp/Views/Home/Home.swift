@@ -101,11 +101,14 @@ struct Home: View {
             case .editCart(let item):
                 EditDishView(dish: item)
                     .environmentObject(itemAddedViewModel)
-                    .environmentObject(extraItemsViewModel)
+//                EditDishView(dish: itemAddedViewModel.itemBinding(id: item))
             }
         }
+        
         .navigationBarBackButtonHidden(true)
     }
+    
+    
 }
 
 struct Home_Previews: PreviewProvider {

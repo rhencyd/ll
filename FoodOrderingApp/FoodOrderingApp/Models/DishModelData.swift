@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct ExtraItemsModel: Identifiable {
+struct ExtraItemsModel: Identifiable, Equatable {
     
     var extraItemPrice : String
     var extraItemTitle: String
