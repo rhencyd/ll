@@ -112,7 +112,7 @@ struct CartView: View {
                                 .padding(.bottom, 45)
                                 
                             }
-                            .frame(height: UIScreen.main.bounds.height * 0.85)
+                            .frame(height: UIScreen.main.bounds.height * 0.81)
                             .onAppear {
                                 numberOfItems = 0
                             }

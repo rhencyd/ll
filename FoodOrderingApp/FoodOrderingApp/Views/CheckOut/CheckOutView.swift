@@ -138,6 +138,7 @@ struct CheckOutView: View {
                     showAlert: $showAlert,
                     disableButton: $disableButton)
                 
+                
             }
             .disabled(verifyAddress)
             .onAppear {

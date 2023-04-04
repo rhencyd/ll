@@ -56,7 +56,7 @@ struct PickUpOptionView: View {
                     
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 30)
                 .padding(.bottom, 10)
                 
                 Slider()
@@ -102,18 +102,21 @@ struct PickUpOptionView: View {
                     
                     Text("Special requests").sectionCategory()
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 20)
+                        .padding(.leading, 20)
+                        
                     
                     
                     TextField("Any request you may have...", text:$specialRequest )
                         .font(Font.custom("Karla-Regular", size: 16))
                         .foregroundColor(Color("HighlightColor2"))
-                        .padding(12)
+                        .padding(.leading, 10)
+                        .padding(.top, 10)
                         .frame(height: 200, alignment: .topLeading)
                         .background((Color("HighlightColor1")))
                         .cornerRadius(8)
-                        .padding(.horizontal)
+                        .padding(.horizontal, 20)
                 }
+                
                 .padding(.top)
                 
                 VStack {
@@ -193,6 +196,7 @@ struct PickUpOptionView: View {
             
         }
         
+        
     }
     
     func Slider() -> some View {
@@ -225,7 +229,7 @@ struct PickUpOptionView: View {
                     .frame(width: 200, height: 32)
                     .background(Color("PrimaryColor1"))
                     .cornerRadius(8)
-                    .offset(x: asapPickUp ? -90 : 90)
+                    .offset(x: asapPickUp ? -80 : 80)
                     .animation(.spring(), value: asapPickUp)
                 
             }
@@ -249,5 +253,7 @@ struct PickUpOptionView: View {
 struct PickUpOptionView_Previews: PreviewProvider {
     static var previews: some View {
         PickUpOptionView()
+            .environmentObject(CheckoutViewModel())
+            .environmentObject(CartViewModel())
     }
 }

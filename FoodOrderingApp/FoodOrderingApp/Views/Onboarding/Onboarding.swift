@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct Onboarding: View {
-    
-    
+
     @State private var tabSelection: TabBarITem = TabBarITem(title: "sign in")
     
     var body: some View {
