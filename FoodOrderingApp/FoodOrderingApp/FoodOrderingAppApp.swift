@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FoodOrderingAppApp: App {
+    
+    let persistenceController = PersistenceController.shared
+    
     var body: some Scene {
         WindowGroup {
             IntroView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
     }

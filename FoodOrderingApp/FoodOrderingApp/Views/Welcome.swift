@@ -40,17 +40,6 @@ struct Welcome: View {
             .onAppear{
                 isLoading.toggle()
             }
-            
-            .navigationDestination(for: ScreenNavigationValue.self) { screen in
-                switch screen {
-                case .userProfile: UserProfile()
-                case .home: Home()
-                case .welcome: Welcome()
-                case .cartView: Text("Cart View")
-                case .dishView: Text("Dish View")
-                case .editCart: Text("cart view")
-                }
-            }
             .toolbar(.hidden, for: .automatic)
     }
     

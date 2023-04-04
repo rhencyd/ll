@@ -14,8 +14,11 @@ enum ScreenNavigationValue: Hashable {
     case welcome
     case dishView(DishEntity)
     case cartView
-//    case editCart(ItemAdded.ID)
     case editCart(ItemAdded)
+    case checkout
+    case confirmation([CheckoutOrder])
+    case payment
+    case history
 }
 
 class NavigationStateManager: ObservableObject {
@@ -36,6 +39,10 @@ class NavigationStateManager: ObservableObject {
     
     func seeUser() {
         selectionPath = [ScreenNavigationValue.userProfile]
+    }
+    
+    func seeHistory() {
+        selectionPath = [ScreenNavigationValue.history]
     }
     
 }

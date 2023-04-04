@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0F581D29DC6B54004D9261 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBB6CBA29B13BCE0034EAB3 /* Preview Assets.xcassets */; };
+		3D0F581E29DC6B70004D9261 /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43229B98B3100F7B9D9 /* Karla-Bold.ttf */; };
+		3D0F581F29DC6B70004D9261 /* Karla-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42E29B98B3000F7B9D9 /* Karla-BoldItalic.ttf */; };
+		3D0F582029DC6B70004D9261 /* Karla-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43329B98B3100F7B9D9 /* Karla-ExtraBold.ttf */; };
+		3D0F582129DC6B70004D9261 /* Karla-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43029B98B3000F7B9D9 /* Karla-ExtraBoldItalic.ttf */; };
+		3D0F582229DC6B70004D9261 /* Karla-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42F29B98B3000F7B9D9 /* Karla-ExtraLight.ttf */; };
+		3D0F582329DC6B70004D9261 /* Karla-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42B29B98B3000F7B9D9 /* Karla-ExtraLightItalic.ttf */; };
+		3D0F582429DC6B70004D9261 /* Karla-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42D29B98B3000F7B9D9 /* Karla-Italic.ttf */; };
+		3D0F582529DC6B70004D9261 /* Karla-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42A29B98B3000F7B9D9 /* Karla-Light.ttf */; };
+		3D0F582629DC6B70004D9261 /* Karla-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42C29B98B3000F7B9D9 /* Karla-LightItalic.ttf */; };
+		3D0F582729DC6B70004D9261 /* Karla-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43429B98B3100F7B9D9 /* Karla-Medium.ttf */; };
+		3D0F582829DC6B70004D9261 /* Karla-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43129B98B3100F7B9D9 /* Karla-MediumItalic.ttf */; };
+		3D0F582929DC6B70004D9261 /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42929B98B3000F7B9D9 /* Karla-Regular.ttf */; };
+		3D0F582A29DC6B70004D9261 /* Karla-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42729B98B3000F7B9D9 /* Karla-SemiBold.ttf */; };
+		3D0F582B29DC6B70004D9261 /* Karla-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42829B98B3000F7B9D9 /* Karla-SemiBoldItalic.ttf */; };
+		3D0F582C29DC6B7D004D9261 /* MarkaziText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D44E29BAC5A200F7B9D9 /* MarkaziText-Bold.ttf */; };
+		3D0F582D29DC6B7D004D9261 /* MarkaziText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D45129BAC5A200F7B9D9 /* MarkaziText-Medium.ttf */; };
+		3D0F582E29DC6B7D004D9261 /* MarkaziText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D45029BAC5A200F7B9D9 /* MarkaziText-Regular.ttf */; };
+		3D0F582F29DC6B7D004D9261 /* MarkaziText-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D44F29BAC5A200F7B9D9 /* MarkaziText-SemiBold.ttf */; };
 		3D372BA429D1355800D1AD50 /* EditDishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D372BA329D1355800D1AD50 /* EditDishView.swift */; };
 		3D411CF729C94C2D00D04EFE /* HamburgerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */; };
 		3D63A07929BBBC94008C1188 /* HeroSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D63A07829BBBC94008C1188 /* HeroSection.swift */; };
@@ -29,32 +48,12 @@
 		3DA3D41A29B96F1500F7B9D9 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D41929B96F1500F7B9D9 /* Onboarding.swift */; };
 		3DA3D41C29B96F9A00F7B9D9 /* SignInForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D41B29B96F9A00F7B9D9 /* SignInForm.swift */; };
 		3DA3D41E29B96FD600F7B9D9 /* SignUpForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D41D29B96FD600F7B9D9 /* SignUpForm.swift */; };
-		3DA3D43529B98B3100F7B9D9 /* Karla-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42729B98B3000F7B9D9 /* Karla-SemiBold.ttf */; };
-		3DA3D43629B98B3100F7B9D9 /* Karla-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42829B98B3000F7B9D9 /* Karla-SemiBoldItalic.ttf */; };
-		3DA3D43729B98B3100F7B9D9 /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42929B98B3000F7B9D9 /* Karla-Regular.ttf */; };
-		3DA3D43829B98B3100F7B9D9 /* Karla-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42A29B98B3000F7B9D9 /* Karla-Light.ttf */; };
-		3DA3D43929B98B3100F7B9D9 /* Karla-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42B29B98B3000F7B9D9 /* Karla-ExtraLightItalic.ttf */; };
-		3DA3D43A29B98B3100F7B9D9 /* Karla-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42C29B98B3000F7B9D9 /* Karla-LightItalic.ttf */; };
-		3DA3D43B29B98B3100F7B9D9 /* Karla-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42D29B98B3000F7B9D9 /* Karla-Italic.ttf */; };
-		3DA3D43C29B98B3100F7B9D9 /* Karla-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42E29B98B3000F7B9D9 /* Karla-BoldItalic.ttf */; };
-		3DA3D43D29B98B3100F7B9D9 /* Karla-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D42F29B98B3000F7B9D9 /* Karla-ExtraLight.ttf */; };
-		3DA3D43E29B98B3100F7B9D9 /* Karla-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43029B98B3000F7B9D9 /* Karla-ExtraBoldItalic.ttf */; };
-		3DA3D43F29B98B3100F7B9D9 /* Karla-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43129B98B3100F7B9D9 /* Karla-MediumItalic.ttf */; };
-		3DA3D44029B98B3100F7B9D9 /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43229B98B3100F7B9D9 /* Karla-Bold.ttf */; };
-		3DA3D44129B98B3100F7B9D9 /* Karla-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43329B98B3100F7B9D9 /* Karla-ExtraBold.ttf */; };
-		3DA3D44229B98B3100F7B9D9 /* Karla-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D43429B98B3100F7B9D9 /* Karla-Medium.ttf */; };
 		3DA3D44429B9996E00F7B9D9 /* States_JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D44329B9996E00F7B9D9 /* States_JSON.swift */; };
 		3DA3D44629B9A51400F7B9D9 /* StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D44529B9A51400F7B9D9 /* StyleSheet.swift */; };
 		3DA3D44A29BAC36D00F7B9D9 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D44929BAC36D00F7B9D9 /* Home.swift */; };
 		3DA3D44C29BAC44600F7B9D9 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D44B29BAC44600F7B9D9 /* Menu.swift */; };
-		3DA3D45229BAC5A200F7B9D9 /* MarkaziText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D44E29BAC5A200F7B9D9 /* MarkaziText-Bold.ttf */; };
-		3DA3D45329BAC5A200F7B9D9 /* MarkaziText-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D44F29BAC5A200F7B9D9 /* MarkaziText-SemiBold.ttf */; };
-		3DA3D45429BAC5A200F7B9D9 /* MarkaziText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D45029BAC5A200F7B9D9 /* MarkaziText-Regular.ttf */; };
-		3DA3D45529BAC5A200F7B9D9 /* MarkaziText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA3D45129BAC5A200F7B9D9 /* MarkaziText-Medium.ttf */; };
 		3DB433E429CD00B100A8E137 /* AdaptsToSoftwareKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB433E329CD00B100A8E137 /* AdaptsToSoftwareKeyboard.swift */; };
 		3DBB6CB429B13BCD0034EAB3 /* FoodOrderingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBB6CB329B13BCD0034EAB3 /* FoodOrderingAppApp.swift */; };
-		3DBB6CB829B13BCE0034EAB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBB6CB729B13BCE0034EAB3 /* Assets.xcassets */; };
-		3DBB6CBB29B13BCE0034EAB3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DBB6CBA29B13BCE0034EAB3 /* Preview Assets.xcassets */; };
 		3DBC01E729BFB173000851EE /* ServerDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBC01E629BFB173000851EE /* ServerDataViewModel.swift */; };
 		3DBD7F4829C3999B00F207EB /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD7F4729C3999B00F207EB /* CartModel.swift */; };
 		3DBD7F4A29C50A5300F207EB /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD7F4929C50A5300F207EB /* CartView.swift */; };
@@ -66,9 +65,19 @@
 		3DBD7F5829C6478600F207EB /* ImagesModelFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBD7F5729C6478600F207EB /* ImagesModelFileManager.swift */; };
 		3DC9800929C2692700BBF578 /* DishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9800829C2692700BBF578 /* DishView.swift */; };
 		3DC9800B29C2731E00BBF578 /* TabItemProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC9800A29C2731E00BBF578 /* TabItemProfilePicture.swift */; };
+		3DD30C4329DBACAC009A3CE8 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD30C4229DBACAC009A3CE8 /* HistoryView.swift */; };
+		3DD30C4829DBC510009A3CE8 /* UIMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD30C4729DBC510009A3CE8 /* UIMapModel.swift */; };
 		3DE3D11029C29A5B001AF7D0 /* DishModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3D10F29C29A5B001AF7D0 /* DishModelData.swift */; };
 		3DE3D11229C35159001AF7D0 /* PreviewOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3D11129C35159001AF7D0 /* PreviewOnly.swift */; };
 		3DE3D11429C36B82001AF7D0 /* CustomStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE3D11329C36B82001AF7D0 /* CustomStepper.swift */; };
+		3DE6B55229D4B900004E7310 /* CheckOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B55129D4B900004E7310 /* CheckOutView.swift */; };
+		3DE6B55629D4E5E9004E7310 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B55529D4E5E9004E7310 /* MapModel.swift */; };
+		3DE6B55829D66C44004E7310 /* DeliveryOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B55729D66C44004E7310 /* DeliveryOptionsView.swift */; };
+		3DE6B55A29D6A22F004E7310 /* DeliveryAndPickUpTabBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B55929D6A22F004E7310 /* DeliveryAndPickUpTabBars.swift */; };
+		3DE6B55C29D7DD50004E7310 /* PickUpOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B55B29D7DD50004E7310 /* PickUpOptionView.swift */; };
+		3DE6B55E29D874BC004E7310 /* PaymentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B55D29D874BC004E7310 /* PaymentScreen.swift */; };
+		3DE6B56029D8B88D004E7310 /* CheckoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B55F29D8B88D004E7310 /* CheckoutModel.swift */; };
+		3DE6B56229D9035A004E7310 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE6B56129D9035A004E7310 /* ConfirmationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,9 +142,19 @@
 		3DBD7F5729C6478600F207EB /* ImagesModelFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesModelFileManager.swift; sourceTree = "<group>"; };
 		3DC9800829C2692700BBF578 /* DishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishView.swift; sourceTree = "<group>"; };
 		3DC9800A29C2731E00BBF578 /* TabItemProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemProfilePicture.swift; sourceTree = "<group>"; };
+		3DD30C4229DBACAC009A3CE8 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		3DD30C4729DBC510009A3CE8 /* UIMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIMapModel.swift; sourceTree = "<group>"; };
 		3DE3D10F29C29A5B001AF7D0 /* DishModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishModelData.swift; sourceTree = "<group>"; };
 		3DE3D11129C35159001AF7D0 /* PreviewOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewOnly.swift; sourceTree = "<group>"; };
 		3DE3D11329C36B82001AF7D0 /* CustomStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepper.swift; sourceTree = "<group>"; };
+		3DE6B55129D4B900004E7310 /* CheckOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutView.swift; sourceTree = "<group>"; };
+		3DE6B55529D4E5E9004E7310 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		3DE6B55729D66C44004E7310 /* DeliveryOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryOptionsView.swift; sourceTree = "<group>"; };
+		3DE6B55929D6A22F004E7310 /* DeliveryAndPickUpTabBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAndPickUpTabBars.swift; sourceTree = "<group>"; };
+		3DE6B55B29D7DD50004E7310 /* PickUpOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpOptionView.swift; sourceTree = "<group>"; };
+		3DE6B55D29D874BC004E7310 /* PaymentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreen.swift; sourceTree = "<group>"; };
+		3DE6B55F29D8B88D004E7310 /* CheckoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutModel.swift; sourceTree = "<group>"; };
+		3DE6B56129D9035A004E7310 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +173,6 @@
 			children = (
 				3DA3D44929BAC36D00F7B9D9 /* Home.swift */,
 				3D63A07C29BBDCA7008C1188 /* Header.swift */,
-				3DC9800A29C2731E00BBF578 /* TabItemProfilePicture.swift */,
 				3D63A07829BBBC94008C1188 /* HeroSection.swift */,
 				3D95749929BFE2800093C935 /* MenuViews */,
 			);
@@ -175,9 +193,10 @@
 		3D95749929BFE2800093C935 /* MenuViews */ = {
 			isa = PBXGroup;
 			children = (
-				3D63A07F29BBE0F7008C1188 /* MenuBreakDown.swift */,
+				3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */,
 				3DA3D44B29BAC44600F7B9D9 /* Menu.swift */,
-				3D63A08129BBEDB1008C1188 /* DishPreView.swift */,
+				3D63A07F29BBE0F7008C1188 /* MenuBreakDown.swift */,
+				3DC9800829C2692700BBF578 /* DishView.swift */,
 			);
 			path = MenuViews;
 			sourceTree = "<group>";
@@ -255,17 +274,17 @@
 		3DB433DF29CCFA0500A8E137 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D69813829C1091E00CF0FDD /* IntroView.swift */,
+				3DA3D40E29B922B800F7B9D9 /* Welcome.swift */,
 				3DA3D41F29B9711400F7B9D9 /* Onboarding */,
 				3D63A07E29BBDFD8008C1188 /* Home */,
-				3D69813829C1091E00CF0FDD /* IntroView.swift */,
-				3D411CF629C94C2D00D04EFE /* HamburgerMenuView.swift */,
-				3DA3D40E29B922B800F7B9D9 /* Welcome.swift */,
-				3DBD7F5129C63E4900F207EB /* ImageDownloaded.swift */,
-				3DBD7F4B29C50B6800F207EB /* ItemCartPreview.swift */,
+				3DD30C4229DBACAC009A3CE8 /* HistoryView.swift */,
 				3D63A08529BBFEF5008C1188 /* UserProfile.swift */,
-				3DBD7F4929C50A5300F207EB /* CartView.swift */,
-				3DC9800829C2692700BBF578 /* DishView.swift */,
-				3D372BA329D1355800D1AD50 /* EditDishView.swift */,
+				3DD30C4629DBC432009A3CE8 /* CartViews */,
+				3DD30C4529DBC3B2009A3CE8 /* CheckOut */,
+				3DE6B55D29D874BC004E7310 /* PaymentScreen.swift */,
+				3DE6B56129D9035A004E7310 /* ConfirmationView.swift */,
+				3DD30C4429DBC334009A3CE8 /* Label Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,10 +305,12 @@
 		3DB433E129CCFA9900A8E137 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3D95749A29BFE2970093C935 /* MenuStructs */,
+				3DE6B55529D4E5E9004E7310 /* MapModel.swift */,
 				3DE3D10F29C29A5B001AF7D0 /* DishModelData.swift */,
 				3DBD7F4729C3999B00F207EB /* CartModel.swift */,
 				3DA3D44329B9996E00F7B9D9 /* States_JSON.swift */,
-				3D95749A29BFE2970093C935 /* MenuStructs */,
+				3DE6B55F29D8B88D004E7310 /* CheckoutModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -345,6 +366,38 @@
 				3DBB6CBA29B13BCE0034EAB3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3DD30C4429DBC334009A3CE8 /* Label Views */ = {
+			isa = PBXGroup;
+			children = (
+				3D63A08129BBEDB1008C1188 /* DishPreView.swift */,
+				3DBD7F5129C63E4900F207EB /* ImageDownloaded.swift */,
+				3DBD7F4B29C50B6800F207EB /* ItemCartPreview.swift */,
+				3DC9800A29C2731E00BBF578 /* TabItemProfilePicture.swift */,
+			);
+			path = "Label Views";
+			sourceTree = "<group>";
+		};
+		3DD30C4529DBC3B2009A3CE8 /* CheckOut */ = {
+			isa = PBXGroup;
+			children = (
+				3DE6B55129D4B900004E7310 /* CheckOutView.swift */,
+				3DE6B55929D6A22F004E7310 /* DeliveryAndPickUpTabBars.swift */,
+				3DE6B55729D66C44004E7310 /* DeliveryOptionsView.swift */,
+				3DE6B55B29D7DD50004E7310 /* PickUpOptionView.swift */,
+				3DD30C4729DBC510009A3CE8 /* UIMapModel.swift */,
+			);
+			path = CheckOut;
+			sourceTree = "<group>";
+		};
+		3DD30C4629DBC432009A3CE8 /* CartViews */ = {
+			isa = PBXGroup;
+			children = (
+				3DBD7F4929C50A5300F207EB /* CartView.swift */,
+				3D372BA329D1355800D1AD50 /* EditDishView.swift */,
+			);
+			path = CartViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,26 +458,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DA3D45329BAC5A200F7B9D9 /* MarkaziText-SemiBold.ttf in Resources */,
-				3DA3D43529B98B3100F7B9D9 /* Karla-SemiBold.ttf in Resources */,
-				3DA3D45229BAC5A200F7B9D9 /* MarkaziText-Bold.ttf in Resources */,
-				3DA3D45429BAC5A200F7B9D9 /* MarkaziText-Regular.ttf in Resources */,
-				3DA3D43D29B98B3100F7B9D9 /* Karla-ExtraLight.ttf in Resources */,
-				3DA3D43829B98B3100F7B9D9 /* Karla-Light.ttf in Resources */,
-				3DA3D44029B98B3100F7B9D9 /* Karla-Bold.ttf in Resources */,
-				3DA3D43629B98B3100F7B9D9 /* Karla-SemiBoldItalic.ttf in Resources */,
-				3DA3D44229B98B3100F7B9D9 /* Karla-Medium.ttf in Resources */,
-				3DA3D43F29B98B3100F7B9D9 /* Karla-MediumItalic.ttf in Resources */,
-				3DA3D43E29B98B3100F7B9D9 /* Karla-ExtraBoldItalic.ttf in Resources */,
-				3DA3D43729B98B3100F7B9D9 /* Karla-Regular.ttf in Resources */,
-				3DBB6CBB29B13BCE0034EAB3 /* Preview Assets.xcassets in Resources */,
-				3DBB6CB829B13BCE0034EAB3 /* Assets.xcassets in Resources */,
-				3DA3D43929B98B3100F7B9D9 /* Karla-ExtraLightItalic.ttf in Resources */,
-				3DA3D43C29B98B3100F7B9D9 /* Karla-BoldItalic.ttf in Resources */,
-				3DA3D45529BAC5A200F7B9D9 /* MarkaziText-Medium.ttf in Resources */,
-				3DA3D43A29B98B3100F7B9D9 /* Karla-LightItalic.ttf in Resources */,
-				3DA3D43B29B98B3100F7B9D9 /* Karla-Italic.ttf in Resources */,
-				3DA3D44129B98B3100F7B9D9 /* Karla-ExtraBold.ttf in Resources */,
+				3D0F582C29DC6B7D004D9261 /* MarkaziText-Bold.ttf in Resources */,
+				3D0F582D29DC6B7D004D9261 /* MarkaziText-Medium.ttf in Resources */,
+				3D0F582E29DC6B7D004D9261 /* MarkaziText-Regular.ttf in Resources */,
+				3D0F582F29DC6B7D004D9261 /* MarkaziText-SemiBold.ttf in Resources */,
+				3D0F581E29DC6B70004D9261 /* Karla-Bold.ttf in Resources */,
+				3D0F581F29DC6B70004D9261 /* Karla-BoldItalic.ttf in Resources */,
+				3D0F582029DC6B70004D9261 /* Karla-ExtraBold.ttf in Resources */,
+				3D0F582129DC6B70004D9261 /* Karla-ExtraBoldItalic.ttf in Resources */,
+				3D0F582229DC6B70004D9261 /* Karla-ExtraLight.ttf in Resources */,
+				3D0F582329DC6B70004D9261 /* Karla-ExtraLightItalic.ttf in Resources */,
+				3D0F582429DC6B70004D9261 /* Karla-Italic.ttf in Resources */,
+				3D0F582529DC6B70004D9261 /* Karla-Light.ttf in Resources */,
+				3D0F582629DC6B70004D9261 /* Karla-LightItalic.ttf in Resources */,
+				3D0F582729DC6B70004D9261 /* Karla-Medium.ttf in Resources */,
+				3D0F582829DC6B70004D9261 /* Karla-MediumItalic.ttf in Resources */,
+				3D0F582929DC6B70004D9261 /* Karla-Regular.ttf in Resources */,
+				3D0F582A29DC6B70004D9261 /* Karla-SemiBold.ttf in Resources */,
+				3D0F582B29DC6B70004D9261 /* Karla-SemiBoldItalic.ttf in Resources */,
+				3D0F581D29DC6B54004D9261 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +498,7 @@
 				3DA3D44629B9A51400F7B9D9 /* StyleSheet.swift in Sources */,
 				3DA3D40F29B922B800F7B9D9 /* Welcome.swift in Sources */,
 				3DBC01E729BFB173000851EE /* ServerDataViewModel.swift in Sources */,
+				3DE6B55229D4B900004E7310 /* CheckOutView.swift in Sources */,
 				3DBB6CB429B13BCD0034EAB3 /* FoodOrderingAppApp.swift in Sources */,
 				3D372BA429D1355800D1AD50 /* EditDishView.swift in Sources */,
 				3DBD7F5829C6478600F207EB /* ImagesModelFileManager.swift in Sources */,
@@ -460,15 +513,23 @@
 				3D90597329BF777A007D9BC0 /* Persistence.swift in Sources */,
 				3DBD7F5229C63E4900F207EB /* ImageDownloaded.swift in Sources */,
 				3DE3D11429C36B82001AF7D0 /* CustomStepper.swift in Sources */,
+				3DE6B55829D66C44004E7310 /* DeliveryOptionsView.swift in Sources */,
 				3D63A07929BBBC94008C1188 /* HeroSection.swift in Sources */,
+				3DE6B55E29D874BC004E7310 /* PaymentScreen.swift in Sources */,
 				3DA3D44C29BAC44600F7B9D9 /* Menu.swift in Sources */,
+				3DE6B55629D4E5E9004E7310 /* MapModel.swift in Sources */,
+				3DE6B55C29D7DD50004E7310 /* PickUpOptionView.swift in Sources */,
+				3DE6B56029D8B88D004E7310 /* CheckoutModel.swift in Sources */,
 				3DA3D41229B94B5B00F7B9D9 /* CustomTabBarView.swift in Sources */,
 				3DBD7F5629C6460D00F207EB /* ImagesModelCacheManager.swift in Sources */,
+				3DE6B56229D9035A004E7310 /* ConfirmationView.swift in Sources */,
 				3D69813929C1091E00CF0FDD /* IntroView.swift in Sources */,
 				3DC9800B29C2731E00BBF578 /* TabItemProfilePicture.swift in Sources */,
 				3D63A08229BBEDB1008C1188 /* DishPreView.swift in Sources */,
 				3DBD7F4C29C50B6800F207EB /* ItemCartPreview.swift in Sources */,
+				3DD30C4829DBC510009A3CE8 /* UIMapModel.swift in Sources */,
 				3D411CF729C94C2D00D04EFE /* HamburgerMenuView.swift in Sources */,
+				3DE6B55A29D6A22F004E7310 /* DeliveryAndPickUpTabBars.swift in Sources */,
 				3DA3D44A29BAC36D00F7B9D9 /* Home.swift in Sources */,
 				3DBD7F5029C63B3500F207EB /* DownloadingDishesViewModel.swift in Sources */,
 				3DC9800929C2692700BBF578 /* DishView.swift in Sources */,
@@ -476,6 +537,7 @@
 				3D95749C29BFE3D40093C935 /* CoreDataViewModel.swift in Sources */,
 				3DA3D41C29B96F9A00F7B9D9 /* SignInForm.swift in Sources */,
 				3DE3D11029C29A5B001AF7D0 /* DishModelData.swift in Sources */,
+				3DD30C4329DBACAC009A3CE8 /* HistoryView.swift in Sources */,
 				3DB433E429CD00B100A8E137 /* AdaptsToSoftwareKeyboard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

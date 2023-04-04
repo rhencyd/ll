@@ -84,6 +84,11 @@ extension Text {
             .font(Font.custom("Karla-Regular", size: 16))
     }
     
+    func paragraphTextMini() -> some View {
+        self.foregroundColor(Color("HighlightColor2"))
+            .font(Font.custom("Karla-Regular", size: 12))
+    }
+    
     func primaryButton() -> some View {
         self.font(Font.custom("Karla-Bold", size: 18))
             .foregroundColor(Color("HighlightColor2"))

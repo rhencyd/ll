@@ -30,6 +30,7 @@ struct IntroView: View {
                     Welcome()
                 }
         }
+        .disabled(hamburguerMenu.showSideMenu)
         .overlay (
             HamburgerMenuView()
                 .padding(.trailing, 120)
