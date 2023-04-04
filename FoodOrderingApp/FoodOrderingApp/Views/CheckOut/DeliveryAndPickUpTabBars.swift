@@ -28,8 +28,18 @@ struct DeliveryAndPickUpTabBars: View {
     var body: some View {
         
         CustomTabBarContainer(selection: $tabSelection) {
-            DeliveryOptionsView(customerAddress: $customerAddress, subTotal: $subTotal, time: $time, distance: $distance, verifyAddress: $verifyAddress, isDeliveryButtonPressed: $isDeliveryButtonPressed, totalOrder: $totalOrder, dropOffOption: $dropOffOption, deliveryInstructions: $deliveryInstructions, finalTip: $finalTip, deliveryFee: $deliveryFee, showAlert: $showAlert, disableButton: $disableButton)
-                .tabBarItem(tab: TabBarITem(title: "delivery"), selection: $tabSelection)
+            DeliveryOptionsView(
+                customerAddress: $customerAddress,
+                subTotal: $subTotal, time: $time,
+                distance: $distance,
+                verifyAddress: $verifyAddress,
+                isDeliveryButtonPressed: $isDeliveryButtonPressed,
+                totalOrder: $totalOrder, dropOffOption: $dropOffOption,
+                deliveryInstructions: $deliveryInstructions,
+                finalTip: $finalTip, deliveryFee: $deliveryFee,
+                showAlert: $showAlert,
+                disableButton: $disableButton)
+            .tabBarItem(tab: TabBarITem(title: "delivery"), selection: $tabSelection)
             
             PickUpOptionView()
                 .tabBarItem(tab: TabBarITem(title: "pick up"), selection: $tabSelection)

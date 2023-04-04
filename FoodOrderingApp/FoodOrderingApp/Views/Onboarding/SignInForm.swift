@@ -187,7 +187,7 @@ struct SignInForm: View {
                 fieldInFocus = .password
             }
         }
-
+        
     }
     
 }

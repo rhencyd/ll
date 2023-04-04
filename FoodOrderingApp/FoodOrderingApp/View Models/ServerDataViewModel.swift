@@ -33,7 +33,7 @@ class ServerDataViewModel {
                 print("No data returned.")
             }
         }
-
+        
     }
     
     func downloadData(fromURL url: URL, completionHandler: @escaping(_ data: Data?) -> Void) {
@@ -45,7 +45,7 @@ class ServerDataViewModel {
                 error == nil,
                 let response = response as? HTTPURLResponse,
                 response.statusCode >= 200 && response.statusCode < 300
-                
+                    
             else {
                 print("Error Downloading data")
                 completionHandler(nil)

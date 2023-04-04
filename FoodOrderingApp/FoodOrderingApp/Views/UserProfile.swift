@@ -65,7 +65,7 @@ struct UserProfile: View {
     @State var passwordChangesNotificationHasChanged: Bool = false
     @State var specialOffersNotificationHasChanged: Bool = false
     @State var newsletterNotificationHasChanged: Bool = false
-
+    
     
     //
     @State var editEnable: Bool = false
@@ -383,9 +383,7 @@ struct UserProfile: View {
                                             .onChange(of: phoneNumber, perform: { newValue in
                                                 
                                                 if self.validatePhone(value: newValue) {
-                                                    //                                                    fieldInFocus = .city
                                                     wrongPhoneNumber = false
-                                                    //                                                    fieldInFocus = .line1
                                                     
                                                 }
                                                 
@@ -779,8 +777,6 @@ struct UserProfile: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.bottom, 10)
                             }
-                            //                            .padding(.bottom, 30)
-                            
                             
                             if !changePassword {
                                 HStack {
@@ -813,15 +809,12 @@ struct UserProfile: View {
                                             .frame(maxWidth: .infinity)
                                             .frame(height: 45)
                                             .background(Color("PrimaryColor1").cornerRadius(16))
-                                        //                                            .padding(.horizontal,20)
+                                        
                                     }
                                     
                                 }
                                 .padding(.top, 20)
                             }
-                            
-                           
-                            //                            .padding(.horizontal, 10)
                             
                             
                             // Change Password
@@ -901,7 +894,6 @@ struct UserProfile: View {
                                                     .font(Font.custom("Karla-Regular", size: 10))
                                                     .foregroundColor(Color.red)
                                                     .frame(maxWidth: .infinity, alignment: .leading)
-//                                                    .padding(.horizontal, 20)
                                                     .padding(.vertical, -10)
                                             }
                                             
@@ -1052,7 +1044,6 @@ struct UserProfile: View {
                                                 .frame(maxWidth: .infinity)
                                                 .frame(height: 45)
                                                 .background(Color("PrimaryColor1").cornerRadius(16))
-                                            //                                            .padding(.horizontal,20)
                                         }
                                         
                                     }
@@ -1086,7 +1077,6 @@ struct UserProfile: View {
                                             Text("DELETE"),
                                             action: {
                                                 resetValues()
-                                                //                                    isCurrentUserSignedIn = false
                                                 PersistenceController.shared.clear()
                                                 navigationStateManager.popToRoot()
                                             }),
@@ -1113,8 +1103,6 @@ struct UserProfile: View {
                             .padding(.horizontal)
                     }
                 }
-                
-//                .edgesIgnoringSafeArea(.bottom)
                 .toolbarBackground(.white, for: .navigationBar)
                 .navigationBarTitleDisplayMode(.inline)
                 
@@ -1140,11 +1128,10 @@ struct UserProfile: View {
                                     .foregroundColor(Color("SecundaryColor2"))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
-                                    Text(currentUserFirstName ?? "Name")
-                                        .font(Font.custom("Karla-ExtraBold", size: 30))
-                                        .foregroundColor(Color("HighlightColor1"))
-        //                                .padding(.trailing , 60)
-                                    
+                                Text(currentUserFirstName ?? "Name")
+                                    .font(Font.custom("Karla-ExtraBold", size: 30))
+                                    .foregroundColor(Color("HighlightColor1"))
+                                
                             }
                             
                             Spacer()
@@ -1243,7 +1230,7 @@ struct UserProfile: View {
                         Spacer()
                         
                     }
-                   
+                    
                     Button {
                         isCurrentUserSignedIn = false
                         PersistenceController.shared.clear()

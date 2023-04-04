@@ -12,12 +12,12 @@ struct PickUpOptionView: View {
     @EnvironmentObject var checkoutViewModel: CheckoutViewModel
     @EnvironmentObject var itemAddedViewModel: CartViewModel
     
-
+    
     @State var asapPickUp: Bool = true
     @State var specialRequest: String = ""
     @State var subTotal: Double = 0
     @State var pickUpAddress: String = "160 N La Salle St, Chicago, IL 60601"
-
+    
     
     
     @State var selectedDate: Date = (Calendar.current.date(byAdding: .minute, value: 20, to: Date()) ?? Date())
@@ -34,7 +34,7 @@ struct PickUpOptionView: View {
         formatter.timeStyle = .short
         return formatter
     }
-   
+    
     
     var body: some View {
         
@@ -73,9 +73,9 @@ struct PickUpOptionView: View {
                         }
                         .datePickerStyle(.compact)
                         .font(Font.custom("Karla-Regular", size: 16))
-                       
-                            .padding(.top)
-                            
+                        
+                        .padding(.top)
+                        
                         
                         HStack(spacing: 15) {
                             
@@ -103,7 +103,7 @@ struct PickUpOptionView: View {
                     Text("Special requests").sectionCategory()
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal, 20)
-
+                    
                     
                     TextField("Any request you may have...", text:$specialRequest )
                         .font(Font.custom("Karla-Regular", size: 16))
@@ -153,7 +153,7 @@ struct PickUpOptionView: View {
                         .padding(.top, 10)
                         
                     }.padding(.horizontal, 60)
-
+                    
                     
                 }
                 
@@ -161,29 +161,29 @@ struct PickUpOptionView: View {
                     Text("Proceed to Pay")
                         .primaryButton()
                         .padding(.top, 10)
-                        
+                    
                 }
                 .simultaneousGesture(TapGesture().onEnded({ action in
-                        
-                            checkoutViewModel.getOrder(
-                                items: itemAddedViewModel.itemAdded,
-                                total: total(),
-                                deliveryOption: false,
-                                dropOffOption: .leaveIt,
-                                pickUpOption: true,
-                                deliveryInstructions: "",
-                                courierTip: 0,
-                                deliveryFee: 0,
-                                deliverytime: 0,
-                                deliveryAddress: "",
-                                pickUpAddress: pickUpAddress,
-                                pickUpTime: asapPickUp ? Calendar.current.date(byAdding: .minute, value: 20, to: Date())! : selectedDate,
-                                pickUpSpecialRequest: specialRequest,
-                                nameofOrder: "",
-                                emailOrder: "")
-                            
-                            print(checkoutViewModel.order)
-
+                    
+                    checkoutViewModel.getOrder(
+                        items: itemAddedViewModel.itemAdded,
+                        total: total(),
+                        deliveryOption: false,
+                        dropOffOption: .leaveIt,
+                        pickUpOption: true,
+                        deliveryInstructions: "",
+                        courierTip: 0,
+                        deliveryFee: 0,
+                        deliverytime: 0,
+                        deliveryAddress: "",
+                        pickUpAddress: pickUpAddress,
+                        pickUpTime: asapPickUp ? Calendar.current.date(byAdding: .minute, value: 20, to: Date())! : selectedDate,
+                        pickUpSpecialRequest: specialRequest,
+                        nameofOrder: "",
+                        emailOrder: "")
+                    
+                    print(checkoutViewModel.order)
+                    
                 }))
                 
             }
@@ -209,7 +209,7 @@ struct PickUpOptionView: View {
                         .foregroundColor(Color("SecundaryColor3"))
                         .frame(width: 200, height: 32)
                         .background(Color.white)
-                        
+                    
                     
                     Text(asapPickUp ? "Schedule" : "")
                         .font(Font.custom("Karla-ExtraBold", size: 16))

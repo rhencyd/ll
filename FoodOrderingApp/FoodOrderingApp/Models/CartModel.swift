@@ -37,15 +37,15 @@ class CartViewModel: ObservableObject {
     @Published var subTotal: Double = 0
     @Published var isItemChanged: Bool = false
     @Published var orderSubtotal: Double = 0
-
+    
     
     
     func addItemToCart(extras: [ExtraItemsModel], dish: DishEntity, qty: Int, request: String, subTotal: Double) {
-
+        
         let newItem = ItemAdded(extraItem: extras, dish: dish, dishQty: qty, specialRequest: request, subTotal: subTotal)
         self.itemAdded.append(newItem)
         self.cartItemsNumber = itemAdded.count
-
+        
     }
     
     func deleteItem(index: IndexSet) {

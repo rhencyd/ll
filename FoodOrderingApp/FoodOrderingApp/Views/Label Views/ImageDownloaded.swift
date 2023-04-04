@@ -14,7 +14,7 @@ struct ImageDownloaded: View {
     init (url: String, key: String) {
         _loader = StateObject(wrappedValue: ImageDownloadedViewModel(url: url, key: key))
     }
-
+    
     
     var body: some View {
         ZStack {

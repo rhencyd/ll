@@ -40,7 +40,6 @@
 		3D90597329BF777A007D9BC0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90597129BF777A007D9BC0 /* Persistence.swift */; };
 		3D90597529BF7857007D9BC0 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90597429BF7857007D9BC0 /* MenuList.swift */; };
 		3D90597829BF8DA5007D9BC0 /* ExampleDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D90597629BF8DA5007D9BC0 /* ExampleDatabase.xcdatamodeld */; };
-		3D95749C29BFE3D40093C935 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D95749B29BFE3D40093C935 /* CoreDataViewModel.swift */; };
 		3DA3D40F29B922B800F7B9D9 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D40E29B922B800F7B9D9 /* Welcome.swift */; };
 		3DA3D41229B94B5B00F7B9D9 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D41129B94B5B00F7B9D9 /* CustomTabBarView.swift */; };
 		3DA3D41429B9547500F7B9D9 /* CustomTabBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA3D41329B9547500F7B9D9 /* CustomTabBarContainer.swift */; };
@@ -95,7 +94,6 @@
 		3D90597129BF777A007D9BC0 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3D90597429BF7857007D9BC0 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 		3D90597729BF8DA5007D9BC0 /* ExampleDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleDatabase.xcdatamodel; sourceTree = "<group>"; };
-		3D95749B29BFE3D40093C935 /* CoreDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataViewModel.swift; sourceTree = "<group>"; };
 		3DA3D40E29B922B800F7B9D9 /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
 		3DA3D41129B94B5B00F7B9D9 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		3DA3D41329B9547500F7B9D9 /* CustomTabBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainer.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 				3D90597629BF8DA5007D9BC0 /* ExampleDatabase.xcdatamodeld */,
 				3D90597029BF777A007D9BC0 /* FetchedObjects.swift */,
 				3D90597129BF777A007D9BC0 /* Persistence.swift */,
-				3D95749B29BFE3D40093C935 /* CoreDataViewModel.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -307,6 +304,7 @@
 			children = (
 				3D95749A29BFE2970093C935 /* MenuStructs */,
 				3DE6B55529D4E5E9004E7310 /* MapModel.swift */,
+				3DD30C4729DBC510009A3CE8 /* UIMapModel.swift */,
 				3DE3D10F29C29A5B001AF7D0 /* DishModelData.swift */,
 				3DBD7F4729C3999B00F207EB /* CartModel.swift */,
 				3DA3D44329B9996E00F7B9D9 /* States_JSON.swift */,
@@ -386,7 +384,6 @@
 				3DE6B55929D6A22F004E7310 /* DeliveryAndPickUpTabBars.swift */,
 				3DE6B55729D66C44004E7310 /* DeliveryOptionsView.swift */,
 				3DE6B55B29D7DD50004E7310 /* PickUpOptionView.swift */,
-				3DD30C4729DBC510009A3CE8 /* UIMapModel.swift */,
 			);
 			path = CheckOut;
 			sourceTree = "<group>";
@@ -534,7 +531,6 @@
 				3DBD7F5029C63B3500F207EB /* DownloadingDishesViewModel.swift in Sources */,
 				3DC9800929C2692700BBF578 /* DishView.swift in Sources */,
 				3D90597229BF777A007D9BC0 /* FetchedObjects.swift in Sources */,
-				3D95749C29BFE3D40093C935 /* CoreDataViewModel.swift in Sources */,
 				3DA3D41C29B96F9A00F7B9D9 /* SignInForm.swift in Sources */,
 				3DE3D11029C29A5B001AF7D0 /* DishModelData.swift in Sources */,
 				3DD30C4329DBACAC009A3CE8 /* HistoryView.swift in Sources */,

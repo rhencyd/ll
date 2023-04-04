@@ -17,7 +17,7 @@ struct MenuItem: Codable, Identifiable, Hashable {
     
     enum CodingKeys: String, CodingKey {
         case id, description, price, image, category,
-        title
+             title
     }
     
 }

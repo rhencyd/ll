@@ -206,7 +206,7 @@ struct SignUpForm: View {
                                     } else {
                                         wrongEmail = true
                                     }
-
+                                    
                                 })
                                 .onSubmit {
                                     
@@ -308,7 +308,7 @@ struct SignUpForm: View {
                                 .focused($fieldInFocus, equals: .line1)
                                 .padding(.horizontal, 20)
                                 .onChange(of: line1, perform: { newValue in
-
+                                    
                                     if line1.count < 1 {
                                         wrongLine1 = true
                                     } else {
@@ -368,7 +368,7 @@ struct SignUpForm: View {
                                 } else {
                                     wrongCity = false
                                 }
-
+                                
                             })
                             .onSubmit {
                                 if wrongCity || city.isEmpty {
@@ -385,7 +385,7 @@ struct SignUpForm: View {
                                 .padding(.horizontal, 30)
                         }
                     }
-
+                    
                     if wrongCity {
                         Text("Please enter a valid City")
                             .font(Font.custom("Karla-Regular", size: 10))
@@ -531,7 +531,7 @@ struct SignUpForm: View {
                             .padding(.horizontal, 20)
                             .padding(.top, 10)
                             .onChange(of: confirmPassword, perform: { newValue in
-                               
+                                
                                 if confirmPassword != password || confirmPassword.isEmpty {
                                     wrongConfirmationPassword = true
                                 } else {

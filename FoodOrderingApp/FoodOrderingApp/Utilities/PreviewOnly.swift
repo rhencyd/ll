@@ -10,7 +10,7 @@ struct Preview: View {
             
             TextField("First Name", text: $firstName)
                 .normalTextInput()
-                
+            
             Image(systemName: "checkmark.circle.fill")
                 .foregroundColor(Color("PrimaryColor1"))
                 .padding(.horizontal, 10)
@@ -18,7 +18,7 @@ struct Preview: View {
         
     }
 }
-    
+
 
 
 

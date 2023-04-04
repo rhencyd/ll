@@ -17,7 +17,7 @@ struct PaymentScreen: View {
     @State var applePay: Bool = false
     @State var creditCard: Bool = true
     @State var paypal: Bool = false
-
+    
     
     @State var spacing: CGFloat = 40
     @State var total: Double = 0
@@ -154,22 +154,22 @@ struct PaymentScreen: View {
                 Text("Total").leadText()
                 Spacer()
                 Text("$ \(String(format: "%.2f", total))").leadText()
-
+                
             }
             .padding(.horizontal, 40)
             
             
             Spacer()
             
-
-                NavigationLink(value: ScreenNavigationValue.confirmation(checkoutViewModel.order)) {
-                        Text("Confirm and Pay")
-                            .primaryButton()
-                            .padding(.top, 10)
-                }
-                .simultaneousGesture(TapGesture().onEnded({ tap in
-                    checkoutViewModel.isHistory = false
-                }))
+            
+            NavigationLink(value: ScreenNavigationValue.confirmation(checkoutViewModel.order)) {
+                Text("Confirm and Pay")
+                    .primaryButton()
+                    .padding(.top, 10)
+            }
+            .simultaneousGesture(TapGesture().onEnded({ tap in
+                checkoutViewModel.isHistory = false
+            }))
             
         }
         

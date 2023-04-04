@@ -16,17 +16,17 @@ struct CustomStepper: View {
     var body: some View {
         
         ZStack {
-                
+            
             if needStroke {
                 Capsule(style: .circular)
-                .stroke(Color.black)
-                .frame(width: 100, height: 35)
+                    .stroke(Color.black)
+                    .frame(width: 100, height: 35)
             } else {
                 Capsule(style: .circular)
-                .foregroundColor(fillColor)
-                .frame(width: 100, height: 35)
+                    .foregroundColor(fillColor)
+                    .frame(width: 100, height: 35)
             }
-                                
+            
             
             HStack {
                 
@@ -46,7 +46,7 @@ struct CustomStepper: View {
                 } else {
                     Image(systemName: "square")
                 }
-                    
+                
                 
                 Spacer()
                 
@@ -59,8 +59,8 @@ struct CustomStepper: View {
                     }
             }
             .padding(.horizontal, 12)
-                
-                
+            
+            
         }
         
         .frame(width: 100, height: 35)
@@ -77,17 +77,17 @@ struct CustomStepper2: View {
     var body: some View {
         
         ZStack {
-                
+            
             if needStroke {
                 Capsule(style: .circular)
-                .stroke(Color.black)
-                .frame(width: 145, height: 35)
+                    .stroke(Color.black)
+                    .frame(width: 145, height: 35)
             } else {
                 Capsule(style: .circular)
-                .foregroundColor(fillColor)
-                .frame(width: 145, height: 35)
+                    .foregroundColor(fillColor)
+                    .frame(width: 145, height: 35)
             }
-                                
+            
             
             HStack {
                 
@@ -101,11 +101,11 @@ struct CustomStepper2: View {
                 
                 Spacer()
                 
-               
-                    Text("\(stepperValue)")
-                        .sectionTitle()
                 
-                    
+                Text("\(stepperValue)")
+                    .sectionTitle()
+                
+                
                 
                 Spacer()
                 
@@ -118,8 +118,8 @@ struct CustomStepper2: View {
                     }
             }
             .padding(.horizontal, 12)
-                
-                
+            
+            
         }
         
         .frame(width: 145, height: 36)

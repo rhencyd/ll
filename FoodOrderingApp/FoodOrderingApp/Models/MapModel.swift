@@ -72,7 +72,7 @@ class MapAPI: ObservableObject {
                 
                 self.coordinates = [lat, lon]
                 self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
-
+                
                 let newLocation = Location(name: name ?? "Pin", coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
                 
                 

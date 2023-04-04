@@ -29,10 +29,10 @@ class ImageDownloadedViewModel: ObservableObject {
     func getImage() {
         if let savedImage = manager.get(key: imageKey) {
             image = savedImage
-//            print("Getting saved image")
+            //            print("Getting saved image")
         } else {
             downloadImage()
-//            print("Downloading image now!")
+            //            print("Downloading image now!")
         }
     }
     
@@ -59,7 +59,7 @@ class ImageDownloadedViewModel: ObservableObject {
                 self.manager.add(key: self.imageKey, value: image)
             }
             .store(in: &cancellables)
-
+        
         
     }
 }

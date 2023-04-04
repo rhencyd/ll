@@ -12,35 +12,35 @@ struct Welcome: View {
     
     var body: some View {
         
-            VStack {
-                
-                Image("OnBoardingImage")
-                    .resizable().scaledToFill()
-                    .frame(height: 314)
-                
-                Spacer()
-                
-                if isLoading {
-                    Image("little-lemon-logo")
-                        .resizable().scaledToFit()
-                        .frame(height: 200)
-                        .onAppear{
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                isLoading.toggle()
-                            }
+        VStack {
+            
+            Image("OnBoardingImage")
+                .resizable().scaledToFill()
+                .frame(height: 314)
+            
+            Spacer()
+            
+            if isLoading {
+                Image("little-lemon-logo")
+                    .resizable().scaledToFit()
+                    .frame(height: 200)
+                    .onAppear{
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            isLoading.toggle()
                         }
-                } else {
-                    Onboarding()
-                }
-                
-                Spacer()
-                
+                    }
+            } else {
+                Onboarding()
             }
             
-            .onAppear{
-                isLoading.toggle()
-            }
-            .toolbar(.hidden, for: .automatic)
+            Spacer()
+            
+        }
+        
+        .onAppear{
+            isLoading.toggle()
+        }
+        .toolbar(.hidden, for: .automatic)
     }
     
 }
