@@ -49,7 +49,7 @@ struct DeliveryOptionsView: View {
                     Text(customerAddress)
                         .paragraphText()
                         .frame(height: 40)
-                        
+                    
                     Spacer()
                     
                     Text("Change")
@@ -182,8 +182,8 @@ struct DeliveryOptionsView: View {
                     .padding(.top, 30)
                     .padding(.bottom, 5)
             }
-
-
+            
+            
             Button {
                 isDeliveryButtonPressed = true
                 verifyAddress = true
@@ -197,7 +197,7 @@ struct DeliveryOptionsView: View {
                 totalOrder = total()
                 
             } label: {
-                Text("Proceed to Pay")
+                Text(disableButton ? "Calculating route!" : "Proceed to Pay")
                     .primaryButton()
                     .padding(.top, 10)
             }
@@ -209,7 +209,7 @@ struct DeliveryOptionsView: View {
             if isCurrentUserSignedIn {
                 disableButton = true
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
                     disableButton = false
                 }
             }
@@ -231,7 +231,7 @@ struct DeliveryOptionsView: View {
                         .foregroundColor(Color("SecundaryColor3"))
                         .frame(width: 200, height: 32)
                         .background(Color.white)
-                        
+                    
                     
                     Text(handItTome ? "Leave at the door" : "")
                         .font(Font.custom("Karla-ExtraBold", size: 16))
@@ -295,10 +295,10 @@ struct DeliveryOptionsView: View {
                     .keyboardType(.decimalPad)
             }
             .font(Font.custom("Karla-ExtraBold", size: 16))
-                .foregroundColor(Color("PrimaryColor1"))
-                .frame(width: 130, height: 40)
-                .background(Color("SecundaryColor3"))
-                .cornerRadius(16)
+            .foregroundColor(Color("PrimaryColor1"))
+            .frame(width: 130, height: 40)
+            .background(Color("SecundaryColor3"))
+            .cornerRadius(16)
             
             .onTapGesture {
                 isOneDolarTip = false

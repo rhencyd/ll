@@ -28,19 +28,19 @@ struct Home: View {
                 .onAppear {
                     PersistenceController.shared.clear()
                 }
-               
+            
             MenuBreakDown()
-               
+            
             Menu()
-
+            
         }
         .environmentObject(vm)
-
+        
         
         .padding(.top, 5)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
-
+        
         
         .onAppear(perform: {
             screenNavigator.cartErased = false
@@ -50,7 +50,7 @@ struct Home: View {
             
             ToolbarItem(placement: .navigationBarTrailing) {
                 
-                if itemAddedViewModel.cartItemsNumber > 0 || screenNavigator.guestModeOn {
+                if itemAddedViewModel.cartItemsNumber >= 1 || screenNavigator.guestModeOn {
                     NavigationLink(value: ScreenNavigationValue.cartView) {
                         TabItemCartImage()
                             .environmentObject(itemAddedViewModel)
@@ -102,6 +102,7 @@ struct Home: View {
                 CartView()
                     .environmentObject(itemAddedViewModel)
                     .environmentObject(extraItemsViewModel)
+                    .environmentObject(mapAPI)
             case .dishView(let dish):
                 DishView(dish: dish)
                     .environmentObject(extraItemsViewModel)

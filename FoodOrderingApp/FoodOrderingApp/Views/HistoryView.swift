@@ -14,20 +14,20 @@ struct HistoryView: View {
     
     var body: some View {
         VStack {
-         
+            
             if checkoutViewModel.history.count < 1 {
                 
                 VStack {
-
+                    
                     Spacer()
-
+                    
                     ZStack {
                         Image(systemName: "list.bullet.clipboard")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 150, height: 150)
                             .foregroundColor(Color("PrimaryColor1"))
-
+                        
                         Image(systemName: "questionmark.bubble.fill")
                             .resizable()
                             .frame(width: 80, height: 80)
@@ -36,23 +36,23 @@ struct HistoryView: View {
                             .foregroundColor(Color("HighlightColor2"))
                             .padding(.horizontal, -20)
                             .padding(.vertical, -20)
-
+                        
                     }
                     .frame(width: 200, height: 200)
-
-
+                    
+                    
                     VStack(alignment: .center, spacing: 10) {
                         Text("No orders found!")
                             .font(Font.custom("Karla-Bold", size: 25))
-
+                        
                         Text("Looks like you haven't ordered any dishes yet")
                             .paragraphText()
                             .multilineTextAlignment(.center)
                             .padding(.horizontal,80)
                     }
-
+                    
                     Spacer()
-
+                    
                     Button {
                         dismiss()
                     } label: {

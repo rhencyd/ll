@@ -12,46 +12,30 @@ struct DishPreView: View {
     var dish: DishEntity
     
     var body: some View {
-            
-            HStack{
-                VStack(alignment: .leading) {
-                    Text(dish.title ?? "Dish").cardTitle()
+        
+        HStack{
+            VStack(alignment: .leading) {
+                Text(dish.title ?? "Dish").cardTitle()
+                Spacer()
+                
+                Text(dish.itemDescription ?? "Description").paragraphText()
+                Spacer()
+                HStack(spacing: 4) {
+                    Text("$").leadText()
+                    Text(dish.price ?? "10").leadText()
                     Spacer()
                     
-                    Text(dish.itemDescription ?? "Description").paragraphText()
-                    Spacer()
-                    HStack(spacing: 4) {
-                        Text("$").leadText()
-                        Text(dish.price ?? "10").leadText()
-                        Spacer()
-                        
-                    }
                 }
-                Spacer()
-            
-//                AsyncImage(url: URL(string: dish.image!)) { phase in
-//                    switch phase {
-//                    case .empty:
-//                        ProgressView()
-//                    case .success(let image):
-//                            image
-//                            .resizable()
-                ImageDownloaded(
-                    url: dish.image ?? "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", key: "\(dish.id)")
-                            .scaledToFill()
-                            .frame(width: 90, height: 90)
-                            .cornerRadius(8)
-//                    case .failure:
-//                        Image(systemName: "questionmark")
-//                            .font(.headline)
-//                    default:
-//                        Image(systemName: "questionmark")
-//                            .font(.headline)
-//                    }
-//                }
-                
-                
             }
+            Spacer()
+            
+            ImageDownloaded(
+                url: dish.image ?? "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", key: "\(dish.id)")
+            .scaledToFill()
+            .frame(width: 90, height: 90)
+            .cornerRadius(8)
+            
+        }
         .frame(height: 120)
     }
 }

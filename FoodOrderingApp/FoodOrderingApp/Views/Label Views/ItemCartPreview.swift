@@ -18,7 +18,7 @@ struct ItemCartPreview: View {
     @Binding var stepperValue: Int
     @Binding var subTotal: Double
     
-
+    
     
     var body: some View {
         
@@ -27,12 +27,12 @@ struct ItemCartPreview: View {
                 ImageDownloaded(
                     url: dish.dish.image ?? "https://github.com/Meta-Mobile-Developer-PC/Working-With-Data-API/blob/main/images/lemonDessert%202.jpg?raw=true", key: "\(dish.dish.id)")
                 
-                            .scaledToFill()
-                            .frame(width: 80, height: 80)
-                            .cornerRadius(8)
+                .scaledToFill()
+                .frame(width: 80, height: 80)
+                .cornerRadius(8)
                 
                 HStack {
-
+                    
                     VStack(alignment: .leading) {
                         
                         Text(dish.dish.title ?? "Title")
@@ -67,10 +67,10 @@ struct ItemCartPreview: View {
                                 
                             }
                             .offset(y: -4)
-                                
-                                Spacer()
-
-                                Text(dish.dish.itemDescription ?? "Item Description")
+                            
+                            Spacer()
+                            
+                            Text(dish.dish.itemDescription ?? "Item Description")
                                 .paragraphText()
                                 .offset(y: -10)
                             
@@ -83,10 +83,10 @@ struct ItemCartPreview: View {
                                 .paragraphText()
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.top, -10)
-                                
+                            
                             
                             Spacer()
-
+                            
                         }
                         
                         Spacer()
@@ -141,7 +141,7 @@ struct ItemCartPreview: View {
                     .onChange(of: stepperValue) { newValue in
                         
                         if stepperValue > 0 {
-                        
+                            
                             let unitPrice = dish.subTotal / Double(dish.dishQty)
                             let subtotal = unitPrice * Double(newValue)
                             
@@ -151,17 +151,13 @@ struct ItemCartPreview: View {
                             dish.subTotal = subtotal
                             
                             print(dish.subTotal)
-//
-//
                             itemAddedViewModel.getSubtotal()
-//
-//                            print(itemAddedViewModel.itemAdded)
                             
                         }
                         else {
                             showAlert.toggle()
                         }
-
+                        
                     }
                     .alert(isPresented: $showAlert) {
                         Alert(
@@ -187,14 +183,14 @@ struct ItemCartPreview: View {
                 }
                 
             }
-
+            
             
         }
         .frame(height: 95)
     }
     
 }
-    
+
 
 struct ItemCartPreview_Previews: PreviewProvider {
     

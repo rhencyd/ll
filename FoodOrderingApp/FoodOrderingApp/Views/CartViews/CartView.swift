@@ -11,12 +11,14 @@ struct CartView: View {
     
     @EnvironmentObject var itemAddedViewModel: CartViewModel
     @EnvironmentObject var navigationStateManager: NavigationStateManager
+    @EnvironmentObject var mapAPI: MapAPI
     @Environment(\.dismiss) var dismiss
     
     @State var isEditOn: Bool = false
     @State var numberOfItems: Int = 0
     
-//    @State var isAnimated: Bool = false
+    @AppStorage("complete_address") var currentUserCompleteAddress: String?
+    
     
     @State var cartSubTotal: Double = 0
     
@@ -184,7 +186,11 @@ struct CartView: View {
                         NavigationLink(value: ScreenNavigationValue.checkout) {
                             Text("Checkout").primaryButton()
                         }
-
+                        .simultaneousGesture(TapGesture().onEnded({ tap in
+                            let address = currentUserCompleteAddress ?? "Chicago"
+                            mapAPI.getLocation(address: address, delta: 0.1)
+                        }))
+                        
                     }
                     .toolbarBackground(.white, for: .navigationBar)
                     .navigationBarTitleDisplayMode(.inline)

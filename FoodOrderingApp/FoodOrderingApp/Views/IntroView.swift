@@ -20,15 +20,15 @@ struct IntroView: View {
         
         NavigationStack(path: $navigationStateManager.selectionPath) {
             
-                if isCurrentUserSignedIn {
-                    Home()
-
-                } else if !isCurrentUserSignedIn && navigationStateManager.guestModeOn {
-                    Home()
-                    
-                } else {
-                    Welcome()
-                }
+            if isCurrentUserSignedIn {
+                Home()
+                
+            } else if !isCurrentUserSignedIn && navigationStateManager.guestModeOn {
+                Home()
+                
+            } else {
+                Welcome()
+            }
         }
         .disabled(hamburguerMenu.showSideMenu)
         .overlay (

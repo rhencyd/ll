@@ -126,8 +126,8 @@ struct EditDishView: View {
                                         } else {
                                             isItemUpdated = true
                                         }
-
-
+                                        
+                                        
                                     }
                                     
                                 }
@@ -215,19 +215,7 @@ struct EditDishView: View {
                                 .frame(height: 30)
                                 .background(Color("PrimaryColor1"))
                             
-//                            Text("Update my dish!").primaryButton()
                         }
-//                        else {
-//
-//                            Text("Subtotal $\(String(format: "%.2f", subTotal))")
-//                                .font(Font.custom("Karla-Bold", size: 18))
-//                                .foregroundColor(Color("HighlightColor1"))
-//                                .frame(maxWidth: .infinity)
-//                                .frame(height: 45)
-//                                .background(Color("PrimaryColor1"))
-//
-////                            Text("Update my dish!").primaryButton()
-//                        }
                         
                         Text(subTotal != dish.subTotal ? "Update my dish!" : "Update instructions! Subtotal: $\(String(format: "%.2f", subTotal))").primaryButton()
                         
@@ -300,7 +288,7 @@ struct EditDishView: View {
                                                  itemAddedViewModel.cartItemsNumber = itemAddedViewModel.itemAdded.count
                                                  
                                                  dismiss()
-                        }),
+                                             }),
                         secondaryButton:
                                 .cancel(Text("Cancel"),
                                         action: {
@@ -308,7 +296,7 @@ struct EditDishView: View {
                                         }))
                 }
                 
-
+                
             }
             
         }
@@ -352,15 +340,15 @@ struct EditDishView_Previews: PreviewProvider {
     let dish = DishEntity(context: context)
     
     static var previews: some View {
-                EditDishView(dish: ItemAdded(
-                    extraItem: [ExtraItemsModel(
-                        extraItemPrice: "1.54",
-                        extraItemTitle: "seeds",
-                        extrItemQty: 5)],
-                    dish: oneDish(),
-                    dishQty: 5,
-                    specialRequest: "none",
-                    subTotal: 145))
+        EditDishView(dish: ItemAdded(
+            extraItem: [ExtraItemsModel(
+                extraItemPrice: "1.54",
+                extraItemTitle: "seeds",
+                extrItemQty: 5)],
+            dish: oneDish(),
+            dishQty: 5,
+            specialRequest: "none",
+            subTotal: 145))
         
         .environmentObject(CartViewModel())
         .environmentObject(ExtraItemsViewModel())

@@ -17,7 +17,7 @@ class ImagesModelCacheManager {
     }
     
     var imageCache: NSCache<NSString, UIImage> = {
-       var cache = NSCache<NSString, UIImage>()
+        var cache = NSCache<NSString, UIImage>()
         cache.countLimit = 50
         return cache
     }()

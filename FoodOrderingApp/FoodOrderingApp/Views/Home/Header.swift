@@ -19,17 +19,7 @@ struct Header: View {
     var body: some View {
         
         HStack {
-            
-//            NavigationLink {
-//                Color.red
-//            } label: {
-//                Image(systemName: "list.bullet")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 35)
-//                    .foregroundColor(Color("PrimaryColor1"))
-//            }
-//
+    
             Button {
                 withAnimation(Animation.spring()) {
                     hamburguerMenu.showSideMenu.toggle()

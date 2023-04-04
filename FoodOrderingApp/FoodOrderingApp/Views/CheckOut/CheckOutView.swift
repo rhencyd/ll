@@ -36,7 +36,7 @@ struct CheckOutView: View {
     @State var deliveryInstructions: String = ""
     @State var courierTip: Double = 0
     @State var deliveryFee: Double = 0
-
+    
     
     
     // delivery address variables
@@ -180,7 +180,7 @@ struct CheckOutView: View {
         .navigationBarBackButtonHidden()
         .modifier(AdaptsToSoftwareKeyboard())
         .ignoresSafeArea(.keyboard)
-    
+        
         .toolbar {
             
             ToolbarItem(placement: .navigationBarLeading) {
@@ -200,7 +200,7 @@ struct CheckOutView: View {
                 Text("Checkout".uppercased())
                     .font(Font.custom("Karla-ExtraBold", size: 20))
                     .foregroundColor(Color("HighlightColor2"))
-        
+                
             }
             
         }
@@ -210,541 +210,540 @@ struct CheckOutView: View {
         
         ScrollView {
             
+            
+            VStack(spacing: 15) {
                 
-                VStack(spacing: 15) {
+                
+                HStack {
                     
-                    
-                    HStack {
-                        
-                        Text("delivery address".uppercased()).sectionTitle()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 20)
-                        
-                        Spacer()
-                        
-                        Button {
-                           verifyAddress = false
-                            disableButton = false
-                        } label: {
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color("PrimaryColor1"))
-                        }
-                        .offset(x: -10, y: -10)
-                    }
-                    
-                    
-                   
-                    
-                    
-                    HStack {
-                        
-                        // name of:
-                        
-                        VStack(alignment: .leading) {
-                            
-                            Text("First Name")
-                                .font(Font.custom("Karla-Bold", size: 16))
-                                .padding(.bottom, 3)
-                            
-                            
-                            ZStack(alignment: .trailing) {
-                                
-                                TextField(firstName, text: $firstName)
-                                    .normalTextInput()
-                                    .lineLimit(1)
-                                    .textContentType(.givenName)
-                                    .focused($fieldInFocus, equals: .firstName)
-                                    .onChange(of: firstName, perform: { newValue in
-                                        
-                                        let firstNameIsValid = firstName.count > 2
-                                        
-                                        if firstNameIsValid {
-                                            wrongFirstName = false
-                                        }
-                                        else {
-                                            wrongFirstName = true
-                                        }
-                                        
-                                        isThereChanges()
-                                        
-                                    })
-                                    .onSubmit {
-                                        
-                                        if wrongFirstName || firstName.isEmpty {
-                                            fieldInFocus = .firstName
-                                            firstName = ""
-                                        } else {
-                                            fieldInFocus = .lastName
-                                        }
-                                        
-                                    }
-                                    .onAppear {
-                                        firstName = CfirstName
-                                    }
-                                
-                                    if !wrongFirstName && !firstName.isEmpty {
-                                        Image(systemName: "checkmark")
-                                            .resizable()
-                                            .frame(width: 11, height: 11)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                            .padding(.horizontal, 15)
-                                            .onAppear {
-                                                firstNameHasChanged = true
-                                            }
-                                            .onDisappear {
-                                                firstNameHasChanged = false
-                                            }
-                                    }
-                            }
-                            
-                            if wrongFirstName {
-                                Text("First Name should be at least three characters long")
-                                    .font(Font.custom("Karla-Regular", size: 10))
-                                    .foregroundColor(Color.red)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.vertical, -5)
-                            }
-                        }
-                        
-                        
-                        // last name
-                        
-                        VStack(alignment: .leading) {
-                            
-                            Text("Last Name")
-                                .font(Font.custom("Karla-Bold", size: 16))
-                                .padding(.bottom, 3)
-                            
-                            ZStack(alignment: .trailing) {
-                                
-                                TextField(lastName, text: $lastName)
-                                    .normalTextInput()
-                                    .textContentType(.familyName)
-                                    .focused($fieldInFocus, equals: .lastName)
-                                    .onChange(of: lastName, perform: { newValue in
-                                        
-                                        let lastNameIsValid = lastName.count > 2
-                                        
-                                        if lastNameIsValid {
-                                            wrongLastName = false
-                                        }
-                                        else {
-                                            wrongLastName = true
-                                        }
-                                        
-                                        isThereChanges()
-                                        
-                                    })
-                                    .onSubmit {
-                                        
-                                        if wrongLastName || lastName.isEmpty {
-                                            fieldInFocus = .lastName
-                                            lastName = ""
-                                        }
-                                        else {
-                                            fieldInFocus = .email
-                                        }
-                                    }
-                                    .onAppear {
-                                        lastName = ClastName
-                                    }
-                                
-                                    if !wrongLastName && !lastName.isEmpty {
-                                        Image(systemName: "checkmark")
-                                            .resizable()
-                                            .frame(width: 11, height: 11)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                            .padding(.horizontal, 15)
-                                            .onAppear {
-                                                lastNameHasChanged = true
-                                            }
-                                            .onDisappear {
-                                                lastNameHasChanged = false
-                                            }
-                                    }
-                            }
-                            
-                            if wrongLastName {
-                                Text("Last Name should be at least three characters long")
-                                    .font(Font.custom("Karla-Regular", size: 10))
-                                    .foregroundColor(Color.red)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(.vertical, -5)
-                            }
-                            
-                        }
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Email")
-                            .font(Font.custom("Karla-Bold", size: 16))
-                            .padding(.bottom, 3)
-                        
-                        ZStack(alignment: .trailing) {
-                            
-                            TextField(email, text: $email)
-                                .emailTextInput()
-                                .textContentType(.emailAddress)
-                                .autocapitalization(.none)
-                                .focused($fieldInFocus, equals: .email)
-                                .onChange(of: email, perform: { newValue in
-                                    
-                                    if self.textFieldValidatorEmail(newValue) {
-                                        wrongEmail = false
-                                    } else {
-                                        wrongEmail = true
-                                    }
-                                    
-                                    isThereChanges()
-                                    
-                                })
-                                .onSubmit {
-                                    
-                                    if wrongEmail || email.isEmpty {
-                                        fieldInFocus = .email
-                                        email = ""
-                                    } else {
-                                        fieldInFocus = .line1
-                                    }
-                                }
-                                .onAppear {
-                                    email = Cemail
-                                }
-                            
-                                if !wrongEmail && !email.isEmpty {
-                                    Image(systemName: "checkmark")
-                                        .resizable()
-                                        .frame(width: 11, height: 11)
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .padding(.horizontal, 15)
-                                        .onAppear {
-                                            emailHasChanged = true
-                                        }
-                                        .onDisappear {
-                                            emailHasChanged = false
-                                        }
-                                }
-                        }
-                        
-                        if wrongEmail {
-                            Text("Please enter a valid email address")
-                                .font(Font.custom("Karla-Regular", size: 10))
-                                .foregroundColor(Color.red)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.vertical, -5)
-                        }
-                    }
-                    
-                    
-                    VStack(alignment: .leading) {
-                        Text("Line 1")
-                            .font(Font.custom("Karla-Bold", size: 16))
-                            .padding(.bottom, 3)
-                        
-                        ZStack(alignment: .trailing) {
-                            
-                            TextField(line1, text: $line1)
-                                .normalTextInput()
-                                .textContentType(.streetAddressLine1)
-                                .focused($fieldInFocus, equals: .line1)
-                                .onChange(of: line1, perform: { newValue in
-                                    
-                                    if line1.count < 1 {
-                                        wrongLine1 = true
-                                    } else {
-                                        wrongLine1 = false
-                                    }
-                                    
-                                    isThereChanges()
-                                    
-                                })
-                            
-                                .onSubmit {
-                                    
-                                    if wrongLine1 || line1.isEmpty {
-                                        fieldInFocus = .line1
-                                        line1 = ""
-                                    } else {
-                                        fieldInFocus = .zipCode
-                                        fieldInFocus = .line2
-                                    }
-                                }
-                                .onAppear {
-                                    line1 = Cline1
-                                }
-                            
-                                if !wrongLine1 && !line1.isEmpty {
-                                    Image(systemName: "checkmark")
-                                        .resizable()
-                                        .frame(width: 11, height: 11)
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .padding(.horizontal, 15)
-                                        .onAppear {
-                                            line1HasChanged = true
-                                        }
-                                        .onDisappear {
-                                            line1HasChanged = false
-                                        }
-                                }
-                        }
-                        
-                        if wrongLine1 {
-                            Text("Please enter a valid address")
-                                .font(Font.custom("Karla-Regular", size: 10))
-                                .foregroundColor(Color.red)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.vertical, -5)
-                        }
-                        
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Line 2 (Optional)")
-                            .font(Font.custom("Karla-Bold", size: 16))
-                            .padding(.bottom, 3)
-                        
-                        TextField(line2, text: $line2)
-                            .normalTextInput()
-                            .textContentType(.streetAddressLine2)
-                            .focused($fieldInFocus, equals: .line2)
-                            .onChange(of: line2, perform: { newValue in
-                                if let currentUserLine2 = currentUserLine2 {
-                                    if !line2.isEmpty && line2 != currentUserLine2 {
-                                        line2HasChanged = true
-                                    }
-                                }
-                                isThereChanges()
-                            })
-                            .onSubmit {
-                                fieldInFocus = .button
-                                fieldInFocus = .city
-                            }
-                            .onAppear {
-                                line2 = Cline2
-                            }
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("City")
-                            .font(Font.custom("Karla-Bold", size: 16))
-                            .padding(.bottom, 3)
-                        
-                        ZStack(alignment: .trailing) {
-                            
-                            TextField(city, text: $city)
-                                .normalTextInput()
-                                .textContentType(.addressCity)
-                                .focused($fieldInFocus, equals: .city)
-                                .onChange(of: city, perform: { newValue in
-                                    
-                                    if city.isEmpty {
-                                        wrongCity = true
-                                    } else {
-                                        wrongCity = false
-                                    }
-                                    
-                                    isThereChanges()
-                                    
-                                })
-                                .onSubmit {
-                                    if wrongCity || city.isEmpty {
-                                        fieldInFocus = .city
-                                        city = ""
-                                    } else {
-                                        fieldInFocus = .stateSelection
-                                    }
-                                }
-                                .onAppear {
-                                    city = Ccity
-                                }
-                            
-                                if !wrongCity && !city.isEmpty {
-                                    Image(systemName: "checkmark")
-                                        .resizable()
-                                        .frame(width: 11, height: 11)
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .padding(.horizontal, 15)
-                                        .onAppear {
-                                            cityHasChanged = true
-                                        }
-                                        .onDisappear {
-                                            cityHasChanged = false
-                                        }
-                                }
-                        }
-                        
-                        if wrongCity {
-                            Text("Please enter a valid City")
-                                .font(Font.custom("Karla-Regular", size: 10))
-                                .foregroundColor(Color.red)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.vertical, -5)
-                        }
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("State")
-                            .font(Font.custom("Karla-Bold", size: 16))
-                            .padding(.bottom, 3)
-                        
-                        statePicker()
-                            .tint(Color("HighlightColor2"))
-                            .frame(maxWidth: .infinity)
-                            .frame(maxHeight: .infinity)
-                            .focused($fieldInFocus, equals: .stateSelection)
-                            .background(Color("HighlightColor1").cornerRadius(8))
-                            .onChange(of: stateSelection, perform: { newValue in
-                                fieldInFocus = .button
-                                fieldInFocus = .zipCode
-                                stateHasChanged = true
-                                isThereChanges()
-                            })
-                            .onAppear {
-                               stateSelection = CstateSelection
-                            }
-                        
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("Zip Code")
-                            .font(Font.custom("Karla-Bold", size: 16))
-                            .padding(.bottom, 3)
-                        
-                        ZStack(alignment: .trailing) {
-                            
-                            TextField(zipCode ,text: $zipCode)
-                                .numberTextInput()
-                                .keyboardType(.phonePad)
-                                .focused($fieldInFocus, equals: .zipCode)
-                                .submitLabel(.continue)
-                                .onChange(of: zipCode) { newValue in
-                                    
-                                    if self.validateZipCode(input: newValue) {
-                                        fieldInFocus = .button
-                                        wrongZipCode = false
-//                                        fieldInFocus = .password
-                                    } else {
-                                        fieldInFocus = .zipCode
-                                        wrongZipCode = true
-                                    }
-                                    
-                                    isThereChanges()
-                                }
-                                .onSubmit {
-                                    
-                                    if wrongZipCode || zipCode.isEmpty {
-                                        fieldInFocus = .zipCode
-                                        zipCode = ""
-                                    } else {
-                                        fieldInFocus = .button
-                                    }
-                                }
-                            
-                                .onAppear {
-                                    zipCode = CzipCode
-                                }
-                            
-                                if !wrongZipCode && !zipCode.isEmpty {
-                                    Image(systemName: "checkmark")
-                                        .resizable()
-                                        .frame(width: 11, height: 11)
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .padding(.horizontal, 15)
-                                        .onAppear {
-                                            zipCodeHasChanged = true
-                                        }
-                                        .onDisappear {
-                                            zipCodeHasChanged = false
-                                        }
-                                }
-                        }
-                        
-                        if wrongZipCode {
-                            Text("Please enter a valid Zip Code")
-                                .font(Font.custom("Karla-Regular", size: 10))
-                                .foregroundColor(Color.red)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.vertical, -5)
-                        }
-                    }
+                    Text("delivery address".uppercased()).sectionTitle()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 20)
                     
                     Spacer()
-                   
                     
-                    if isDeliveryButtonPressed && !addressHasChanged {
+                    Button {
+                        verifyAddress = false
+                        disableButton = false
+                    } label: {
+                        Image(systemName: "xmark")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(Color("PrimaryColor1"))
+                    }
+                    .offset(x: -10, y: -10)
+                }
+                
+                
+                
+                
+                
+                HStack {
+                    
+                    // name of:
+                    
+                    VStack(alignment: .leading) {
                         
-                        NavigationLink(value: ScreenNavigationValue.payment) {
-                            Text("Confirm and Pay")
-                                .primaryButton()
-                                .padding(.horizontal, -20)
-                                .focused($fieldInFocus, equals: .button)
+                        Text("First Name")
+                            .font(Font.custom("Karla-Bold", size: 16))
+                            .padding(.bottom, 3)
+                        
+                        
+                        ZStack(alignment: .trailing) {
+                            
+                            TextField(firstName, text: $firstName)
+                                .normalTextInput()
+                                .lineLimit(1)
+                                .textContentType(.givenName)
+                                .focused($fieldInFocus, equals: .firstName)
+                                .onChange(of: firstName, perform: { newValue in
+                                    
+                                    let firstNameIsValid = firstName.count > 2
+                                    
+                                    if firstNameIsValid {
+                                        wrongFirstName = false
+                                    }
+                                    else {
+                                        wrongFirstName = true
+                                    }
+                                    
+                                    isThereChanges()
+                                    
+                                })
+                                .onSubmit {
+                                    
+                                    if wrongFirstName || firstName.isEmpty {
+                                        fieldInFocus = .firstName
+                                        firstName = ""
+                                    } else {
+                                        fieldInFocus = .lastName
+                                    }
+                                    
+                                }
+                                .onAppear {
+                                    firstName = CfirstName
+                                }
+                            
+                            if !wrongFirstName && !firstName.isEmpty {
+                                Image(systemName: "checkmark")
+                                    .resizable()
+                                    .frame(width: 11, height: 11)
+                                    .foregroundColor(Color("PrimaryColor1"))
+                                    .padding(.horizontal, 15)
+                                    .onAppear {
+                                        firstNameHasChanged = true
+                                    }
+                                    .onDisappear {
+                                        firstNameHasChanged = false
+                                    }
+                            }
                         }
-                        .simultaneousGesture(TapGesture().onEnded({ action in
-                            checkoutViewModel.getOrder(
-                                items: itemAddedViewModel.itemAdded,
-                                total: totalOrder,
-                                deliveryOption: true,
-                                dropOffOption: dropOffOption,
-                                pickUpOption: false,
-                                deliveryInstructions: deliveryInstructions,
-                                courierTip: courierTip,
-                                deliveryFee: deliveryFee,
-                                deliverytime: mapAPI.time,
-                                deliveryAddress: address,
-                                pickUpAddress: "",
-                                pickUpTime: Date(),
-                                pickUpSpecialRequest: "",
-                                nameofOrder: nameofOrder,
-                                emailOrder: emailOrder)
-                            
-                            verifyAddress = false
-                            disableButton = false
-                            
-                            print(checkoutViewModel.order)
-                        }))
-                       
                         
-                    } else {
+                        if wrongFirstName {
+                            Text("First Name should be at least three characters long")
+                                .font(Font.custom("Karla-Regular", size: 10))
+                                .foregroundColor(Color.red)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.vertical, -5)
+                        }
+                    }
+                    
+                    
+                    // last name
+                    
+                    VStack(alignment: .leading) {
                         
-                        Button {
+                        Text("Last Name")
+                            .font(Font.custom("Karla-Bold", size: 16))
+                            .padding(.bottom, 3)
+                        
+                        ZStack(alignment: .trailing) {
                             
-                            isThereChanges()
+                            TextField(lastName, text: $lastName)
+                                .normalTextInput()
+                                .textContentType(.familyName)
+                                .focused($fieldInFocus, equals: .lastName)
+                                .onChange(of: lastName, perform: { newValue in
+                                    
+                                    let lastNameIsValid = lastName.count > 2
+                                    
+                                    if lastNameIsValid {
+                                        wrongLastName = false
+                                    }
+                                    else {
+                                        wrongLastName = true
+                                    }
+                                    
+                                    isThereChanges()
+                                    
+                                })
+                                .onSubmit {
+                                    
+                                    if wrongLastName || lastName.isEmpty {
+                                        fieldInFocus = .lastName
+                                        lastName = ""
+                                    }
+                                    else {
+                                        fieldInFocus = .email
+                                    }
+                                }
+                                .onAppear {
+                                    lastName = ClastName
+                                }
                             
-                            if addressHasChanged {
-                                checkEverything()
-                                getWrongFields()
-                                save()
-                                isThereChanges()
+                            if !wrongLastName && !lastName.isEmpty {
+                                Image(systemName: "checkmark")
+                                    .resizable()
+                                    .frame(width: 11, height: 11)
+                                    .foregroundColor(Color("PrimaryColor1"))
+                                    .padding(.horizontal, 15)
+                                    .onAppear {
+                                        lastNameHasChanged = true
+                                    }
+                                    .onDisappear {
+                                        lastNameHasChanged = false
+                                    }
                             }
-                            else {
-                                verifyAddress = false
-                                disableButton = false
-                                
-                            }
-                            
-                        } label: {
-                            
-                            
-                            if addressHasChanged {
-                                Text("Save").primaryButton()
-                                    .padding(.horizontal, -20)
-                                    .focused($fieldInFocus, equals: .button)
-                            }
-                            else {
-                                Text("Looks fine").primaryButton()
-                                    .padding(.horizontal, -20)
-                                    .focused($fieldInFocus, equals: .button)
-                            }
-                            
                         }
                         
+                        if wrongLastName {
+                            Text("Last Name should be at least three characters long")
+                                .font(Font.custom("Karla-Regular", size: 10))
+                                .foregroundColor(Color.red)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.vertical, -5)
+                        }
                         
                     }
                 }
-
-                .padding(.horizontal, 20)
+                
+                VStack(alignment: .leading) {
+                    Text("Email")
+                        .font(Font.custom("Karla-Bold", size: 16))
+                        .padding(.bottom, 3)
+                    
+                    ZStack(alignment: .trailing) {
+                        
+                        TextField(email, text: $email)
+                            .emailTextInput()
+                            .textContentType(.emailAddress)
+                            .autocapitalization(.none)
+                            .focused($fieldInFocus, equals: .email)
+                            .onChange(of: email, perform: { newValue in
+                                
+                                if self.textFieldValidatorEmail(newValue) {
+                                    wrongEmail = false
+                                } else {
+                                    wrongEmail = true
+                                }
+                                
+                                isThereChanges()
+                                
+                            })
+                            .onSubmit {
+                                
+                                if wrongEmail || email.isEmpty {
+                                    fieldInFocus = .email
+                                    email = ""
+                                } else {
+                                    fieldInFocus = .line1
+                                }
+                            }
+                            .onAppear {
+                                email = Cemail
+                            }
+                        
+                        if !wrongEmail && !email.isEmpty {
+                            Image(systemName: "checkmark")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                                .foregroundColor(Color("PrimaryColor1"))
+                                .padding(.horizontal, 15)
+                                .onAppear {
+                                    emailHasChanged = true
+                                }
+                                .onDisappear {
+                                    emailHasChanged = false
+                                }
+                        }
+                    }
+                    
+                    if wrongEmail {
+                        Text("Please enter a valid email address")
+                            .font(Font.custom("Karla-Regular", size: 10))
+                            .foregroundColor(Color.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, -5)
+                    }
+                }
+                
+                
+                VStack(alignment: .leading) {
+                    Text("Line 1")
+                        .font(Font.custom("Karla-Bold", size: 16))
+                        .padding(.bottom, 3)
+                    
+                    ZStack(alignment: .trailing) {
+                        
+                        TextField(line1, text: $line1)
+                            .normalTextInput()
+                            .textContentType(.streetAddressLine1)
+                            .focused($fieldInFocus, equals: .line1)
+                            .onChange(of: line1, perform: { newValue in
+                                
+                                if line1.count < 1 {
+                                    wrongLine1 = true
+                                } else {
+                                    wrongLine1 = false
+                                }
+                                
+                                isThereChanges()
+                                
+                            })
+                        
+                            .onSubmit {
+                                
+                                if wrongLine1 || line1.isEmpty {
+                                    fieldInFocus = .line1
+                                    line1 = ""
+                                } else {
+                                    fieldInFocus = .zipCode
+                                    fieldInFocus = .line2
+                                }
+                            }
+                            .onAppear {
+                                line1 = Cline1
+                            }
+                        
+                        if !wrongLine1 && !line1.isEmpty {
+                            Image(systemName: "checkmark")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                                .foregroundColor(Color("PrimaryColor1"))
+                                .padding(.horizontal, 15)
+                                .onAppear {
+                                    line1HasChanged = true
+                                }
+                                .onDisappear {
+                                    line1HasChanged = false
+                                }
+                        }
+                    }
+                    
+                    if wrongLine1 {
+                        Text("Please enter a valid address")
+                            .font(Font.custom("Karla-Regular", size: 10))
+                            .foregroundColor(Color.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, -5)
+                    }
+                    
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("Line 2 (Optional)")
+                        .font(Font.custom("Karla-Bold", size: 16))
+                        .padding(.bottom, 3)
+                    
+                    TextField(line2, text: $line2)
+                        .normalTextInput()
+                        .textContentType(.streetAddressLine2)
+                        .focused($fieldInFocus, equals: .line2)
+                        .onChange(of: line2, perform: { newValue in
+                            if let currentUserLine2 = currentUserLine2 {
+                                if !line2.isEmpty && line2 != currentUserLine2 {
+                                    line2HasChanged = true
+                                }
+                            }
+                            isThereChanges()
+                        })
+                        .onSubmit {
+                            fieldInFocus = .button
+                            fieldInFocus = .city
+                        }
+                        .onAppear {
+                            line2 = Cline2
+                        }
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("City")
+                        .font(Font.custom("Karla-Bold", size: 16))
+                        .padding(.bottom, 3)
+                    
+                    ZStack(alignment: .trailing) {
+                        
+                        TextField(city, text: $city)
+                            .normalTextInput()
+                            .textContentType(.addressCity)
+                            .focused($fieldInFocus, equals: .city)
+                            .onChange(of: city, perform: { newValue in
+                                
+                                if city.isEmpty {
+                                    wrongCity = true
+                                } else {
+                                    wrongCity = false
+                                }
+                                
+                                isThereChanges()
+                                
+                            })
+                            .onSubmit {
+                                if wrongCity || city.isEmpty {
+                                    fieldInFocus = .city
+                                    city = ""
+                                } else {
+                                    fieldInFocus = .stateSelection
+                                }
+                            }
+                            .onAppear {
+                                city = Ccity
+                            }
+                        
+                        if !wrongCity && !city.isEmpty {
+                            Image(systemName: "checkmark")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                                .foregroundColor(Color("PrimaryColor1"))
+                                .padding(.horizontal, 15)
+                                .onAppear {
+                                    cityHasChanged = true
+                                }
+                                .onDisappear {
+                                    cityHasChanged = false
+                                }
+                        }
+                    }
+                    
+                    if wrongCity {
+                        Text("Please enter a valid City")
+                            .font(Font.custom("Karla-Regular", size: 10))
+                            .foregroundColor(Color.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, -5)
+                    }
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("State")
+                        .font(Font.custom("Karla-Bold", size: 16))
+                        .padding(.bottom, 3)
+                    
+                    statePicker()
+                        .tint(Color("HighlightColor2"))
+                        .frame(maxWidth: .infinity)
+                        .frame(maxHeight: .infinity)
+                        .focused($fieldInFocus, equals: .stateSelection)
+                        .background(Color("HighlightColor1").cornerRadius(8))
+                        .onChange(of: stateSelection, perform: { newValue in
+                            fieldInFocus = .button
+                            fieldInFocus = .zipCode
+                            stateHasChanged = true
+                            isThereChanges()
+                        })
+                        .onAppear {
+                            stateSelection = CstateSelection
+                        }
+                    
+                }
+                
+                VStack(alignment: .leading) {
+                    Text("Zip Code")
+                        .font(Font.custom("Karla-Bold", size: 16))
+                        .padding(.bottom, 3)
+                    
+                    ZStack(alignment: .trailing) {
+                        
+                        TextField(zipCode ,text: $zipCode)
+                            .numberTextInput()
+                            .keyboardType(.phonePad)
+                            .focused($fieldInFocus, equals: .zipCode)
+                            .submitLabel(.continue)
+                            .onChange(of: zipCode) { newValue in
+                                
+                                if self.validateZipCode(input: newValue) {
+                                    fieldInFocus = .button
+                                    wrongZipCode = false
+                                } else {
+                                    fieldInFocus = .zipCode
+                                    wrongZipCode = true
+                                }
+                                
+                                isThereChanges()
+                            }
+                            .onSubmit {
+                                
+                                if wrongZipCode || zipCode.isEmpty {
+                                    fieldInFocus = .zipCode
+                                    zipCode = ""
+                                } else {
+                                    fieldInFocus = .button
+                                }
+                            }
+                        
+                            .onAppear {
+                                zipCode = CzipCode
+                            }
+                        
+                        if !wrongZipCode && !zipCode.isEmpty {
+                            Image(systemName: "checkmark")
+                                .resizable()
+                                .frame(width: 11, height: 11)
+                                .foregroundColor(Color("PrimaryColor1"))
+                                .padding(.horizontal, 15)
+                                .onAppear {
+                                    zipCodeHasChanged = true
+                                }
+                                .onDisappear {
+                                    zipCodeHasChanged = false
+                                }
+                        }
+                    }
+                    
+                    if wrongZipCode {
+                        Text("Please enter a valid Zip Code")
+                            .font(Font.custom("Karla-Regular", size: 10))
+                            .foregroundColor(Color.red)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, -5)
+                    }
+                }
+                
+                Spacer()
+                
+                
+                if isDeliveryButtonPressed && !addressHasChanged {
+                    
+                    NavigationLink(value: ScreenNavigationValue.payment) {
+                        Text("Confirm and Pay")
+                            .primaryButton()
+                            .padding(.horizontal, -20)
+                            .focused($fieldInFocus, equals: .button)
+                    }
+                    .simultaneousGesture(TapGesture().onEnded({ action in
+                        checkoutViewModel.getOrder(
+                            items: itemAddedViewModel.itemAdded,
+                            total: totalOrder,
+                            deliveryOption: true,
+                            dropOffOption: dropOffOption,
+                            pickUpOption: false,
+                            deliveryInstructions: deliveryInstructions,
+                            courierTip: courierTip,
+                            deliveryFee: deliveryFee,
+                            deliverytime: mapAPI.time,
+                            deliveryAddress: address,
+                            pickUpAddress: "",
+                            pickUpTime: Date(),
+                            pickUpSpecialRequest: "",
+                            nameofOrder: nameofOrder,
+                            emailOrder: emailOrder)
+                        
+                        verifyAddress = false
+                        disableButton = false
+                        
+                        print(checkoutViewModel.order)
+                    }))
+                    
+                    
+                } else {
+                    
+                    Button {
+                        
+                        isThereChanges()
+                        
+                        if addressHasChanged {
+                            checkEverything()
+                            getWrongFields()
+                            save()
+                            isThereChanges()
+                        }
+                        else {
+                            verifyAddress = false
+                            disableButton = false
+                            
+                        }
+                        
+                    } label: {
+                        
+                        
+                        if addressHasChanged {
+                            Text("Save").primaryButton()
+                                .padding(.horizontal, -20)
+                                .focused($fieldInFocus, equals: .button)
+                        }
+                        else {
+                            Text("Looks fine").primaryButton()
+                                .padding(.horizontal, -20)
+                                .focused($fieldInFocus, equals: .button)
+                        }
+                        
+                    }
+                    
+                    
+                }
+            }
+            
+            .padding(.horizontal, 20)
             
         }
         .padding(.top, 25)
@@ -754,20 +753,20 @@ struct CheckOutView: View {
     
     func isThereChanges() {
         
-            if firstName == CfirstName &&
-                lastName == ClastName &&
-                email == Cemail &&
-                line1 == Cline1 &&
-                line2 == Cline2 &&
-                city == Ccity &&
-                stateSelection == CstateSelection &&
-                zipCode == CzipCode {
-                
-                addressHasChanged = false
-            }
+        if firstName == CfirstName &&
+            lastName == ClastName &&
+            email == Cemail &&
+            line1 == Cline1 &&
+            line2 == Cline2 &&
+            city == Ccity &&
+            stateSelection == CstateSelection &&
+            zipCode == CzipCode {
+            
+            addressHasChanged = false
+        }
         else {
-                addressHasChanged = true
-            }
+            addressHasChanged = true
+        }
         
         if firstName.isEmpty &&
             lastName.isEmpty &&
@@ -803,7 +802,6 @@ struct CheckOutView: View {
             }
             
         }
-        
     }
     
     func checkEverything() {
@@ -911,7 +909,7 @@ struct CheckOutView: View {
     
     
     func save() {
-
+        
         if isCurrentUserSignedIn {
             if firstNameHasChanged || lastNameHasChanged || line1HasChanged || line2HasChanged ||
                 cityHasChanged || stateHasChanged || zipCodeHasChanged || emailHasChanged {
@@ -1042,98 +1040,3 @@ struct CheckOutView_Previews: PreviewProvider {
             .environmentObject(CheckoutViewModel())
     }
 }
-
-//struct mapView: UIViewRepresentable {
-//
-//    @EnvironmentObject var mapAPI: MapAPI
-//    @Binding var userLocation: CLLocationCoordinate2D
-//    
-//
-//    func makeCoordinator() -> Coordinator {
-//        return mapView.Coordinator()
-//    }
-//
-//    
-//    func makeUIView(context: Context) -> MKMapView {
-//        
-//        let map = MKMapView()
-//        
-//        let exampleRestaurantLocation = CLLocationCoordinate2D(latitude: 41.884930, longitude: -87.632940)
-//
-//        let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 2, longitudeDelta: 2)
-//
-//        let region: MKCoordinateRegion = MKCoordinateRegion(center: exampleRestaurantLocation, span: span)
-//
-//        let sourcePin = MKPointAnnotation()
-//        sourcePin.coordinate = exampleRestaurantLocation
-//        sourcePin.title = "Little Lemon Example"
-//        map.addAnnotation(sourcePin)
-//
-//        let destinationPin = MKPointAnnotation()
-//        destinationPin.coordinate = userLocation
-//        destinationPin.title = "My Address"
-//        map.addAnnotation(destinationPin)
-//
-//        map.region = region
-//        map.delegate = context.coordinator
-//
-//        let req = MKDirections.Request()
-//        req.source = MKMapItem(placemark: MKPlacemark(coordinate: exampleRestaurantLocation))
-//        req.destination = MKMapItem(placemark: MKPlacemark(coordinate: userLocation))
-//        
-//
-//        let directions = MKDirections(request: req)
-//
-////        let transportType: MKDirectionsTransportType(
-//        
-//        directions.calculate { (direct, error) in
-//
-//            if error != nil {
-//                print("There was an error: \((error?.localizedDescription)!)")
-//                return
-//            }
-//
-//            for route in direct!.routes {
-//                
-//                mapAPI.time = 0
-//                
-//                let eta = route.expectedTravelTime // time in seconds
-//                mapAPI.time = eta
-//                
-//                mapAPI.distance = 0
-//                
-//                let distance = route.distance // distance in meters
-//                mapAPI.distance = distance
-//            }
-//            
-//            let polilyne = direct?.routes.first?.polyline
-//            
-//            map.addOverlay(polilyne!)
-//            map.setRegion(MKCoordinateRegion(polilyne!.boundingMapRect), animated: true)
-//            map.showAnnotations([sourcePin , destinationPin], animated: true)
-//        }
-//        
-//        return map
-//    }
-//
-//    func updateUIView(_ uiView: MKMapView, context: UIViewRepresentableContext<mapView>) {
-//
-//    }
-//
-//    class Coordinator: NSObject, MKMapViewDelegate {
-//        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-//
-//                let render = MKPolylineRenderer(overlay: overlay)
-//            render.strokeColor = .blue
-//            render.lineWidth = 3
-//
-//            return render
-//
-//        }
-//    }
-//
-//}
-
-
-    
-   
