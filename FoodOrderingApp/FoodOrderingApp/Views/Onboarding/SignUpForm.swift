@@ -67,6 +67,7 @@ struct SignUpForm: View {
     @AppStorage("city") var currentUserCity: String?
     @AppStorage("state") var currentUserState: String?
     @AppStorage("zip_code") var currentUserZipCode: String?
+    @AppStorage("complete_address") var currentUserCompleteAddress: String?
     @AppStorage("password") var currentUserPassword: String?
     @AppStorage("phone_number") var currentUserPhoneNumber: String?
     
@@ -628,6 +629,12 @@ struct SignUpForm: View {
                     currentUserZipCode = zipCode
                     currentUserState = stateSelection
                     
+                    if line2.isEmpty || line2 == "NA" {
+                        currentUserCompleteAddress = "\(line1), \(city), \(stateSelection) \(zipCode)"
+                    } else {
+                        currentUserCompleteAddress = "\(line1), \(line2), \(city), \(stateSelection) \(zipCode)"
+                    }
+                    
                     // app logic
                     isCurrentUserSignedIn = true
                     isThereAnUser = true
@@ -696,7 +703,7 @@ struct SignUpForm: View {
         
         // checking line2 field
         if line2.isEmpty {
-            currentUserLine2 = nil
+            line2 = "NA"
         }
         
         // checking city field

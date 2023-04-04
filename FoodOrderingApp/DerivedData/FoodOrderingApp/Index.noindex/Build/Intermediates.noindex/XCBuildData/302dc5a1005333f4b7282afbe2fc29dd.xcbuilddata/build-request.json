@@ -1,0 +1,58 @@
+{
+  "buildCommand" : {
+    "command" : "prepareForIndexing",
+    "enableIndexBuildArena" : true,
+    "targets" : null
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "4c3a07a4a8019fa72aecd2874824729c3303955e0539717d26b2509c29fd5a66"
+    }
+  ],
+  "containerPath" : "/Users/rhencydelgado/Desktop/ll/FoodOrderingApp/FoodOrderingApp.xcodeproj",
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "indexbuild",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator16.4",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/rhencydelgado/Desktop/ll/FoodOrderingApp/DerivedData/FoodOrderingApp/Index.noindex/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/rhencydelgado/Desktop/ll/FoodOrderingApp/DerivedData/FoodOrderingApp/Index.noindex/Build/Products",
+      "derivedDataPath" : "/Users/rhencydelgado/Desktop/ll/FoodOrderingApp/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/rhencydelgado/Desktop/ll/FoodOrderingApp/DerivedData/FoodOrderingApp/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/rhencydelgado/Desktop/ll/FoodOrderingApp/DerivedData/FoodOrderingApp/Index.noindex/PrecompiledHeaders",
+      "indexRegularBuildIntermediatesPath" : "/Users/rhencydelgado/Library/Developer/Xcode/DerivedData/Build/Intermediates.noindex",
+      "indexRegularBuildProductsPath" : "/Users/rhencydelgado/Library/Developer/Xcode/DerivedData/Build/Products",
+      "pchPath" : "/Users/rhencydelgado/Desktop/ll/FoodOrderingApp/DerivedData/FoodOrderingApp/Index.noindex/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO",
+          "ONLY_ACTIVE_ARCH" : "YES"
+        }
+      }
+    }
+  },
+  "qos" : "utility",
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

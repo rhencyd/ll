@@ -24,20 +24,25 @@ struct Menu: View {
             FetchedObjects(
                 predicate: buildPredicate(),
                 sortDescriptors: buildSortDescriptors()) { (dishes: [DishEntity]) in
+                    
                     List {
                         ForEach(dishes, id: \.self) { dish in
                             NavigationLink(value: ScreenNavigationValue.dishView(dish)) {
                                 DishPreView(dish: dish)
                             }
                         }
+                        
                     }.listStyle(.plain)
+                    
                 }
         }
         .onAppear {
             getMenuData()
             
         }
+        
     }
+    
     
     func getMenuData() {
         
@@ -58,8 +63,9 @@ struct Menu: View {
                         let predicate = NSPredicate(format: "title CONTAINS[cd] %@", dish.title)
                         request.predicate = predicate
                         
+                        
                         let numberOfRecords = try viewContext.count(for: request)
-//                        print("Current Dishes in Core data for \(dish.title) : \(numberOfRecords)")
+                        print("Current Dishes in Core data for \(dish.title) : \(numberOfRecords)")
                         
                         if numberOfRecords == 0 {
                             let newDish = DishEntity(context: viewContext)
@@ -70,19 +76,19 @@ struct Menu: View {
                             newDish.image = dish.image
                             newDish.id = Int32(dish.id)
                             try? viewContext.save()
-//                            print("------------------Now saving \(dish.title) in core-------------------")
+                            print("------------------Now saving \(dish.title) in core-------------------")
                         }
                     } catch {
                         print("Error saving context \(error)")
                     }
-            }
+                }
             }
             
         }
         task.resume()
     }
     
-
+    
     
     func buildPredicate() -> NSCompoundPredicate {
         return NSCompoundPredicate(type: .and,
@@ -91,10 +97,12 @@ struct Menu: View {
                                                    mainsFilter(),
                                                    startersFilter(),
                                                    searchTextFilter()
-                                                              ])
+                                                  ])
     }
     
-
+    
+    
+    
     func dessertsFilter() -> NSPredicate {
         return !vm.dessertsfilter ?
         NSPredicate(value: true) :

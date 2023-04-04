@@ -90,6 +90,7 @@ struct UserProfile: View {
     
     
     // App Storage
+    @AppStorage("complete_address") var currentUserCompleteAddress: String?
     @AppStorage("signed_in") var isCurrentUserSignedIn: Bool = false
     @AppStorage("first_name") var currentUserFirstName: String?
     @AppStorage("last_name") var currentUserLastName: String?
@@ -529,7 +530,9 @@ struct UserProfile: View {
                                             fieldInFocus = .city
                                         }
                                         .onAppear {
-                                            line2 = currentUserLine2 ?? ""
+                                            if currentUserLine2 == "NA" {
+                                                line2 = ""
+                                            }
                                         }
                                     
                                 }
@@ -1111,7 +1114,7 @@ struct UserProfile: View {
                     }
                 }
                 
-                .edgesIgnoringSafeArea(.bottom)
+//                .edgesIgnoringSafeArea(.bottom)
                 .toolbarBackground(.white, for: .navigationBar)
                 .navigationBarTitleDisplayMode(.inline)
                 
@@ -1320,6 +1323,7 @@ struct UserProfile: View {
         isSpecialOfferActive = false
         isNewsletterActive = false
         isThereAnUser = false
+        currentUserCompleteAddress = nil
         
     }
     

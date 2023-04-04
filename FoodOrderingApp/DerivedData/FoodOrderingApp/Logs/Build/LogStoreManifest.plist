@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>078F106C-C0E7-4C25-93DC-BC28925AC5A1</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>078F106C-C0E7-4C25-93DC-BC28925AC5A1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702271415.27071404</real>
+			<key>timeStoppedRecording</key>
+			<real>702271415.30682397</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>078F106C-C0E7-4C25-93DC-BC28925AC5A1</string>
+		</dict>
+		<key>0B46002A-47C5-4EF6-B32A-C991076E08DD</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>0B46002A-47C5-4EF6-B32A-C991076E08DD.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702271414.59843504</real>
+			<key>timeStoppedRecording</key>
+			<real>702271414.65522897</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>0B46002A-47C5-4EF6-B32A-C991076E08DD</string>
+		</dict>
+		<key>19700964-6281-426E-8FE3-9954C187C77A</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>19700964-6281-426E-8FE3-9954C187C77A.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702271445.76480901</real>
+			<key>timeStoppedRecording</key>
+			<real>702271445.79469001</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>19700964-6281-426E-8FE3-9954C187C77A</string>
+		</dict>
+		<key>2B009A94-EDA6-4BEE-8B43-7CD262C2332C</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>2B009A94-EDA6-4BEE-8B43-7CD262C2332C.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702270837.09732401</real>
+			<key>timeStoppedRecording</key>
+			<real>702270837.16072798</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>2B009A94-EDA6-4BEE-8B43-7CD262C2332C</string>
+		</dict>
+		<key>5C68D16E-A702-4EA8-97F9-FD53313CE2E1</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>5C68D16E-A702-4EA8-97F9-FD53313CE2E1.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702270645.80533099</real>
+			<key>timeStoppedRecording</key>
+			<real>702270645.88971698</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>5C68D16E-A702-4EA8-97F9-FD53313CE2E1</string>
+		</dict>
+		<key>91F391E0-0AB6-40BA-9933-0EF18268DB34</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>91F391E0-0AB6-40BA-9933-0EF18268DB34.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702271411.56714296</real>
+			<key>timeStoppedRecording</key>
+			<real>702271411.68600297</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>91F391E0-0AB6-40BA-9933-0EF18268DB34</string>
+		</dict>
+		<key>A57819ED-FE03-44E3-AAEF-0DAD3E5FE210</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>A57819ED-FE03-44E3-AAEF-0DAD3E5FE210.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702271415.01343203</real>
+			<key>timeStoppedRecording</key>
+			<real>702271415.06928694</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>A57819ED-FE03-44E3-AAEF-0DAD3E5FE210</string>
+		</dict>
+		<key>B060C200-E8FE-4833-AA32-C0E35B2A1A49</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>B060C200-E8FE-4833-AA32-C0E35B2A1A49.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702271413.76477695</real>
+			<key>timeStoppedRecording</key>
+			<real>702271413.79925001</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>B060C200-E8FE-4833-AA32-C0E35B2A1A49</string>
+		</dict>
+		<key>D8E55456-9028-4CD8-A2BE-1CEC9B787DF9</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>D8E55456-9028-4CD8-A2BE-1CEC9B787DF9.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702270937.39972103</real>
+			<key>timeStoppedRecording</key>
+			<real>702270937.55148196</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>D8E55456-9028-4CD8-A2BE-1CEC9B787DF9</string>
+		</dict>
+		<key>E3482789-D1ED-4463-B024-F29D11D7EBBA</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E3482789-D1ED-4463-B024-F29D11D7EBBA.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>FoodOrderingApp project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>FoodOrderingApp</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build FoodOrderingApp</string>
+			<key>timeStartedRecording</key>
+			<real>702271104.24718904</real>
+			<key>timeStoppedRecording</key>
+			<real>702271104.42657399</real>
+			<key>title</key>
+			<string>Build FoodOrderingApp</string>
+			<key>uniqueIdentifier</key>
+			<string>E3482789-D1ED-4463-B024-F29D11D7EBBA</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -30,6 +30,13 @@ struct MenuBreakDown: View {
                         vm.dessertsfilter = false
                         vm.sidesfilter = false
                     }
+                    .onAppear {
+                        vm.startersfilter.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            vm.startersfilter.toggle()
+                        }
+                    }
+                
                 
                 Spacer()
                 

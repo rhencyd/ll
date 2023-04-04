@@ -13,9 +13,11 @@ struct Home: View {
     @StateObject private var extraItemsViewModel: ExtraItemsViewModel = ExtraItemsViewModel()
     @StateObject var itemAddedViewModel: CartViewModel = CartViewModel()
     @StateObject var vm: DishesFiltering = DishesFiltering()
+    @StateObject var checkoutViewModel: CheckoutViewModel = CheckoutViewModel()
+    @StateObject private var mapAPI: MapAPI = MapAPI()
     @EnvironmentObject var hamburguerMenu: HamburguerMenu
     
-    let persistenceController = PersistenceController.shared
+    @State var isHistory: Bool = false
     
     
     var body: some View {
@@ -23,18 +25,22 @@ struct Home: View {
         VStack {
             
             HeroSection()
-                .environmentObject(vm)
+                .onAppear {
+                    PersistenceController.shared.clear()
+                }
+               
             MenuBreakDown()
-                .environmentObject(vm)
+               
             Menu()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(vm)
-            
+
         }
+        .environmentObject(vm)
+
+        
         .padding(.top, 5)
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
-        
+
         
         .onAppear(perform: {
             screenNavigator.cartErased = false
@@ -56,6 +62,7 @@ struct Home: View {
                     }
                 }
             }
+            
             
             ToolbarItem(placement: .navigationBarLeading) {
                 
@@ -87,7 +94,8 @@ struct Home: View {
         
         .navigationDestination(for: ScreenNavigationValue.self) { screen in
             switch screen {
-            case .userProfile: UserProfile()
+            case .userProfile:
+                UserProfile()
             case .home: Home()
             case .welcome: Welcome()
             case .cartView:
@@ -101,7 +109,27 @@ struct Home: View {
             case .editCart(let item):
                 EditDishView(dish: item)
                     .environmentObject(itemAddedViewModel)
-//                EditDishView(dish: itemAddedViewModel.itemBinding(id: item))
+                
+            case .checkout:
+                CheckOutView()
+                    .environmentObject(itemAddedViewModel)
+                    .environmentObject(checkoutViewModel)
+                    .environmentObject(mapAPI)
+                
+            case .confirmation(let orders):
+                ConfirmationView(orders: orders)
+                    .environmentObject(checkoutViewModel)
+                    .environmentObject(itemAddedViewModel)
+                    .environmentObject(mapAPI)
+                
+            case .payment:
+                PaymentScreen()
+                    .environmentObject(checkoutViewModel)
+                    .environmentObject(itemAddedViewModel)
+                
+            case .history:
+                HistoryView()
+                    .environmentObject(checkoutViewModel)
             }
         }
         

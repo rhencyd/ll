@@ -48,6 +48,7 @@ struct SignInForm: View {
                 Text("Email").formHeaderSection()
                 TextField("",text: $userEmail)
                     .emailTextInput()
+                    .keyboardType(.emailAddress)
                     .textContentType(.emailAddress)
                     .autocapitalization(.none)
                     .focused($fieldInFocus, equals: .email)
@@ -124,6 +125,7 @@ struct SignInForm: View {
                     
                     if isThereAnUser {
                         checkInfo()
+                        getWrongFields()
                         
                         if isEmailVerified == true && isPasswordVerified == true {
                             isCurrentUserSignedIn = true
@@ -171,6 +173,23 @@ struct SignInForm: View {
             isPasswordVerified = false
         }
     }
+    
+    func getWrongFields() {
+        
+        if let email = isEmailVerified {
+            if !email {
+                fieldInFocus = .email
+            }
+        }
+        
+        else if let password = isPasswordVerified {
+            if !password {
+                fieldInFocus = .password
+            }
+        }
+
+    }
+    
 }
 
 struct SignInForm_Previews: PreviewProvider {
