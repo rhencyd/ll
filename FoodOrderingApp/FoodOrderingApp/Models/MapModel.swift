@@ -30,7 +30,6 @@ class MapAPI: ObservableObject {
     private let API_KEY = "6666818002013938effe8f61ca48d85b"
     
     @Published var region: MKCoordinateRegion
-    @Published var coordinates = []
     @Published var locations: [Location] = []
     @Published var time: Double = 0
     @Published var distance: Double = 0
@@ -70,7 +69,6 @@ class MapAPI: ObservableObject {
                 let lon = details.longitude
                 let name = details.name
                 
-                self.coordinates = [lat, lon]
                 self.region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lat, longitude: lon), span: MKCoordinateSpan(latitudeDelta: delta, longitudeDelta: delta))
                 
                 let newLocation = Location(name: name ?? "Pin", coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))

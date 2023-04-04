@@ -78,7 +78,7 @@ struct DeliveryOptionsView: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 30)
             .padding(.bottom, 30)
             
             Section {
@@ -86,27 +86,29 @@ struct DeliveryOptionsView: View {
                 button()
                     .padding(.vertical, 10)
                 
+                
                 VStack(alignment: .leading) {
                     
                     Text("Delivery Instructions").sectionCategory()
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 20)
-                        .padding(.top, 10)
+                        .padding(.leading, 20)
                     
                     TextField("Type your instructions here", text: $deliveryInstructions)
                         .font(Font.custom("Karla-Regular", size: 16))
                         .foregroundColor(Color("HighlightColor2"))
-                        .padding(12)
+                        .padding(.leading, 10)
+                        .padding(.top, 10)
                         .frame(height: 200, alignment: .topLeading)
                         .background((Color("HighlightColor1")))
                         .cornerRadius(8)
-                        .padding(.horizontal)
+                        .padding(.horizontal, 20)
                 }
+                .padding(.top)
                 
             } header: {
                 Text("Drop-off options".uppercased()).sectionTitle()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 20)
+                    .padding(.leading, 30)
             }
             
             
@@ -116,9 +118,11 @@ struct DeliveryOptionsView: View {
                 VStack {
                     
                     Text("Your tip can be a great contribution fulfilling their wish").paragraphText()
-                    tip()
+                        .padding(.horizontal, 5)
                     
+                    tip()
                 }
+                
                 
                 
             } header: {
@@ -127,6 +131,7 @@ struct DeliveryOptionsView: View {
                     .padding(.leading, 20)
                     .padding(.top, 30)
                     .padding(.bottom, 1)
+                    .padding(.horizontal)
             }
             
             Section {
@@ -199,17 +204,19 @@ struct DeliveryOptionsView: View {
             } label: {
                 Text(disableButton ? "Calculating route!" : "Proceed to Pay")
                     .primaryButton()
+                    .opacity(disableButton ? 0.5 : 1)
                     .padding(.top, 10)
             }
             .disabled(disableButton)
         }
+        
         .onAppear {
             calculateCourierTip()
             
             if isCurrentUserSignedIn {
                 disableButton = true
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
                     disableButton = false
                 }
             }
@@ -247,10 +254,11 @@ struct DeliveryOptionsView: View {
                     .frame(width: 200, height: 32)
                     .background(Color("PrimaryColor1"))
                     .cornerRadius(8)
-                    .offset(x: handItTome ? -90 : 90)
+                    .offset(x: handItTome ? -80 :80)
                     .animation(.spring(), value: handItTome)
                 
             }
+            
             
         }
     }
@@ -296,7 +304,7 @@ struct DeliveryOptionsView: View {
             }
             .font(Font.custom("Karla-ExtraBold", size: 16))
             .foregroundColor(Color("PrimaryColor1"))
-            .frame(width: 130, height: 40)
+            .frame(width: 100, height: 40)
             .background(Color("SecundaryColor3"))
             .cornerRadius(16)
             
@@ -307,6 +315,7 @@ struct DeliveryOptionsView: View {
                 calculateCourierTip()
             }
         }
+        
         
     }
     
