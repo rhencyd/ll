@@ -66,6 +66,8 @@ struct UserProfile: View {
     @State var specialOffersNotificationHasChanged: Bool = false
     @State var newsletterNotificationHasChanged: Bool = false
     
+    @State var disableButton: Bool = true
+    
     
     //
     @State var editEnable: Bool = false
@@ -107,6 +109,10 @@ struct UserProfile: View {
     @AppStorage("specialOfferToggle") var isSpecialOfferActive: Bool = false
     @AppStorage("newsletterToggle") var isNewsletterActive: Bool = false
     @AppStorage("is_user_registered") var isThereAnUser: Bool = false
+
+    
+    @AppStorage("demo_email") var demoEmail: String = "demo@email.com"
+    @AppStorage("demo_password") var demoPassword: String = "Password123*"
     
     var body: some View {
         
@@ -189,6 +195,7 @@ struct UserProfile: View {
                                                     wrongFirstName = true
                                                 }
                                                 
+                                                isThereChanges()
                                             })
                                             .onSubmit {
                                                 
@@ -199,12 +206,13 @@ struct UserProfile: View {
                                                     fieldInFocus = .lastName
                                                 }
                                                 
+                                                isThereChanges()
+                                                
                                             }
                                             .onAppear {
-                                                firstName = currentUserFirstName ?? "First Name"
+                                                firstName = currentUserFirstName ?? "Paola"
                                             }
                                         
-                                        if let currentUserFirstName = currentUserFirstName {
                                             if !wrongFirstName && firstName != currentUserFirstName {
                                                 Image(systemName: "checkmark")
                                                     .resizable()
@@ -218,7 +226,6 @@ struct UserProfile: View {
                                                         firstNameHasChanged = false
                                                     }
                                             }
-                                        }
                                     }
                                     
                                     if wrongFirstName {
@@ -255,6 +262,8 @@ struct UserProfile: View {
                                                 else {
                                                     wrongLastName = true
                                                 }
+                                                
+                                                isThereChanges()
                                             })
                                             .onSubmit {
                                                 
@@ -265,12 +274,13 @@ struct UserProfile: View {
                                                 else {
                                                     fieldInFocus = .email
                                                 }
+                                                
+                                                isThereChanges()
                                             }
                                             .onAppear {
-                                                lastName = currentUserLastName ?? "Last Name"
+                                                lastName = currentUserLastName ?? "Navarrete"
                                             }
                                         
-                                        if let currentUserLastName = currentUserLastName {
                                             if !wrongLastName && lastName != currentUserLastName {
                                                 Image(systemName: "checkmark")
                                                     .resizable()
@@ -284,7 +294,6 @@ struct UserProfile: View {
                                                         lastNameHasChanged = false
                                                     }
                                             }
-                                        }
                                     }
                                     
                                     if wrongLastName {
@@ -322,6 +331,8 @@ struct UserProfile: View {
                                                     wrongEmail = true
                                                 }
                                                 
+                                                isThereChanges()
+                                                
                                             })
                                             .onSubmit {
                                                 
@@ -331,12 +342,13 @@ struct UserProfile: View {
                                                 } else {
                                                     fieldInFocus = .phoneNumber
                                                 }
+                                                
+                                                isThereChanges()
                                             }
                                             .onAppear {
-                                                email = currentUserEmail ?? "email"
+                                                email = currentUserEmail ?? demoEmail
                                             }
                                         
-                                        if let currentUserEmail = currentUserEmail {
                                             if !wrongEmail && email != currentUserEmail {
                                                 Image(systemName: "checkmark")
                                                     .resizable()
@@ -350,7 +362,6 @@ struct UserProfile: View {
                                                         emailHasChanged = false
                                                     }
                                             }
-                                        }
                                     }
                                     
                                     if wrongEmail {
@@ -391,12 +402,13 @@ struct UserProfile: View {
                                                     fieldInFocus = .phoneNumber
                                                     wrongPhoneNumber = true
                                                 }
+                                                
+                                                isThereChanges()
                                             })
                                             .onAppear {
-                                                phoneNumber = currentUserPhoneNumber ?? "Phone Number"
+                                                phoneNumber = currentUserPhoneNumber ?? "0123455789"
                                             }
                                         
-                                        if let currentUserPhoneNumber = currentUserPhoneNumber {
                                             if !wrongPhoneNumber && phoneNumber != currentUserPhoneNumber {
                                                 Image(systemName: "checkmark")
                                                     .resizable()
@@ -410,7 +422,6 @@ struct UserProfile: View {
                                                         phoneNumberHasChanged = false
                                                     }
                                             }
-                                        }
                                     }
                                     
                                     if wrongPhoneNumber {
@@ -462,6 +473,8 @@ struct UserProfile: View {
                                                 } else {
                                                     wrongLine1 = false
                                                 }
+                                                
+                                                isThereChanges()
                                             })
                                         
                                             .onSubmit {
@@ -472,12 +485,13 @@ struct UserProfile: View {
                                                 } else {
                                                     fieldInFocus = .line2
                                                 }
+                                                
+                                                isThereChanges()
                                             }
                                             .onAppear {
-                                                line1 = currentUserLine1 ?? "Line 1"
+                                                line1 = currentUserLine1 ?? "2108 N CALIFORNIA AVE".capitalized
                                             }
                                         
-                                        if let currentUserLine1 = currentUserLine1 {
                                             if !wrongLine1 && line1 != currentUserLine1 {
                                                 Image(systemName: "checkmark")
                                                     .resizable()
@@ -491,7 +505,6 @@ struct UserProfile: View {
                                                         line1HasChanged = false
                                                     }
                                             }
-                                        }
                                     }
                                     
                                     if wrongLine1 {
@@ -518,18 +531,23 @@ struct UserProfile: View {
                                         .normalTextInput()
                                         .focused($fieldInFocus, equals: .line2)
                                         .onChange(of: line2, perform: { newValue in
-                                            if let currentUserLine2 = currentUserLine2 {
+
                                                 if !line2.isEmpty && line2 != currentUserLine2 {
                                                     line2HasChanged = true
                                                 }
-                                            }
+                                            
+                                            isThereChanges()
+
                                         })
                                         .onSubmit {
                                             fieldInFocus = .city
+                                            isThereChanges()
                                         }
                                         .onAppear {
                                             if currentUserLine2 == "NA" {
                                                 line2 = ""
+                                            } else {
+                                                line2 = currentUserLine2 ?? "APT 2F".capitalized
                                             }
                                         }
                                     
@@ -555,6 +573,8 @@ struct UserProfile: View {
                                                     wrongCity = false
                                                 }
                                                 
+                                                isThereChanges()
+                                                
                                             })
                                             .onSubmit {
                                                 if wrongCity {
@@ -563,12 +583,13 @@ struct UserProfile: View {
                                                 } else {
                                                     fieldInFocus = .stateSelection
                                                 }
+                                                
+                                                isThereChanges()
                                             }
                                             .onAppear {
-                                                city = currentUserCity ?? "City"
+                                                city = currentUserCity ?? "Chicago"
                                             }
                                         
-                                        if let currentUserCity = currentUserCity {
                                             if !wrongCity && city != currentUserCity {
                                                 Image(systemName: "checkmark")
                                                     .resizable()
@@ -582,7 +603,6 @@ struct UserProfile: View {
                                                         cityHasChanged = false
                                                     }
                                             }
-                                        }
                                     }
                                     
                                     if wrongCity {
@@ -614,9 +634,11 @@ struct UserProfile: View {
                                             fieldInFocus = .confirmPassword
                                             fieldInFocus = .zipCode
                                             stateHasChanged = true
+                                            
+                                            isThereChanges()
                                         })
                                         .onAppear {
-                                            stateSelection = currentUserState ?? "State"
+                                            stateSelection = currentUserState ?? "IL"
                                         }
                                     
                                 }
@@ -645,12 +667,13 @@ struct UserProfile: View {
                                                     fieldInFocus = .zipCode
                                                     wrongZipCode = true
                                                 }
+                                                
+                                                isThereChanges()
                                             }
                                             .onAppear {
-                                                zipCode = currentUserZipCode ?? "Zip Code"
+                                                zipCode = currentUserZipCode ?? "60647"
                                             }
                                         
-                                        if let currentUserZipCode = currentUserZipCode {
                                             if !wrongZipCode && zipCode != currentUserZipCode {
                                                 Image(systemName: "checkmark")
                                                     .resizable()
@@ -664,7 +687,6 @@ struct UserProfile: View {
                                                         zipCodeHasChanged = false
                                                     }
                                             }
-                                        }
                                     }
                                     
                                     if wrongZipCode {
@@ -705,13 +727,20 @@ struct UserProfile: View {
                                         .frame(width:20, height: 20)
                                         .onTapGesture {
                                             orderStatus.toggle()
-                                            orderStatusNotificationHasChanged.toggle()
+                                            isThereChanges()
+                                        }
+                                        .onChange(of: orderStatus) { value in
+                                            if orderStatus != isOrderStatusActive {
+                                                orderStatusNotificationHasChanged = true
+                                            } else {
+                                                orderStatusNotificationHasChanged = false
+                                            }
                                         }
                                     
                                     
                                     Text("Order Statuses").paragraphText()
                                         .onAppear {
-                                            orderStatus = isOrderStatusActive
+                                                orderStatus = isOrderStatusActive
                                         }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -726,13 +755,21 @@ struct UserProfile: View {
                                         .frame(width:20, height: 20)
                                         .onTapGesture {
                                             passwordChanges.toggle()
-                                            passwordChangesNotificationHasChanged.toggle()
+                                            isThereChanges()
+                                        }
+                                        .onChange(of: passwordChanges) { value in
+                                            if passwordChanges != isPasswordCahngedActive {
+                                                passwordChangesNotificationHasChanged = true
+                                            } else {
+                                                passwordChangesNotificationHasChanged = false
+                                            }
                                         }
                                     
                                     
                                     Text("Password Changes").paragraphText()
                                         .onAppear {
-                                            passwordChanges = isPasswordCahngedActive
+
+                                                passwordChanges = isPasswordCahngedActive
                                         }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -747,13 +784,22 @@ struct UserProfile: View {
                                         .frame(width:20, height: 20)
                                         .onTapGesture {
                                             specialOffers.toggle()
-                                            specialOffersNotificationHasChanged.toggle()
+                                            isThereChanges()
+                                        }
+                                        .onChange(of: specialOffers) { value in
+                                            if specialOffers != isSpecialOfferActive {
+                                                specialOffersNotificationHasChanged = true
+                                            } else {
+                                                specialOffersNotificationHasChanged = false
+                                            }
                                         }
                                     
                                     
                                     Text("Special Offers").paragraphText()
                                         .onAppear {
-                                            specialOffers = isSpecialOfferActive
+
+                                                specialOffers = isSpecialOfferActive
+
                                         }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -770,8 +816,15 @@ struct UserProfile: View {
                                             newsletterNotificationHasChanged.toggle()
                                         }
                                     Text("Newsletter").paragraphText()
+                                        .onChange(of: newsletter) { value in
+                                            if newsletter != isNewsletterActive {
+                                                newsletterNotificationHasChanged = true
+                                            } else {
+                                                newsletterNotificationHasChanged = false
+                                            }
+                                        }
                                         .onAppear {
-                                            newsletter = isNewsletterActive
+                                                newsletter = isNewsletterActive
                                         }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -811,7 +864,8 @@ struct UserProfile: View {
                                             .background(Color("PrimaryColor1").cornerRadius(16))
                                         
                                     }
-                                    
+                                    .disabled(disableButton)
+   
                                 }
                                 .padding(.top, 20)
                             }
@@ -1045,6 +1099,7 @@ struct UserProfile: View {
                                                 .frame(height: 45)
                                                 .background(Color("PrimaryColor1").cornerRadius(16))
                                         }
+                                        .disabled(disableButton)
                                         
                                     }
                                     .padding(.bottom, 20)
@@ -1128,7 +1183,7 @@ struct UserProfile: View {
                                     .foregroundColor(Color("SecundaryColor2"))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
-                                Text(currentUserFirstName ?? "Name")
+                                Text(currentUserFirstName ?? "Paola")
                                     .font(Font.custom("Karla-ExtraBold", size: 30))
                                     .foregroundColor(Color("HighlightColor1"))
                                 
@@ -1140,105 +1195,112 @@ struct UserProfile: View {
                         .frame(height: 200)
                         .background(Color("PrimaryColor1"))
                         
-                        VStack(alignment: .leading) {
-                            
-                            Text("Personal Information").sectionTitle()
-                                .padding(.top)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding([.horizontal, .bottom])
-                            
-                            VStack(alignment: .leading) {
-                                Text("Account Holder")
-                                    .font(Font.custom("Karla-Bold", size: 16))
-                                    .padding(.bottom, 1)
-                                
-                                Text("\(currentUserFirstName ?? "Name") \(currentUserLastName ?? "LastName")").paragraphText()
-                                
-                                Text("\(currentUserEmail ?? "email@example.com") / \(currentUserPhoneNumber?.convertToInternationalFormat() ?? "(012) 345-5789")").paragraphText()
-                            }
-                            .padding(.bottom, 30)
-                            
-                            
-                            VStack(alignment: .leading) {
-                                Text("Preferred Delivery Address")
-                                    .font(Font.custom("Karla-Bold", size: 16))
-                                    .padding(.bottom, 1)
-                                
-                                Text("\(currentUserLine1 ?? "Line1"), \(currentUserLine2 ?? "")").paragraphText()
-                                
-                                Text("\(currentUserCity ?? "City"), \(currentUserState ?? "State"), \(currentUserZipCode ?? "ZipCode")").paragraphText()
-                            }
-                            .padding(.bottom, 30)
-                            
-                            
+                        ScrollView {
                             VStack(alignment: .leading) {
                                 
-                                Text("Notifications Settings")
-                                    .font(Font.custom("Karla-Bold", size: 16))
-                                    .padding(.bottom, 1)
+                                Text("Personal Information").sectionTitle()
+                                    .padding(.top)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding([.horizontal, .bottom])
                                 
-                                HStack(spacing: 10){
-                                    Image(systemName: isOrderStatusActive ? "checkmark.circle.fill" : "circle" )
-                                        .resizable()
-                                        .foregroundColor(isOrderStatusActive ? Color("PrimaryColor1") : Color.black)
-                                        .frame(width:20, height: 20)
+                                VStack(alignment: .leading) {
+                                    Text("Account Holder")
+                                        .font(Font.custom("Karla-Bold", size: 16))
+                                        .padding(.bottom, 1)
                                     
-                                    Text("Order Statuses").paragraphText()
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.vertical, 10)
-                                
-                                
-                                HStack(spacing: 10){
-                                    Image(systemName: isPasswordCahngedActive ? "checkmark.circle.fill" : "circle" )
-                                        .resizable()
-                                        .foregroundColor(isPasswordCahngedActive ? Color("PrimaryColor1") : Color.black)
-                                        .frame(width:20, height: 20)
+                                    Text("\(currentUserFirstName ?? "Paola") \(currentUserLastName ?? "Navarrete")").paragraphText()
                                     
-                                    Text("Password Changes").paragraphText()
+                                    Text("\(currentUserEmail ?? demoEmail) / \(currentUserPhoneNumber?.convertToInternationalFormat() ?? "(012) 345-5789")").paragraphText()
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.bottom, 10)
+                                .padding(.bottom, 30)
                                 
                                 
-                                HStack(spacing: 10){
-                                    Image(systemName: isSpecialOfferActive ? "checkmark.circle.fill" : "circle" )
-                                        .resizable()
-                                        .foregroundColor(isSpecialOfferActive ? Color("PrimaryColor1") : Color.black)
-                                        .frame(width:20, height: 20)
+                                VStack(alignment: .leading) {
+                                    Text("Preferred Delivery Address")
+                                        .font(Font.custom("Karla-Bold", size: 16))
+                                        .padding(.bottom, 1)
                                     
-                                    Text("Special Offers").paragraphText()
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.bottom, 10)
-                                
-                                HStack(spacing: 10){
-                                    Image(systemName: isNewsletterActive ? "checkmark.circle.fill" : "circle" )
-                                        .resizable()
-                                        .foregroundColor(isNewsletterActive ? Color("PrimaryColor1") : Color.black)
-                                        .frame(width:20, height: 20)
+                                    Text("\(currentUserLine1 ?? "2108 N CALIFORNIA AVE".capitalized), \(currentUserLine2 ?? "APT 2F".capitalized)").paragraphText()
                                     
-                                    Text("Newsletter").paragraphText()
+                                    Text("\(currentUserCity ?? "Chicago"), \(currentUserState ?? "Illinois"), \(currentUserZipCode ?? "60647")").paragraphText()
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(.bottom, 10)
+                                .padding(.bottom, 30)
+                                
+                                
+                                VStack(alignment: .leading) {
+                                    
+                                    Text("Notifications Settings")
+                                        .font(Font.custom("Karla-Bold", size: 16))
+                                        .padding(.bottom, 1)
+                                    
+                                    HStack(spacing: 10){
+                                        Image(systemName: isOrderStatusActive ? "checkmark.circle.fill" : "circle" )
+                                            .resizable()
+                                            .foregroundColor(isOrderStatusActive ? Color("PrimaryColor1") : Color.black)
+                                            .frame(width:20, height: 20)
+                                        
+                                        Text("Order Statuses").paragraphText()
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.vertical, 10)
+                                    
+                                    
+                                    HStack(spacing: 10){
+                                        Image(systemName: isPasswordCahngedActive ? "checkmark.circle.fill" : "circle" )
+                                            .resizable()
+                                            .foregroundColor(isPasswordCahngedActive ? Color("PrimaryColor1") : Color.black)
+                                            .frame(width:20, height: 20)
+                                        
+                                        Text("Password Changes").paragraphText()
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 10)
+                                    
+                                    
+                                    HStack(spacing: 10){
+                                        Image(systemName: isSpecialOfferActive ? "checkmark.circle.fill" : "circle" )
+                                            .resizable()
+                                            .foregroundColor(isSpecialOfferActive ? Color("PrimaryColor1") : Color.black)
+                                            .frame(width:20, height: 20)
+                                        
+                                        Text("Special Offers").paragraphText()
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 10)
+                                    
+                                    HStack(spacing: 10){
+                                        Image(systemName: isNewsletterActive ? "checkmark.circle.fill" : "circle" )
+                                            .resizable()
+                                            .foregroundColor(isNewsletterActive ? Color("PrimaryColor1") : Color.black)
+                                            .frame(width:20, height: 20)
+                                        
+                                        Text("Newsletter").paragraphText()
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.bottom, 10)
+                                }
+                                .padding(.bottom, 30)
+                            } .padding(.horizontal)
+                            
+                            Spacer()
+                            
+                            Button {
+                                isCurrentUserSignedIn = false
+                                PersistenceController.shared.clear()
+                                navigationStateManager.popToRoot()
+                                
+                            } label: {
+                                Text("Logout").primaryButton()
                             }
-                            .padding(.bottom, 30)
-                        } .padding(.horizontal)
+                            .padding(.bottom, 10)
+                            
+                        }
                         
                         
-                        Spacer()
                         
                     }
                     
-                    Button {
-                        isCurrentUserSignedIn = false
-                        PersistenceController.shared.clear()
-                        navigationStateManager.popToRoot()
-                        
-                    } label: {
-                        Text("Logout").primaryButton()
-                    }
+                    
                 }
                 .toolbarBackground(.hidden)
                 .navigationBarTitleDisplayMode(.inline)
@@ -1362,9 +1424,9 @@ struct UserProfile: View {
         }
         
         // checking line2 field
-        if line2.isEmpty {
-            currentUserLine2 = nil
-        }
+//        if line2.isEmpty {
+//            currentUserLine2 = ""
+//        }
         
         // checking city field
         if city.isEmpty {
@@ -1454,7 +1516,7 @@ struct UserProfile: View {
             currentUserLine1 = line1
         }
         if line2.isEmpty || line2 == "NA" {
-            currentUserLine2 = nil
+            currentUserLine2 = ""
         } else {
             currentUserLine2 = line2
         }
@@ -1484,6 +1546,24 @@ struct UserProfile: View {
             isNewsletterActive = newsletter
         }
         
+    }
+    
+    func isThereChanges() {
+        
+        if firstNameHasChanged || lastNameHasChanged || emailHasChanged ||
+            phoneNumberHasChanged || line1HasChanged || line2HasChanged ||
+            cityHasChanged || stateHasChanged || zipCodeHasChanged ||
+            passwordHasChanged || passwordChangesNotificationHasChanged ||
+            newsletterNotificationHasChanged || specialOffersNotificationHasChanged
+            || orderStatusNotificationHasChanged {
+            
+            disableButton = false
+        }
+        else {
+            
+            disableButton = true
+            
+        }
     }
     
     func textFieldValidatorEmail(_ string: String) -> Bool {

@@ -78,6 +78,7 @@ class MapAPI: ObservableObject {
                 self.locations.insert(newLocation, at: 0)
                 
                 print("Successfully loaded the location!")
+                print(newLocation)
                 
             }
         }

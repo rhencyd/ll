@@ -17,7 +17,7 @@ struct CartView: View {
     @State var isEditOn: Bool = false
     @State var numberOfItems: Int = 0
     
-    @AppStorage("complete_address") var currentUserCompleteAddress: String?
+    @AppStorage("line1_address") var currentUserLine1: String?
     
     
     @State var cartSubTotal: Double = 0
@@ -187,9 +187,11 @@ struct CartView: View {
                             Text("Checkout").primaryButton()
                         }
                         .simultaneousGesture(TapGesture().onEnded({ tap in
-                            let address = currentUserCompleteAddress ?? "Chicago"
+                            let address = currentUserLine1 ?? "2108 N CALIFORNIA AVE"
                             mapAPI.getLocation(address: address, delta: 0.1)
+                            print(mapAPI.locations)
                         }))
+                        .padding(.bottom, 10)
                         
                     }
                     .toolbarBackground(.white, for: .navigationBar)
