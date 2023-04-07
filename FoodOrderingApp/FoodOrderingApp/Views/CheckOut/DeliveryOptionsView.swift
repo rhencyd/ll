@@ -74,6 +74,10 @@ struct DeliveryOptionsView: View {
                     
                     Text("Estimated delivery in \(Int((time/60).rounded()) + 30) min")
                         .paragraphText()
+                        .onChange(of: time) { newValue in
+                            disableButton = false
+                        }
+                        
                     
                 }
             }
@@ -208,17 +212,13 @@ struct DeliveryOptionsView: View {
                     .padding(.top, 10)
             }
             .disabled(disableButton)
+            .padding(.bottom, 10)
         }
         
         .onAppear {
             calculateCourierTip()
-            
-            if isCurrentUserSignedIn {
-                disableButton = true
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 12) {
-                    disableButton = false
-                }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                disableButton = false
             }
         }
         

@@ -142,270 +142,273 @@ struct ConfirmationView: View {
                             .paragraphText()
                             .padding(.top, 5)
                         
-                        
-                        
-                        if deliveryOption {
-                            
-                            HStack {
-                                Text("Estimated time of delivery")
-                                    .cardTitle()
-                                
-                                Spacer()
-                                
-                                Text("\(Int((deliverytime/60).rounded()) + 30) min")
-                                    .cardTitle()
-                            }
-                            .padding(.top)
-                            
-                        }
-                        
-                        else {
-                            
-                            VStack(alignment: .leading ,spacing: 5) {
-                                Text("Estimated date of pick-up")
-                                    .cardTitle()
-                                
-                                Text("\(dateFormatter.string(from: pickUpTime))")
-                                    .paragraphText()
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.top)
-                            
-                            
-                        }
-                        
-                    }
-                    
-                    Group {
-                        
-                        if deliveryOption {
-                            VStack {
-                                
-                                HStack {
-                                    
-                                    Image(systemName: isOrderPlaced ? "circle.inset.filled" : "circle.dashed")
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .onTapGesture {
-                                            
-                                        }
-                                    
-                                    if !isOrderBeingPrepared {
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                    }
-                                    else {
-                                        
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [100]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                        
-                                    }
-                                    
-                                    Image(systemName: isOrderBeingPrepared ? "circle.inset.filled" : "circle.dashed")
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .onTapGesture {
-                                            
-                                            if !isOrderOnTheWay && !isOrderDelivered {
-                                                isOrderBeingPrepared.toggle()
-                                            }
-                                            if isOrderPlaced == false {
-                                                isOrderPlaced.toggle()
-                                            }
-                                        }
-                                    
-                                    
-                                    if !isOrderOnTheWay {
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                    }
-                                    else {
-                                        
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [100]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                        
-                                    }
-                                    
-                                    Image(systemName: isOrderOnTheWay ? "circle.inset.filled" : "circle.dashed")
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .onTapGesture {
-                                            
-                                            if !isOrderDelivered {
-                                                isOrderOnTheWay.toggle()
-                                            }
-                                            if isOrderPlaced == false {
-                                                isOrderPlaced.toggle()
-                                            }
-                                            if isOrderBeingPrepared == false {
-                                                isOrderBeingPrepared.toggle()
-                                            }
-                                        }
-                                    
-                                    
-                                    if !isOrderDelivered {
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                    }
-                                    else {
-                                        
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [100]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                        
-                                    }
-                                    
-                                    Image(systemName: isOrderDelivered ? "circle.inset.filled" : "circle.dashed")
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .onTapGesture {
-                                            isOrderDelivered.toggle()
-                                            if isOrderBeingPrepared == false {
-                                                isOrderBeingPrepared.toggle()
-                                            }
-                                            if isOrderOnTheWay == false {
-                                                isOrderOnTheWay.toggle()
-                                            }
-                                        }
-                                    
-                                    
-                                }
-                                
-                                HStack {
-                                    
-                                    Text("Placed")
-                                        .paragraphTextMini()
-                                    
-                                    Spacer()
-                                    
-                                    Text("Preparing")
-                                        .paragraphTextMini()
-                                        .offset(x: 12)
-                                    
-                                    Spacer()
-                                    
-                                    Text("On the way")
-                                        .paragraphTextMini()
-                                        .offset(x: 10)
-                                    
-                                    Spacer()
-                                    
-                                    Text("Delivered")
-                                        .paragraphTextMini()
-                                        .offset(x: 8)
-                                }
-                                .padding(.horizontal, -10)
-                                
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 5)
-                            
-                        }
-                        
-                        else {
-                            VStack {
-                                
-                                HStack {
-                                    
-                                    Image(systemName: isOrderPlaced ? "circle.inset.filled" : "circle.dashed")
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .onTapGesture {
-                                            isOrderBeingPrepared = false
-                                            isOrderReady = false
-                                        }
-                                    
-                                    if !isOrderBeingPrepared {
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                    }
-                                    else {
-                                        
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [500]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                        
-                                    }
-                                    
-                                    Image(systemName: isOrderBeingPrepared ? "circle.inset.filled" : "circle.dashed")
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .onTapGesture {
-                                            isOrderBeingPrepared.toggle()
-                                            isOrderReady = false
-                                        }
-                                    
-                                    if !isOrderReady {
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                    }
-                                    else {
-                                        
-                                        Line()
-                                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [500]))
-                                            .frame(height: 1)
-                                            .padding(.horizontal, -8)
-                                            .foregroundColor(Color("PrimaryColor1"))
-                                        
-                                    }
-                                    
-                                    Image(systemName: isOrderReady ? "circle.inset.filled" : "circle.dashed")
-                                        .foregroundColor(Color("PrimaryColor1"))
-                                        .onTapGesture {
-                                            isOrderReady.toggle()
-                                        }
-                                    
-                                    
-                                }
-                                
-                                HStack {
-                                    
-                                    Text("Placed")
-                                        .paragraphTextMini()
-                                    
-                                    Spacer()
-                                    
-                                    
-                                    Text("Preparing")
-                                        .paragraphTextMini()
-                                    
-                                    
-                                    Spacer()
-                                    
-                                    Text("Ready")
-                                        .paragraphTextMini()
-                                    
-                                }
-                                .padding(.horizontal, -10)
-                                
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 5)
-                            
-                        }
-                        
                     }
                     
                     ScrollView {
+                        
+                        Group {
+                            
+                            
+                            if deliveryOption {
+                                
+                                HStack {
+                                    Text("Estimated time of delivery")
+                                        .cardTitle()
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(Int((deliverytime/60).rounded()) + 30) min")
+                                        .cardTitle()
+                                }
+                                .padding(.top)
+                                
+                            }
+                            
+                            else {
+                                
+                                VStack(alignment: .leading ,spacing: 5) {
+                                    Text("Estimated date of pick-up")
+                                        .cardTitle()
+                                    
+                                    Text("\(dateFormatter.string(from: pickUpTime))")
+                                        .paragraphText()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.top)
+                                
+                                
+                            }
+                            
+                        }
+                        
+                        Group {
+                            
+                            if deliveryOption {
+                                VStack {
+                                    
+                                    HStack {
+                                        
+                                        Image(systemName: isOrderPlaced ? "circle.inset.filled" : "circle.dashed")
+                                            .foregroundColor(Color("PrimaryColor1"))
+                                            .onTapGesture {
+                                                
+                                            }
+                                        
+                                        if !isOrderBeingPrepared {
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                        }
+                                        else {
+                                            
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [100]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                            
+                                        }
+                                        
+                                        Image(systemName: isOrderBeingPrepared ? "circle.inset.filled" : "circle.dashed")
+                                            .foregroundColor(Color("PrimaryColor1"))
+                                            .onTapGesture {
+                                                
+                                                if !isOrderOnTheWay && !isOrderDelivered {
+                                                    isOrderBeingPrepared.toggle()
+                                                }
+                                                if isOrderPlaced == false {
+                                                    isOrderPlaced.toggle()
+                                                }
+                                            }
+                                        
+                                        
+                                        if !isOrderOnTheWay {
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                        }
+                                        else {
+                                            
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [100]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                            
+                                        }
+                                        
+                                        Image(systemName: isOrderOnTheWay ? "circle.inset.filled" : "circle.dashed")
+                                            .foregroundColor(Color("PrimaryColor1"))
+                                            .onTapGesture {
+                                                
+                                                if !isOrderDelivered {
+                                                    isOrderOnTheWay.toggle()
+                                                }
+                                                if isOrderPlaced == false {
+                                                    isOrderPlaced.toggle()
+                                                }
+                                                if isOrderBeingPrepared == false {
+                                                    isOrderBeingPrepared.toggle()
+                                                }
+                                            }
+                                        
+                                        
+                                        if !isOrderDelivered {
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                        }
+                                        else {
+                                            
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [100]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                            
+                                        }
+                                        
+                                        Image(systemName: isOrderDelivered ? "circle.inset.filled" : "circle.dashed")
+                                            .foregroundColor(Color("PrimaryColor1"))
+                                            .onTapGesture {
+                                                isOrderDelivered.toggle()
+                                                if isOrderBeingPrepared == false {
+                                                    isOrderBeingPrepared.toggle()
+                                                }
+                                                if isOrderOnTheWay == false {
+                                                    isOrderOnTheWay.toggle()
+                                                }
+                                            }
+                                        
+                                        
+                                    }
+                                    
+                                    HStack {
+                                        
+                                        Text("Placed")
+                                            .paragraphTextMini()
+                                        
+                                        Spacer()
+                                        
+                                        Text("Preparing")
+                                            .paragraphTextMini()
+                                            .offset(x: 12)
+                                        
+                                        Spacer()
+                                        
+                                        Text("On the way")
+                                            .paragraphTextMini()
+                                            .offset(x: 10)
+                                        
+                                        Spacer()
+                                        
+                                        Text("Delivered")
+                                            .paragraphTextMini()
+                                            .offset(x: 8)
+                                    }
+                                    .padding(.horizontal, -10)
+                                    
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 5)
+                                
+                            }
+                            
+                            else {
+                                VStack {
+                                    
+                                    HStack {
+                                        
+                                        Image(systemName: isOrderPlaced ? "circle.inset.filled" : "circle.dashed")
+                                            .foregroundColor(Color("PrimaryColor1"))
+                                            .onTapGesture {
+                                                isOrderBeingPrepared = false
+                                                isOrderReady = false
+                                            }
+                                        
+                                        if !isOrderBeingPrepared {
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                        }
+                                        else {
+                                            
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [500]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                            
+                                        }
+                                        
+                                        Image(systemName: isOrderBeingPrepared ? "circle.inset.filled" : "circle.dashed")
+                                            .foregroundColor(Color("PrimaryColor1"))
+                                            .onTapGesture {
+                                                isOrderBeingPrepared.toggle()
+                                                isOrderReady = false
+                                            }
+                                        
+                                        if !isOrderReady {
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [4]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                        }
+                                        else {
+                                            
+                                            Line()
+                                                .stroke(style: StrokeStyle(lineWidth: 2, dash: [500]))
+                                                .frame(height: 1)
+                                                .padding(.horizontal, -8)
+                                                .foregroundColor(Color("PrimaryColor1"))
+                                            
+                                        }
+                                        
+                                        Image(systemName: isOrderReady ? "circle.inset.filled" : "circle.dashed")
+                                            .foregroundColor(Color("PrimaryColor1"))
+                                            .onTapGesture {
+                                                isOrderReady.toggle()
+                                            }
+                                        
+                                        
+                                    }
+                                    
+                                    HStack {
+                                        
+                                        Text("Placed")
+                                            .paragraphTextMini()
+                                        
+                                        Spacer()
+                                        
+                                        
+                                        Text("Preparing")
+                                            .paragraphTextMini()
+                                        
+                                        
+                                        Spacer()
+                                        
+                                        Text("Ready")
+                                            .paragraphTextMini()
+                                        
+                                    }
+                                    .padding(.horizontal, -10)
+                                    
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 5)
+                                
+                            }
+                            
+                        }
                         
                         Group {
                             Text(deliveryOption ? "Delivery address" : "Pick-up address").cardTitle()
@@ -554,6 +557,7 @@ struct ConfirmationView: View {
                                     .padding(.horizontal, -20)
                             }
                             .padding(.top)
+                            .padding(.bottom, 10)
                             
                         }
                         

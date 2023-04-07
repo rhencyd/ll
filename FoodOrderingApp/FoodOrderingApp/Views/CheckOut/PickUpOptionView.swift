@@ -188,6 +188,7 @@ struct PickUpOptionView: View {
                     print(checkoutViewModel.order)
                     
                 }))
+                .padding(.bottom, 10)
                 
             }
             .onAppear() {

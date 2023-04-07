@@ -170,6 +170,7 @@ struct PaymentScreen: View {
             .simultaneousGesture(TapGesture().onEnded({ tap in
                 checkoutViewModel.isHistory = false
             }))
+            .padding(.bottom, 10)
             
         }
         

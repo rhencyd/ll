@@ -143,11 +143,12 @@ struct CheckOutView: View {
             .disabled(verifyAddress)
             .onAppear {
                 
+                disableButton = true
                 getFirstDirection()
                 
                 if isCurrentUserSignedIn {
-                    nameofOrder = "\((currentUserFirstName ?? "User name").capitalized) \((currentUserLastName ?? "last name").capitalized)"
-                    emailOrder = currentUserEmail ?? "email"
+                    nameofOrder = "\((currentUserFirstName ?? "Paola").capitalized) \((currentUserLastName ?? "Navarrete").capitalized)"
+                    emailOrder = currentUserEmail ?? "demo@email.com"
                 }
                 
             }
@@ -704,6 +705,7 @@ struct CheckOutView: View {
                         
                         print(checkoutViewModel.order)
                     }))
+                    .padding(.bottom, 10)
                     
                     
                 } else {
@@ -739,6 +741,7 @@ struct CheckOutView: View {
                         }
                         
                     }
+                    .padding(.bottom, 10)
                     
                     
                 }
@@ -794,12 +797,10 @@ struct CheckOutView: View {
             zipCode.isEmpty {
             
             if isCurrentUserSignedIn {
-                address = currentUserCompleteAddress ?? "Chicago"
-                mapAPI.getLocation(address: address, delta: 0.1)
+                address = currentUserCompleteAddress ?? "2108 N CALIFORNIA AVE, APT 2F, CHICAGO, Ilinois 60647".capitalized
             }
             else  {
-                address = "Chicago"
-                mapAPI.getLocation(address: address, delta: 0.1)
+                address = "2108 N CALIFORNIA AVE, APT 2F, CHICAGO, Ilinois 60647".capitalized
             }
             
         }
@@ -977,7 +978,7 @@ struct CheckOutView: View {
                 nameofOrder = "\(firstName.capitalized) \(lastName.capitalized)"
                 emailOrder = email
                 verifyAddress.toggle()
-                mapAPI.getLocation(address: address, delta: 0.1)
+                mapAPI.getLocation(address: Cline1, delta: 0.1)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     disableButton = false
                 }
@@ -998,14 +999,14 @@ struct CheckOutView: View {
             
             if isCurrentUserSignedIn {
                 
-                CfirstName = currentUserFirstName ?? "First Name"
-                ClastName = currentUserLastName ?? "Last Name"
-                Cemail = currentUserEmail ?? "email"
-                Cline1 = currentUserLine1 ?? "Line 1"
-                Cline2 = currentUserLine2 ?? ""
-                Ccity = currentUserCity ?? "City"
-                CstateSelection = currentUserState ?? "State"
-                CzipCode = currentUserZipCode ?? "Zip Code"
+                CfirstName = currentUserFirstName ?? "Paola"
+                ClastName = currentUserLastName ?? "Navarrete"
+                Cemail = currentUserEmail ?? "demo@email.com"
+                Cline1 = currentUserLine1 ?? "2108 N CALIFORNIA AVE".capitalized
+                Cline2 = currentUserLine2 ?? "APT 2F".capitalized
+                Ccity = currentUserCity ?? "Chicago"
+                CstateSelection = currentUserState ?? "IL"
+                CzipCode = currentUserZipCode ?? "60647"
                 
             } else {
                 

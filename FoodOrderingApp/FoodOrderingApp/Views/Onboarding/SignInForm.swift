@@ -37,6 +37,13 @@ struct SignInForm: View {
     
     // for now this is going to check AppStorage
     
+    // demo
+    @AppStorage("demo_email") var demoEmail: String = "demo@email.com"
+    @AppStorage("demo_password") var demoPassword: String = "Password123*"
+    @AppStorage("orderStatusToggle") var isOrderStatusActive: Bool = false
+    @AppStorage("passwrodChangesToggle") var isPasswordCahngedActive: Bool = false
+    @AppStorage("specialOfferToggle") var isSpecialOfferActive: Bool = false
+    @AppStorage("newsletterToggle") var isNewsletterActive: Bool = false
     
     
     var body: some View {
@@ -55,6 +62,17 @@ struct SignInForm: View {
                     .onSubmit {
                         if let email = currentUserEmail {
                             if userEmail == email  {
+                                isEmailVerified = true
+                                fieldInFocus = .password
+                            } else {
+                                isEmailVerified = false
+                                userEmail = ""
+                                fieldInFocus = .email
+                            }
+                        }
+
+                        else {
+                            if userEmail == demoEmail  {
                                 isEmailVerified = true
                                 fieldInFocus = .password
                             } else {
@@ -96,7 +114,16 @@ struct SignInForm: View {
                                 userPassword = ""
                                 fieldInFocus = .password
                             }
-                            
+                        }
+                        else {
+                            if userPassword == demoPassword {
+                                isPasswordVerified = true
+                                fieldInFocus = .button
+                            } else {
+                                isPasswordVerified = false
+                                userPassword = ""
+                                fieldInFocus = .password
+                            }
                         }
                     }
                 
@@ -123,12 +150,19 @@ struct SignInForm: View {
                 
                 Button {
                     
-                    if isThereAnUser {
+                    if isThereAnUser || !demoEmail.isEmpty {
                         checkInfo()
                         getWrongFields()
                         
                         if isEmailVerified == true && isPasswordVerified == true {
                             isCurrentUserSignedIn = true
+                            
+                            if userEmail == demoEmail && userPassword == demoPassword {
+                                isOrderStatusActive = true
+                                isPasswordCahngedActive = true
+                                isSpecialOfferActive = true
+                                isNewsletterActive = true
+                            }
                         }
                     } else {
                         showAlert.toggle()
@@ -161,13 +195,13 @@ struct SignInForm: View {
     
     func checkInfo() {
         
-        if userEmail == currentUserEmail {
+        if userEmail == currentUserEmail || userEmail == demoEmail {
             isEmailVerified = true
         } else {
             isEmailVerified = false
         }
         
-        if userPassword == currentUserPassword {
+        if userPassword == currentUserPassword || userPassword == demoPassword {
             isPasswordVerified = true
         } else {
             isPasswordVerified = false
