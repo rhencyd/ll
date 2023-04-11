@@ -1,6 +1,13 @@
-# ll
+# Little Lemon Food Ordering App
 
-PRIVACY POLICY
+![Icon-App-76x76@2x](https://user-images.githubusercontent.com/114204612/231064092-f1669994-fdac-427f-b8ac-fc8a5892d6e7.png)
+
+Little Lemon Food Ordering App is an online ordering app that has pretty basic functionality and very smooth navigation between screens
+
+
+
+
+## Privacy Policy
 
 No personal data shared with us will be given to any third party, under any circumstances. Your data will also never be used by us for any purpose without specific permission.
 
@@ -8,7 +15,7 @@ The app engages in no ad targeting, data mining, or other activities that may co
 
 
 
-ABOUT:
+## About
 
 This is the capstone project iOS Mobil app from Meta
 
