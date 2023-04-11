@@ -1,30 +1,29 @@
 # Little Lemon Food Ordering App
 
 <img src="FoodOrderingApp/FoodOrderingApp/Assets.xcassets/AppIcon.appiconset/ItunesArtwork@2x.png" align="left"
-width="200" 
+width="200"
 hspace="10" 
 vspace="10">
 
+Little Lemon is a food ordering app for a fictional company called Little Lemon, which has all the necessary functionality to order food from a restaurant using pretty user based UI and very smooth navigation between screens.
 
-
-This application represents the culmination and demonstration of the skills acquired in my preparation as an iOS Developer. 
-
-During this project, I developed a end-to-end food ordering app for a fictional company called Little Lemon, which has all the necessary functionality to order food from a restaurant using pretty user based UI and very smooth navigation between screens.
-
-
-
-
-## Privacy Policy
-
-No personal data shared with us will be given to any third party, under any circumstances. Your data will also never be used by us for any purpose without specific permission.
-
-The app engages in no ad targeting, data mining, or other activities that may compromise your privacy, and we do not affiliate ourselves with any third parties that do so.
-
+<p align="center">
+  <a href="https://testflight.apple.com/join/3HiuqZk7">
+    <img alt="Try it on TestFlight"
+            height="90"
+            src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" />
+  </a>
+</p>
 
 
 ## About
 
 This is the capstone project iOS Mobil app from Meta
+
+
+This application represents the culmination and demonstration of the skills acquired in my preparation as an iOS Developer. 
+
+During this project, I developed a
 
 Little Lemon Food Ordering App is an online ordering app that has pretty basic functionality and very smooth navigation between screens:
 
@@ -52,5 +51,8 @@ This application represents the culmination and demonstration of the skills acqu
 I hope you enjoyed it, and let me know how I can improve it! 
 
 
+## Privacy Policy
 
+No personal data shared with us will be given to any third party, under any circumstances. Your data will also never be used by us for any purpose without specific permission.
 
+The app engages in no ad targeting, data mining, or other activities that may compromise your privacy, and we do not affiliate ourselves with any third parties that do so.
