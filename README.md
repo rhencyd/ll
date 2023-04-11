@@ -1,9 +1,13 @@
 # Little Lemon Food Ordering App
 
-![Icon-App-76x76@2x](https://user-images.githubusercontent.com/114204612/231064092-f1669994-fdac-427f-b8ac-fc8a5892d6e7.png)
+<img src="FoodOrderingApp/FoodOrderingApp/Assets.xcassets/AppIcon.appiconset/ItunesArtwork@2x.png" align="left"
+width="200" 
+hspace="10" 
+vspace="10">
 
-Little Lemon Food Ordering App is an online ordering app that has pretty basic functionality and very smooth navigation between screens
 
+
+Little Lemon Food Ordering App is an online ordering app that has pretty basic functionality and very smooth navigation between screens.
 
 
 
