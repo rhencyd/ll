@@ -1,11 +1,15 @@
 # Little Lemon Food Ordering App
 
-<img src="FoodOrderingApp/FoodOrderingApp/Assets.xcassets/AppIcon.appiconset/ItunesArtwork@2x.png" align="left"
-width="200"
-hspace="10" 
-vspace="10">
+<img src="https://user-images.githubusercontent.com/114204612/231291150-ac8d1869-bcd8-44f0-a93c-18d4b92f2027.png" 
+     align="left"
+     width="200"
+     hspace="10" 
+     vspace="10">
+
 
 Little Lemon is a food ordering app for a fictional company called Little Lemon, which has all the necessary functionality to order food from a restaurant using pretty user based UI and very smooth navigation between screens.
+
+Little Lemon is available for testing on TestFlight:
 
 <p align="center">
   <a href="https://testflight.apple.com/join/3HiuqZk7">
@@ -14,6 +18,7 @@ Little Lemon is a food ordering app for a fictional company called Little Lemon,
             src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" />
   </a>
 </p>
+
 
 
 ## About
