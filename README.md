@@ -1,32 +1,69 @@
-# Little Lemon Food Ordering App
-
-<img src="https://user-images.githubusercontent.com/114204612/231291150-ac8d1869-bcd8-44f0-a93c-18d4b92f2027.png" 
-     align="left"
-     width="200"
-     hspace="10" 
-     vspace="10">
-
-
-Little Lemon is a food ordering app for a fictional company called Little Lemon, which has all the necessary functionality to order food from a restaurant using pretty user based UI and very smooth navigation between screens.
-
-Little Lemon is available for testing on TestFlight:
-
-<p align="center">
+<!-- PROJECT LOGO -->
+<div align="center">
   <a href="https://testflight.apple.com/join/3HiuqZk7">
-    <img alt="Try it on TestFlight"
-            height="90"
-            src="https://developer.apple.com/assets/elements/icons/testflight/testflight-64x64_2x.png" />
+    <img src="https://user-images.githubusercontent.com/114204612/231291150-ac8d1869-bcd8-44f0-a93c-18d4b92f2027.png" alt="Logo" width="80" height="80">
   </a>
-</p>
+
+  <h3 align="center">Little Lemon - Food Ordering App</h3>
+
+  <p align="center">
+    Capstone Project based on a user friendly food ordering app.
+    <br />
+    <a href="https://github.com/rhencyd/ll/tree/main/FoodOrderingApp/FoodOrderingApp"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://testflight.apple.com/join/3HiuqZk7">View Demo</a>
+  
+  </p>
+</div>
+
+
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
 
 
-## About
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-This is the capstone project iOS Mobil app from Meta
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/114204612/231298203-f9696492-4f6a-4aa7-b5bb-c492a3afd0f7.png" alt="welcomeView" height="430">
+ <img src="https://user-images.githubusercontent.com/114204612/231300095-f814a86b-e360-46ac-a79e-16d41ab87eb4.png" alt="homeView" height="430">
+ <img src="https://user-images.githubusercontent.com/114204612/231300470-c74916d1-144f-419a-b801-c93b6f7f728d.png" alt="dishView" height="430">
+ <img src="https://user-images.githubusercontent.com/114204612/231300800-fc803f73-89f8-412d-9ab4-2b789f2f41b5.png" alt="cartView" height="430">
+ <img src="https://user-images.githubusercontent.com/114204612/231301064-4692ef5d-07a9-43dc-bb96-7562459ce7b5.png" alt="deliveryView" height="430">
+</div>
+
+<br />
+<br />
 
 
-This application represents the culmination and demonstration of the skills acquired in my preparation as an iOS Developer. 
+Little Lemon is a food ordering app and it comes with all the necessary functionality to order food from a restaurant using a modern UI and very smooth navigation between screens. This application represents the culmination and demonstration of the skills acquired in my preparation as an iOS Developer. 
+
+
 
 During this project, I developed a
 
