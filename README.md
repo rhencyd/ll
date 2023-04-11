@@ -7,7 +7,12 @@ vspace="10">
 
 
 
-Little Lemon Food Ordering App is an online ordering app that has pretty basic functionality and very smooth navigation between screens.
+Little Lemon Food Ordering App is an online ordering app that 
+
+This application represents the culmination and demonstration of the skills acquired in my preparation as an iOS Developer. 
+
+During this project, I developed a end-to-end food ordering app for a fictional company called Little Lemon, which has all the necessary functionality to order food from a restaurant using pretty user based UI and very smooth navigation between screens.
+
 
 
 
