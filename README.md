@@ -25,6 +25,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+         <li><a href="#development-process">Development Process</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -61,13 +62,30 @@
 <br />
 
 
-Little Lemon is a food ordering app and it comes with all the necessary functionality to order food from a restaurant using a modern UI and very smooth navigation between screens. This application represents the culmination and demonstration of the skills acquired in my preparation as an iOS Developer. 
+Little Lemon is the name of a fictional Mediterranean restaurant located in Chicago, and serves as the main case study created by Meta to solve business-oriented problems.
+
+This idea was used throughout the <a href="https://www.coursera.org/professional-certificates/meta-ios-developer"> Meta iOS Developer</a> training content, and among the issues to be resolved was the need to create a tool that would allow users to order food through their mobile devices, specifically targeting iPhone users. This is how Little Lemon Food Ordering App was born, which was the culminating project necessary to obtain certification as an iOS Developer.
+
+
+<br />
+
+### Development Process
+
+
+This project was based on creating an app from scratch, which can provide customers with a nice and easy to use experience for ordering food. The development process consisted of the following steps:
 
 
 
-During this project, I developed a
+1. Set up and configure the development environment for the project, which includes setting up the repository and creating an appropriate folder and file structure to work in Swift, in order to handle the version control.
 
-Little Lemon Food Ordering App is an online ordering app that has pretty basic functionality and very smooth navigation between screens:
+2. Apply UX and UI principles, as well as the engagement structure, thus determining the individual pieces of the application and getting a better idea of how they fit together and how users are likely to interact with them. With this, the design of a <a href="https://www.figma.com/proto/kLdlPrHculQFxEpkHNnb5m/LittleLemonCapstone?node-id=58-162&starting-point-node-id=58%3A162&scaling=scale-down">high-fidelity prototype</a> was achieved that would align the goals of the company with those of potential users.
+
+
+
+<br />
+<br />
+<br />
+<br />
 
 This application starts in an onboarding stage to obtain the basic and essential data of the user (who has the option to register or not).
 
