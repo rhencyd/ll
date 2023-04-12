@@ -80,6 +80,12 @@ This project was based on creating an app from scratch, which can provide custom
 
 2. Apply UX and UI principles, as well as the engagement structure, thus determining the individual pieces of the application and getting a better idea of how they fit together and how users are likely to interact with them. With this, the design of a <a href="https://www.figma.com/proto/kLdlPrHculQFxEpkHNnb5m/LittleLemonCapstone?node-id=58-162&starting-point-node-id=58%3A162&scaling=scale-down">high-fidelity prototype</a> was achieved that would align the goals of the company with those of potential users.
 
+3. Design a user onboarding and registration process. Likewise, give the user the ability to store simple data and modifying their profile. In addition, create a navigation flow that makes it easy for users to move from one screen to another no matter where they are.
+
+4. Setting up a food ordering process that allows users to sort and filter the menu page so they can narrow their search to the dishes that are most relevant to them. Getting this data from the network, store it in a database, and represent the data in Swift.
+
+5. Transport the information provided by the user's selection to fill the shopping cart, also giving them the possibility of adding, deleting and editing each of the dishes that are in it.
+
 
 
 <br />
@@ -87,16 +93,9 @@ This project was based on creating an app from scratch, which can provide custom
 <br />
 <br />
 
-This application starts in an onboarding stage to obtain the basic and essential data of the user (who has the option to register or not).
-
-After the registration process, there is the main view, which takes care of the navigation of the entire application.
-
-The displayed dummy menu information is taken from the web: https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json, which displays information about each dish, which is immediately saved to the core data and automatically deleted to keep the most up-to-date information.
 
 Likewise, the user has the possibility of filtering, editing, deleting, and updating the dishes on the menu, as well as the option of home delivery or food collection, tips and adding special requests and getting an approximate cost of shipping based on distance and time data using MapKit in real-time. . time. After making the purchase, the user can access the history of the orders created and place new orders.
 
-
-This application represents the culmination and demonstration of the skills acquired in my preparation as an iOS Developer. During this project, I developed an online food ordering app from scratch for a fictional company called Little Lemon; The development stages of this process include:
 
 - Set up a SwiftUI app with Xcode
 - Commit the project to a Git repository (https://github.com/rhencyd/ll)
@@ -110,6 +109,8 @@ This application represents the culmination and demonstration of the skills acqu
 
 I hope you enjoyed it, and let me know how I can improve it! 
 
+<br />
+<br />
 
 ## Privacy Policy
 
